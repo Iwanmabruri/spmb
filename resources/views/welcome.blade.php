@@ -117,7 +117,7 @@
 
                                 <!-- Submit -->
                                 <button class="btn w-100 btn-primary mt-3 lift">
-                                    Request a demo
+                                    Request a demoo
                                 </button>
 
                             </div>
