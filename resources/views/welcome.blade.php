@@ -552,12 +552,12 @@
                             Syarat & Alur
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDocumentation" data-bs-toggle="dropdown"
                             href="#" aria-haspopup="true" aria-expanded="false">
                             Kontak
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
 
                 <!-- Button -->
@@ -580,12 +580,12 @@
                 <div class="col-12 col-md-4 col-lg-3">
 
                     <!-- Brand -->
-                    <img src="{{ asset('assets') }}/img/brand.svg" alt="..."
+                    <img src="{{ asset('assets') }}/img/brand.png" width="150" alt="..."
                         class="footer-brand img-fluid mb-2">
 
                     <!-- Text -->
                     <p class="text-gray-700 mb-2">
-                        A better way to build.
+                        SMK Nurul Abror Al-Robbaniyin
                     </p>
 
                     <!-- Social -->
@@ -621,34 +621,34 @@
 
                     <!-- Heading -->
                     <h6 class="fw-bold text-uppercase text-gray-700">
-                        Products
+                        Website
                     </h6>
 
                     <!-- List -->
                     <ul class="list-unstyled text-body-secondary mb-6 mb-md-8 mb-lg-0">
                         <li class="mb-3">
-                            <a href="#!" class="text-reset">
-                                Page Builder
+                            <a href="https://smknaa.sch.id/" class="text-reset">
+                                SMKNAA
                             </a>
                         </li>
                         <li class="mb-3">
                             <a href="#!" class="text-reset">
-                                UI Kit
+                                SIANTA
                             </a>
                         </li>
                         <li class="mb-3">
                             <a href="#!" class="text-reset">
-                                Styleguide
+                                AlumniSMKNAA
                             </a>
                         </li>
                         <li class="mb-3">
                             <a href="#!" class="text-reset">
-                                Documentation
+                                BKKSMKNAA
                             </a>
                         </li>
                         <li>
                             <a href="#!" class="text-reset">
-                                Changelog
+                                GuestBook
                             </a>
                         </li>
                     </ul>
@@ -658,29 +658,34 @@
 
                     <!-- Heading -->
                     <h6 class="fw-bold text-uppercase text-gray-700">
-                        Services
+                        Fasilitas RPL
                     </h6>
 
                     <!-- List -->
                     <ul class="list-unstyled text-body-secondary mb-6 mb-md-8 mb-lg-0">
                         <li class="mb-3">
                             <a href="#!" class="text-reset">
-                                Documentation
+                                Ruang Kelas
                             </a>
                         </li>
                         <li class="mb-3">
                             <a href="#!" class="text-reset">
-                                Changelog
+                                Lab Komputer
                             </a>
                         </li>
                         <li class="mb-3">
                             <a href="#!" class="text-reset">
-                                Pagebuilder
+                                Koperasi Sekolah
                             </a>
                         </li>
                         <li>
                             <a href="#!" class="text-reset">
-                                UI Kit
+                                Ruang Osis
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-reset">
+                                Lapangan Olahraga
                             </a>
                         </li>
                     </ul>
@@ -690,44 +695,34 @@
 
                     <!-- Heading -->
                     <h6 class="fw-bold text-uppercase text-gray-700">
-                        Connect
+                        Fasilitas AKL
                     </h6>
 
                     <!-- List -->
-                    <ul class="list-unstyled text-body-secondary mb-0">
+                    <ul class="list-unstyled text-body-secondary mb-6 mb-md-8 mb-lg-0">
                         <li class="mb-3">
                             <a href="#!" class="text-reset">
-                                Page Builder
+                                Ruang Kelas
                             </a>
                         </li>
                         <li class="mb-3">
                             <a href="#!" class="text-reset">
-                                UI Kit
+                                Lab Komputer
                             </a>
                         </li>
                         <li class="mb-3">
                             <a href="#!" class="text-reset">
-                                Styleguide
-                            </a>
-                        </li>
-                        <li class="mb-3">
-                            <a href="#!" class="text-reset">
-                                Documentation
-                            </a>
-                        </li>
-                        <li class="mb-3">
-                            <a href="#!" class="text-reset">
-                                Changelog
-                            </a>
-                        </li>
-                        <li class="mb-3">
-                            <a href="#!" class="text-reset">
-                                Documentation
+                                Koperasi Sekolah
                             </a>
                         </li>
                         <li>
                             <a href="#!" class="text-reset">
-                                Changelog
+                                Ruang Osis
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-reset">
+                                Lapangan Olahraga
                             </a>
                         </li>
                     </ul>
