@@ -562,7 +562,7 @@
 
                 <!-- Button -->
                 <a class="navbar-btn btn btn-sm btn-success lift ms-auto"
-                    href="https://themes.getbootstrap.com/product/landkit/" target="_blank">
+                    href="{{ route('dashboard') }}" target="_blank">
                     Login
                 </a>
 
