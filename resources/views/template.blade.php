@@ -11,7 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Codescandy" name="author">
-    <title>Blank | Dasher - Responsive Bootstrap 5 Admin Dashboard</title>
+    <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('assets_admin') }}/libs/swiper/swiper-bundle.min.css" />
     <!-- Favicon icon-->
     <link rel="apple-touch-icon" sizes="57x57"
@@ -42,7 +42,7 @@
         href="{{ asset('assets_admin') }}/images/favicon/favicon-16x16.png" />
 
     <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="{{ asset('assets_admin') }}/images/favicon/ms-icon-144x144.png" />
+    <meta name="msapplication-TileImage" content="{{ asset('assets') }}/img/logo1.png" />
     <meta name="theme-color" content="#ffffff" />
     <!-- Color modes -->
     <script src="{{ asset('assets_admin') }}/js/vendors/color-modes.js"></script>
@@ -73,389 +73,32 @@
     <div>
         <div id="miniSidebar">
             <div class="brand-logo">
-                <a class='d-none d-md-flex align-items-center gap-2' href='../index-2.html'>
-                    <img src="{{ asset('assets_admin') }}/images/brand/logo/logo-icon.svg" alt="" />
-                    <span class="fw-bold fs-4  site-logo-text">Dasher</span>
+                <a class='d-none d-md-flex align-items-center gap-2' href='{{ url('/dashboard') }}'>
+                    <img width="35px" src="{{ asset('assets') }}/img/logo.webp" alt="" />
+                    <span class="fw-bold fs-4  site-logo-text">S P M B</span>
                 </a>
             </div>
             <ul class="navbar-nav flex-column  ">
                 <!-- Nav item -->
                 <li class="nav-item">
-                    <a class='nav-link' href='../index-2.html'><span class="nav-icon"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-files">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M15 3v4a1 1 0 0 0 1 1h4" />
-                                <path d="M18 17h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h4l5 5v7a2 2 0 0 1 -2 2z" />
-                                <path d="M16 17v2a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
-                            </svg> <span class="text">Project</span></a>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class='nav-link' href='../dashboard/analytics.html'>
-                        <span class="nav-icon "><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                    <a class='nav-link' href='{{ url('/dashboard') }}'><span class="nav-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-chart-histogram">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M3 3v18h18" />
-                                <path d="M20 18v3" />
-                                <path d="M16 16v5" />
-                                <path d="M12 13v8" />
-                                <path d="M8 16v5" />
-                                <path d="M3 11c6 0 5 -5 9 -5s3 5 9 5" />
-                            </svg></span> <span class="text">Analytics</span></a>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class='nav-link' href='../dashboard/ecommerce.html'><span class="nav-icon"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-bag">
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-article">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <path
-                                    d="M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z" />
-                                <path d="M9 11v-5a3 3 0 0 1 6 0v5" />
-                            </svg></span> <span class="text">Ecommerce</span></a>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class='nav-link' href='../dashboard/crm.html'><span class="nav-icon"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-phone">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
-                            </svg></span> <span class="text">CRM</span></a>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class='nav-link' href='../dashboard/finance.html'><span class="nav-icon"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-mastercard">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M14 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                                <path d="M12 9.765a3 3 0 1 0 0 4.47" />
-                                <path
-                                    d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
-                            </svg></span> <span class="text">Finance</span></a>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class='nav-link' href='../dashboard/blog.html'><span class="nav-icon"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-news">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" />
-                                <path d="M8 8l4 0" />
-                                <path d="M8 12l4 0" />
-                                <path d="M8 16l4 0" />
-                            </svg></span> <span class="text">Blog</span></a>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class='nav-link' href='../dashboard/file.html'><span class="nav-icon"><svg
-                                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-file-text">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-                                <path d="M9 9l1 0" />
-                                <path d="M9 13l6 0" />
-                                <path d="M9 17l6 0" />
-                            </svg></span> <span class="text">File</span></a>
+                                    d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+                                <path d="M7 8h10" />
+                                <path d="M7 12h10" />
+                                <path d="M7 16h10" />
+                            </svg>
+                            <span class="text">Dashboard</span></a>
                 </li>
 
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <div class="nav-heading">Apps</div>
-                    <hr class="mx-5 nav-line mb-1" />
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class='nav-link' href='../apps/calendar.html'>
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-calendar">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
-                                <path d="M16 3v4" />
-                                <path d="M8 3v4" />
-                                <path d="M4 11h16" />
-                                <path d="M11 15h1" />
-                                <path d="M12 15v3" />
-                            </svg>
-                        </span>
-                        <span class="text">Calendar</span>
-                    </a>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class='nav-link' href='../apps/chat-app.html'>
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-message-dots">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 11v.01" />
-                                <path d="M8 11v.01" />
-                                <path d="M16 11v.01" />
-                                <path
-                                    d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3z" />
-                            </svg>
-                        </span>
-                        <span class="text">Chat</span>
-                    </a>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class='nav-link' href='../apps/kanban.html'>
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-trello">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-                                <path d="M7 7h3v10h-3z" />
-                                <path d="M14 7h3v6h-3z" />
-                            </svg>
-                        </span>
-                        <span class="text">Kanban</span>
-                    </a>
-
-                </li>
                 <!-- Nav item -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#e-mail" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-mail">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
-                                <path d="M3 7l9 6l9 -6" />
-                            </svg>
-                        </span>
-                        <span class="text">Email</span>
-                    </a>
-                    <ul class="dropdown-menu flex-column">
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/email/mail.html'>Inbox</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/email/mail-details.html'>Email Detail</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/email/compose.html'>Compose</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-bag-edit">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M11 21h-2.426a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304h11.339a2 2 0 0 1 1.977 2.304l-.109 .707" />
-                                <path d="M9 11v-5a3 3 0 0 1 6 0v5" />
-                                <path d="M18.42 15.61a2.1 2.1 0 0 1 2.97 2.97l-3.39 3.42h-3v-3l3.42 -3.39z" />
-                            </svg>
-                        </span>
-                        <span class="text">Ecommerce</span>
-                    </a>
-                    <ul class="dropdown-menu flex-column">
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/e-commerce/ecommerce-products.html'>Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/e-commerce/ecommerce-products-details.html'>Product
-                                Detail</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/e-commerce/ecommerce-product-edit.html'>Add Product</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/e-commerce/ecommerce-cart.html'>Shopping cart</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/e-commerce/ecommerce-checkout.html'>Checkout</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/e-commerce/ecommerce-customer.html'>Customer</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/e-commerce/ecommerce-seller.html'>Seller</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                <path d="M17 17h-11v-14h-2" />
-                                <path d="M6 5l14 1l-1 7h-13" />
-                            </svg>
-                        </span>
-                        <span class="text">Order</span>
-                    </a>
-                    <ul class="dropdown-menu flex-column">
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/order/order-list.html'>List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/order/order-details.html'>Details</a>
-                        </li>
-
-                    </ul>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-file-analytics">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-                                <path d="M9 17l0 -5" />
-                                <path d="M12 17l0 -1" />
-                                <path d="M15 17l0 -3" />
-                            </svg>
-                        </span>
-                        <span class="text">Project</span>
-                    </a>
-                    <ul class="dropdown-menu flex-column">
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/project/project-grid.html'>Grid</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/project/project-list.html'>List</a>
-                        </li>
-                        <li class="dropdown-submenu">
-                            <a class="nav-link dropdown-toggle" href="#!" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Single</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a class='nav-link' href='../apps/project/project-overview.html'>Overview</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class='nav-link' href='../apps/project/project-task.html'>Task</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class='nav-link' href='../apps/project/project-budget.html'>Budget</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class='nav-link' href='../apps/project/project-files.html'>Files</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class='nav-link' href='../apps/project/project-team.html'>Team</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/project/add-project.html'>Create Project</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-chart-pie-2">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 3v9h9" />
-                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                            </svg>
-                        </span>
-                        <span class="text">CRM</span>
-                    </a>
-                    <ul class="dropdown-menu flex-column">
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/crm/crm-contacts.html'>Contacts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/crm/crm-company.html'>Company</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/crm/deals.html'>Deals</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/crm/deals-single.html'>Deals Single</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-invoice">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                                <path
-                                    d="M19 12v7a1.78 1.78 0 0 1 -3.1 1.4a1.65 1.65 0 0 0 -2.6 0a1.65 1.65 0 0 1 -2.6 0a1.65 1.65 0 0 0 -2.6 0a1.78 1.78 0 0 1 -3.1 -1.4v-14a2 2 0 0 1 2 -2h7l5 5v4.25" />
-                            </svg>
-                        </span>
-                        <span class="text">Invoice</span>
-                    </a>
-                    <ul class="dropdown-menu flex-column">
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/invoice/invoice-list.html'>List</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/invoice/invoice-detail.html'>Detail</a>
-                        </li>
-
-                    </ul>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <span class="nav-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -467,27 +110,17 @@
                                 <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                             </svg>
                         </span>
-                        <span class="text">Profile</span>
+                        <span class="text">Menu SPMB</span>
                     </a>
                     <ul class="dropdown-menu flex-column">
                         <li class="nav-item">
-                            <a class='nav-link' href='../apps/profile/profile-overview.html'>Overview</a>
+                            <a class='nav-link' href='#'>Api Santri</a>
                         </li>
                         <li class="nav-item">
-                            <a class='nav-link' href='../apps/profile/profile-project.html'>Project</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/profile/profile-team.html'>Team</a>
+                            <a class='nav-link' href='#'>Data Siswa</a>
                         </li>
                         <li class="nav-item">
-                            <a class='nav-link' href='../apps/profile/profile-followers.html'>Followers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/profile/profile-activity.html'>Activity</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apps/profile/profile-settings.html'>Settings</a>
+                            <a class='nav-link' href='#'>Tambahan</a>
                         </li>
                     </ul>
                 </li>
@@ -499,26 +132,24 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-article">
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
-                                <path d="M7 8h10" />
-                                <path d="M7 12h10" />
-                                <path d="M7 16h10" />
+                                <path d="M4 6h16" />
+                                <path d="M7 12h13" />
+                                <path d="M10 18h10" />
                             </svg>
                         </span>
-                        <span class="text">Blog</span>
+                        <span class="text">Menu Website</span>
                     </a>
                     <ul class="dropdown-menu flex-column">
                         <li class="nav-item">
-                            <a class='nav-link' href='../apps/blog/blog-list.html'>List</a>
+                            <a class='nav-link' href='#'>Isi 1</a>
                         </li>
                         <li class="nav-item">
-                            <a class='nav-link' href='../apps/blog/blog-post-detail.html'>Details</a>
+                            <a class='nav-link' href='#'>Isi 2</a>
                         </li>
                         <li class="nav-item">
-                            <a class='nav-link' href='../apps/blog/create-blog-post.html'>Create</a>
+                            <a class='nav-link' href='#'>Isi 3</a>
                         </li>
                     </ul>
                 </li>
@@ -592,252 +223,7 @@
                     </ul>
                 </li>
 
-
-                <li class="nav-item">
-                    <div class="nav-heading">Components</div>
-                    <hr class="mx-5 nav-line mb-1" />
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-chart-infographic">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M7 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                                <path d="M7 3v4h4" />
-                                <path d="M9 17l0 4" />
-                                <path d="M17 14l0 7" />
-                                <path d="M13 13l0 8" />
-                                <path d="M21 12l0 9" />
-                            </svg>
-                        </span>
-                        <span class="text">Apexcharts</span>
-                    </a>
-                    <ul class="dropdown-menu flex-column">
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apexchart/bar.html'>Bar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apexchart/line.html'>Line</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apexchart/pie.html'>Pie</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apexchart/radialbar.html'>Radialbar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apexchart/radar.html'>Radar</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class='nav-link' href='../apexchart/polararea.html'>Polararea</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item dropdown">
-                    <a class='nav-link' href='../components/components.html' role='button'>
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-box">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
-                                <path d="M12 12l8 -4.5" />
-                                <path d="M12 12l0 9" />
-                                <path d="M12 12l-8 -4.5" />
-                            </svg>
-                        </span>
-                        <span class="text">Components</span>
-                    </a>
-                </li>
-
-
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class='nav-link' href='../docs/index.html'>
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-file-code">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-                                <path d="M10 13l-1 2l1 2" />
-                                <path d="M14 13l1 2l-1 2" />
-                            </svg>
-                        </span>
-                        <span class="text">Docs</span>
-                    </a>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class='nav-link' href='../docs/changelog.html'>
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-git-merge">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M7 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                <path d="M7 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                <path d="M17 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                <path d="M7 8l0 8" />
-                                <path d="M7 8a4 4 0 0 0 4 4h4" />
-                            </svg>
-                        </span>
-                        <span class="text">Changelog</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <div class="nav-heading">Misc</div>
-                    <hr class="mx-5 nav-line mb-1" />
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M4 6h16" />
-                                <path d="M7 12h13" />
-                                <path d="M10 18h10" />
-                            </svg>
-                        </span>
-                        <span class="text">Menu Level</span>
-                    </a>
-                    <ul class="dropdown-menu flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#!">Level 1a</a>
-                        </li>
-
-                        <li class="dropdown-submenu">
-                            <a class="nav-link dropdown-toggle" href="#!" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Level 1b</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#!">Level 2a</a>
-                                </li>
-                                <li class="dropdown-submenu">
-                                    <a class="nav-link dropdown-toggle" href="#!" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">Level 2b</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#!">Level 3a</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#!">Level 3b</a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                    </ul>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class="nav-link disabled text-gray-400" href="#!" aria-disabled="true"
-                        style="cursor:not-allowed">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-circle-off">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M20.042 16.045a9 9 0 0 0 -12.087 -12.087m-2.318 1.677a9 9 0 1 0 12.725 12.73" />
-                                <path d="M3 3l18 18" />
-                            </svg>
-                        </span>
-                        <span class="text">Disabled</span>
-                    </a>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class="nav-link position-relative " href="#!">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-tag">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                                <path
-                                    d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z" />
-                            </svg>
-                        </span>
-                        <span class="text">Label
-                            <span
-                                class="badge bg-info-subtle text-info-emphasis position-absolute end-0 me-2">New</span></span>
-                    </a>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class="nav-link position-relative " href="https://www.google.com/" target="_blank"
-                        aria-label="External Link">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-external-link">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
-                                <path d="M11 13l9 -9" />
-                                <path d="M15 4h5v5" />
-                            </svg>
-                        </span>
-                        <span class="text">External Link </span>
-
-                    </a>
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a aria-label='External Link' class='nav-link position-relative ' href='blank.html'
-                        target='_blank'>
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-file">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
-                            </svg>
-                        </span>
-                        <span class="text">Blank </span>
-
-                    </a>
-                </li>
-                <!-- Nav item -->
-                <li>
-                    <div class="text-center py-5 upgrade-ui ">
-                        <div>
-                            <img src="{{ asset('assets_admin') }}/images/avatar/avatar-1.jpg" alt=""
-                                class="avatar avatar-md rounded-circle">
-                            <div class="my-3">
-                                <h5 class="mb-1 fs-6">Jitu Chauhan</h5>
-                                <span class="text-secondary">Free Version - 1 Month</span>
-                            </div>
-                            <a href="#!" class="btn btn-primary">Upgrade</a>
-
-                        </div>
-
-                    </div>
-                </li>
+                
 
             </ul>
 
@@ -849,8 +235,8 @@
             <div class="offcanvas-header">
 
                 <a class='d-flex align-items-center gap-2' href='../index-2.html'>
-                    <img src="{{ asset('assets_admin') }}/images/brand/logo/logo-icon.svg" alt="" />
-                    <span class="fw-bold fs-4  site-logo-text">Dasher</span>
+                    <img width="5px" src="{{ asset('assets') }}/img/logo.webp" alt="" />
+                    <span class="fw-bold fs-4  site-logo-text">SPMB</span>
                 </a>
 
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -1605,22 +991,6 @@
                         </a>
                     </li>
                     <!-- Nav item -->
-                    <li>
-                        <div class="text-center py-5 upgrade-ui ">
-                            <div>
-                                <img src="{{ asset('assets_admin') }}/images/avatar/avatar-1.jpg" alt=""
-                                    class="avatar avatar-md rounded-circle">
-                                <div class="my-3">
-                                    <h5 class="mb-1 fs-6">Jitu Chauhan</h5>
-                                    <span class="text-secondary">Free Version - 1 Month</span>
-                                </div>
-                                <a href="#!" class="btn btn-primary">Upgrade</a>
-
-                            </div>
-
-                        </div>
-                    </li>
-
                 </ul>
             </div>
         </div>
@@ -1741,46 +1111,25 @@
                                 </ul>
                             </div>
                         </li>
-                        <!-- Bell icon -->
-                        <li>
-                            <a class="position-relative btn-icon btn-ghost btn rounded-circle"
-                                data-bs-toggle="offcanvas" href="#offcanvasNotification" role="button"
-                                aria-controls="offcanvasNotification">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-bell">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path
-                                        d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
-                                    <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
-                                </svg>
-                                <span
-                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-2 ms-n2">
-                                    2
-                                    <span class="visually-hidden">unread messages</span>
-                                </span>
-                            </a>
-                        </li>
                         <!-- Dropdown -->
                         <li class="ms-3 dropdown">
                             <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="{{ asset('assets_admin') }}/images/avatar/avatar-1.jpg" alt=""
+                                <img src="{{ asset('assets') }}/img/logo.webp" alt=""
                                     class="avatar avatar-sm rounded-circle" />
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-md p-0">
                                 <div>
                                     <div
                                         class="d-flex gap-3 align-items-center border-dashed border-bottom px-4 py-4">
-                                        <img src="{{ asset('assets_admin') }}/images/avatar/avatar-1.jpg"
+                                        <img src="{{ asset('assets') }}/img/logo.webp"
                                             alt="" class="avatar avatar-md rounded-circle" />
                                         <div>
-                                            <h4 class="mb-0 fs-5">Jitu Chauhan</h4>
-                                            <p class="mb-0 text-secondar small">@imjituchauhan</p>
+                                            <h4 class="mb-0 fs-5">Admin</h4>
+                                            <p class="mb-0 text-secondar small">smknaa@gmail.com</p>
                                         </div>
                                     </div>
                                     <div class="p-3 d-flex flex-column gap-1">
-                                        <a href="#!" class="dropdown-item d-flex align-items-center gap-2">
+                                        <a href="{{ url('/dashboard') }}" class="dropdown-item d-flex align-items-center gap-2">
                                             <span><svg xmlns="http://www.w3.org/2000/svg" width="20"
                                                     height="20" viewBox="0 0 24 24" fill="none"
                                                     stroke="currentColor" stroke-width="1.5"
@@ -1794,64 +1143,10 @@
                                             </span>
                                             <span>Home</span>
                                         </a>
-                                        <a href="#!" class="dropdown-item d-flex align-items-center gap-2">
-                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-inbox">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path
-                                                        d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-                                                    <path d="M4 13h3l3 3h4l3 -3h3" />
-                                                </svg>
-                                            </span>
-                                            <span> Inbox</span>
-                                        </a>
-                                        <a href="#!" class="dropdown-item d-flex align-items-center gap-2">
-                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-message">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M8 9h8" />
-                                                    <path d="M8 13h6" />
-                                                    <path
-                                                        d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z" />
-                                                </svg>
-                                            </span>
-                                            <span> Chat</span>
-                                        </a>
-                                        <a href="#!" class="dropdown-item d-flex align-items-center gap-2">
-                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-activity">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M3 12h4l3 8l4 -16l3 8h4" />
-                                                </svg>
-                                            </span>
-                                            <span> Activity</span>
-                                        </a>
-                                        <a href="#!" class="dropdown-item d-flex align-items-center gap-2">
-                                            <span><svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path
-                                                        d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
-                                                    <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                                                </svg>
-                                            </span>
-                                            <span> Account Settings</span>
-                                        </a>
+                                        
                                     </div>
                                     <div class="border-dashed border-top mb-4 pt-4 px-6">
-                                        <a href="#!" class="text-secondary d-flex align-items-center gap-2">
+                                        <a href="{{ url('/') }}" class="text-secondary d-flex align-items-center gap-2">
                                             <span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20"
                                                     height="20" viewBox="0 0 24 24" fill="none"
@@ -1874,750 +1169,7 @@
                 </div>
             </div>
             <!--Offcanvas notification-->
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNotification"
-                aria-labelledby="offcanvasNotificationLabel">
-                <div class="sticky-top bg-white">
-                    <div class="offcanvas-header gap-4">
-                        <div class="d-flex justify-content-between w-100">
-                            <h5 class="mb-0" id="offcanvasNotificationLabel">Notifications</h5>
-                            <div class="d-flex gap-3 align-items-center">
-                                <a href="#" class="link-primary" data-bs-toggle="tooltip"
-                                    data-bs-placement="bottom" data-bs-title="Mark all as read">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-checks">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M7 12l5 5l10 -10" />
-                                        <path d="M2 12l5 5m5 -5l5 -5" />
-                                    </svg>
-                                </a>
-                                <a href="#" class="text-inherit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path
-                                            d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
-                                        <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="mt-2">
-                        <ul class="nav nav-line-bottom" id="pills-tab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active px-4 py-2" id="pills-all-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-all" type="button" role="tab"
-                                    aria-controls="pills-all" aria-selected="true">
-                                    All
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link px-4 py-2" id="pills-following-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-following" type="button" role="tab"
-                                    aria-controls="pills-following" aria-selected="false">
-                                    Following
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link px-4 py-2" id="pills-archive-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-archive" type="button" role="tab"
-                                    aria-controls="pills-archive" aria-selected="false">
-                                    Archive
-                                </button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
-                        aria-labelledby="pills-all-tab" tabindex="0">
-                        <div data-simplebar="" style="height: 800px">
-                            <div class="list-group list-group-flush">
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex flex-column gap-1">
-                                            <div>New message from John Doe</div>
-                                            <small class="text-secondary"> 2 minutes ago</small>
-                                        </div>
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex flex-column gap-1">
-                                            <div>Your password will expire soon.</div>
-                                            <small class="text-secondary"> 2 minutes ago</small>
-                                        </div>
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <img src="{{ asset('assets_admin') }}/images/avatar/avatar-1.jpg"
-                                                alt="" class="avatar avatar-md rounded-circle" />
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Alice uploaded a new profile picture.</div>
-                                                <small class="text-secondary"> 1 hour ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <img src="{{ asset('assets_admin') }}/images/avatar/avatar-2.jpg"
-                                                alt="" class="avatar avatar-md rounded-circle" />
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Mike sent you a friend request.</div>
-                                                <small class="text-secondary"> 5 minutes ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex gap-2 align-items-center mt-4">
-                                        <button type="button" class="btn btn-primary btn-sm">Accept</button>
-                                        <button type="button" class="btn btn-white btn-sm">Decline</button>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <img src="{{ asset('assets_admin') }}/images/avatar/avatar-3.jpg"
-                                                alt="" class="avatar avatar-md rounded-circle" />
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Sophia commented on your post.</div>
-                                                <small class="text-secondary"> 20 minutes ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <div
-                                                class="icon-shape icon-md bg-primary-subtle text-primary-emphasis rounded-circle">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path
-                                                        d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
-                                                    <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                                                </svg>
-                                            </div>
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>A system update has been installed.</div>
-                                                <small class="text-secondary"> 30 minutes ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <div
-                                                class="icon-shape icon-md bg-info-subtle text-info-emphasis rounded-circle">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-week">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path
-                                                        d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
-                                                    <path d="M16 3v4" />
-                                                    <path d="M8 3v4" />
-                                                    <path d="M4 11h16" />
-                                                    <path d="M7 14h.013" />
-                                                    <path d="M10.01 14h.005" />
-                                                    <path d="M13.01 14h.005" />
-                                                    <path d="M16.015 14h.005" />
-                                                    <path d="M13.015 17h.005" />
-                                                    <path d="M7.01 17h.005" />
-                                                    <path d="M10.01 17h.005" />
-                                                </svg>
-                                            </div>
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Reminder: Team meeting at 3:00 PM.</div>
-                                                <small class="text-secondary"> 1 hour ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <div
-                                                class="icon-shape icon-md bg-danger-subtle text-danger-emphasis rounded-circle">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                                    <path d="M17 17h-11v-14h-2" />
-                                                    <path d="M6 5l14 1l-1 7h-13" />
-                                                </svg>
-                                            </div>
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Your order has been shipped!</div>
-                                                <small class="text-secondary"> 2 hours ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <img src="{{ asset('assets_admin') }}/images/avatar/avatar-3.jpg"
-                                                alt="" class="avatar avatar-md rounded-circle" />
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Sophia commented on your post.</div>
-                                                <small class="text-secondary"> 20 minutes ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <div
-                                                class="icon-shape icon-md bg-primary-subtle text-primary-emphasis rounded-circle">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path
-                                                        d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
-                                                    <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                                                </svg>
-                                            </div>
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>A system update has been installed.</div>
-                                                <small class="text-secondary"> 30 minutes ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <div
-                                                class="icon-shape icon-md bg-info-subtle text-info-emphasis rounded-circle">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-week">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path
-                                                        d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
-                                                    <path d="M16 3v4" />
-                                                    <path d="M8 3v4" />
-                                                    <path d="M4 11h16" />
-                                                    <path d="M7 14h.013" />
-                                                    <path d="M10.01 14h.005" />
-                                                    <path d="M13.01 14h.005" />
-                                                    <path d="M16.015 14h.005" />
-                                                    <path d="M13.015 17h.005" />
-                                                    <path d="M7.01 17h.005" />
-                                                    <path d="M10.01 17h.005" />
-                                                </svg>
-                                            </div>
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Reminder: Team meeting at 3:00 PM.</div>
-                                                <small class="text-secondary"> 1 hour ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <div
-                                                class="icon-shape icon-md bg-danger-subtle text-danger-emphasis rounded-circle">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                                    <path d="M17 17h-11v-14h-2" />
-                                                    <path d="M6 5l14 1l-1 7h-13" />
-                                                </svg>
-                                            </div>
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Your order has been shipped!</div>
-                                                <small class="text-secondary"> 2 hours ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-following" role="tabpanel"
-                        aria-labelledby="pills-following-tab" tabindex="0">
-                        <div data-simplebar="" style="height: 800px">
-                            <div class="list-group list-group-flush">
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <div
-                                                class="icon-shape icon-md bg-info-subtle text-info-emphasis rounded-circle">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-week">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path
-                                                        d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
-                                                    <path d="M16 3v4" />
-                                                    <path d="M8 3v4" />
-                                                    <path d="M4 11h16" />
-                                                    <path d="M7 14h.013" />
-                                                    <path d="M10.01 14h.005" />
-                                                    <path d="M13.01 14h.005" />
-                                                    <path d="M16.015 14h.005" />
-                                                    <path d="M13.015 17h.005" />
-                                                    <path d="M7.01 17h.005" />
-                                                    <path d="M10.01 17h.005" />
-                                                </svg>
-                                            </div>
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Reminder: Team meeting at 3:00 PM.</div>
-                                                <small class="text-secondary"> 1 hour ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <div
-                                                class="icon-shape icon-md bg-danger-subtle text-danger-emphasis rounded-circle">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                                    <path d="M17 17h-11v-14h-2" />
-                                                    <path d="M6 5l14 1l-1 7h-13" />
-                                                </svg>
-                                            </div>
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Your order has been shipped!</div>
-                                                <small class="text-secondary"> 2 hours ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <img src="{{ asset('assets_admin') }}/images/avatar/avatar-3.jpg"
-                                                alt="" class="avatar avatar-md rounded-circle" />
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Sophia commented on your post.</div>
-                                                <small class="text-secondary"> 20 minutes ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <div
-                                                class="icon-shape icon-md bg-primary-subtle text-primary-emphasis rounded-circle">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path
-                                                        d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
-                                                    <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                                                </svg>
-                                            </div>
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>A system update has been installed.</div>
-                                                <small class="text-secondary"> 30 minutes ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <div
-                                                class="icon-shape icon-md bg-info-subtle text-info-emphasis rounded-circle">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-week">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path
-                                                        d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
-                                                    <path d="M16 3v4" />
-                                                    <path d="M8 3v4" />
-                                                    <path d="M4 11h16" />
-                                                    <path d="M7 14h.013" />
-                                                    <path d="M10.01 14h.005" />
-                                                    <path d="M13.01 14h.005" />
-                                                    <path d="M16.015 14h.005" />
-                                                    <path d="M13.015 17h.005" />
-                                                    <path d="M7.01 17h.005" />
-                                                    <path d="M10.01 17h.005" />
-                                                </svg>
-                                            </div>
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Reminder: Team meeting at 3:00 PM.</div>
-                                                <small class="text-secondary"> 1 hour ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <div
-                                                class="icon-shape icon-md bg-danger-subtle text-danger-emphasis rounded-circle">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                                    height="20" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                                    <path d="M17 17h-11v-14h-2" />
-                                                    <path d="M6 5l14 1l-1 7h-13" />
-                                                </svg>
-                                            </div>
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Your order has been shipped!</div>
-                                                <small class="text-secondary"> 2 hours ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-archive" role="tabpanel"
-                        aria-labelledby="pills-archive-tab" tabindex="0">
-                        <div data-simplebar="" style="height: 800px">
-                            <div class="list-group list-group-flush">
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex flex-column gap-1">
-                                            <div>New message from John Doe</div>
-                                            <small class="text-secondary"> 2 minutes ago</small>
-                                        </div>
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex flex-column gap-1">
-                                            <div>Your password will expire soon.</div>
-                                            <small class="text-secondary"> 2 minutes ago</small>
-                                        </div>
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <img src="{{ asset('assets_admin') }}/images/avatar/avatar-1.jpg"
-                                                alt="" class="avatar avatar-md rounded-circle" />
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Alice uploaded a new profile picture.</div>
-                                                <small class="text-secondary"> 1 hour ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#"
-                                    class="list-group-item list-group-item-action p-5 border-dashed border-bottom">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex gap-4 align-items-center">
-                                            <img src="{{ asset('assets_admin') }}/images/avatar/avatar-2.jpg"
-                                                alt="" class="avatar avatar-md rounded-circle" />
-                                            <div class="d-flex flex-column gap-1">
-                                                <div>Mike sent you a friend request.</div>
-                                                <small class="text-secondary"> 5 minutes ago</small>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                                viewBox="0 0 24 24" fill="currentColor"
-                                                class="icon icon-tabler icons-tabler-filled icon-tabler-circle text-info">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path
-                                                    d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex gap-2 align-items-center mt-4">
-                                        <button type="button" class="btn btn-primary btn-sm">Accept</button>
-                                        <button type="button" class="btn btn-white btn-sm">Decline</button>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="px-5 py-3 text-center bg-white position-absolute bottom-0 border-top border-dashed w-100 text-center">
-                    <a href="#!" class="text-inherit">View all</a>
-                </div>
-            </div>
+            
             <!-- Modal of pages -->
             <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
                 aria-hidden="true">
@@ -2633,62 +1185,39 @@
                         <div class="modal-body" data-simplebar="" style="height: 400px">
                             <div class="mb-4">
                                 <div class="d-flex flex-column border-bottom border-dashed py-4">
-                                    <div class="mb-2">
-                                        <span class="fw-semibold text-secondary small">Dashboard</span>
-                                    </div>
                                     <div>
                                         <ul class="list-unstyled lh-lg mb-0">
-                                            <li><a class='text-inherit'
-                                                    href='../dashboard/analytics.html'>Analytics</a></li>
-                                            <li><a href="../dashboard/project.html" class="text-inherit">Project</a>
-                                            </li>
-                                            <li><a class='text-inherit'
-                                                    href='../dashboard/ecommerce.html'>Ecommerce</a></li>
-                                            <li><a class='text-inherit' href='../dashboard/crm.html'>CRM</a></li>
-                                            <li><a class='text-inherit' href='../dashboard/finance.html'>Finance</a>
-                                            </li>
-                                            <li><a class='text-inherit' href='../dashboard/blog.html'>Blog</a></li>
+                                            
+                                            <li><a class='text-inherit' href='{{ url('/dashboard') }}'>Dashboard</a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-column border-bottom border-dashed py-4">
                                     <div class="mb-2">
-                                        <span class="fw-semibold text-secondary small">Apps</span>
+                                        <span class="fw-semibold text-secondary small">Menu SPMB</span>
                                     </div>
                                     <div>
                                         <ul class="list-unstyled lh-lg mb-0">
-                                            <li><a class='text-inherit' href='../apps/calendar.html'> Calendar</a>
+                                            <li><a class='text-inherit' href='#'> Api Santri</a>
                                             </li>
-                                            <li><a class='text-inherit' href='../apps/chat-app.html'> Chat</a></li>
-                                            <li><a class='text-inherit' href='../apps/email/mail.html'>Email</a>
-                                            </li>
-                                            <li><a class='text-inherit'
-                                                    href='../apps/e-commerce/ecommerce-products.html'>Ecommerce</a>
-                                            </li>
-                                            <li><a class='text-inherit' href='../apps/kanban.html'> Kanban</a></li>
-                                            <li><a class='text-inherit'
-                                                    href='../apps/project/project-grid.html'>Project</a></li>
-                                            <li><a class='text-inherit' href='../dashboard/file.html'> File
-                                                    Manager</a></li>
-                                            <li><a class='text-inherit' href='../apps/crm/crm-contacts.html'>
-                                                    CRM</a></li>
-                                            <li><a class='text-inherit' href='../apps/invoice/invoice-list.html'>
-                                                    Invoice</a></li>
-                                            <li><a class='text-inherit'
-                                                    href='../apps/profile/profile-overview.html'> Profile</a></li>
-                                            <li><a class='text-inherit' href='../apps/blog/blog-list.html'> Blog</a>
+                                            <li><a class='text-inherit' href='#'>Data Siswa</a></li>
+                                            <li><a class='text-inherit' href='#'>Tambahan</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-column border-bottom border-dashed py-4">
-                                    <div>
-                                        <span class="fw-semibold text-secondary small">Pages</span>
+                                    <div class="mb-2">
+                                        <span class="fw-semibold text-secondary small">Menu Website</span>
                                     </div>
-                                </div>
-                                <div class="d-flex flex-column border-bottom border-dashed py-4">
                                     <div>
-                                        <span class="fw-semibold text-secondary small">Quick Links</span>
+                                        <ul class="list-unstyled lh-lg mb-0">
+                                            <li><a class='text-inherit' href='#'>Isi 1</a>
+                                            </li>
+                                            <li><a class='text-inherit' href='#'>Isi 2</a></li>
+                                            <li><a class='text-inherit' href='#'>Isi 3</a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -2698,13 +1227,6 @@
             </div>
 
             @yield('konten')
-        </div>
-
-        <div class="position-fixed bottom-0 end-0 p-5 z-1">
-            <a href="https://codescandy.com/template/dasher-minimal-clean-bootstrap-5-admin-dashboard-template/"
-                class="btn btn-primary" target="_blank">
-                <i class="ti ti-shopping-cart-share me-2"></i>
-                Buy Now</a>
         </div>
         <script src="{{ asset('assets_admin') }}/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('assets_admin') }}/libs/simplebar/dist/simplebar.min.js"></script>

@@ -1,4 +1,7 @@
 @extends('template')
+@section('title')
+    Dashboard | SPMB 
+@endsection
 @section('konten')
     <div class="custom-container">
         <div class="row">

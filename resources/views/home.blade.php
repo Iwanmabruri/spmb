@@ -28,7 +28,7 @@
 
                     <!-- Buttons -->
                     <div class="text-center text-md-start">
-                        <a href="overview.html" class="btn btn-success shadow lift me-1">
+                        <a href="{{ url('/dashboard') }}" class="btn btn-success shadow lift me-1">
                             Login Admin <i class="fe fe-arrow-right d-none d-md-inline ms-3"></i>
                         </a>
                         <a href="docs/index.html" class="btn btn-success-subtle lift">
