@@ -81,10 +81,10 @@
             <ul class="navbar-nav flex-column  ">
                 <!-- Nav item -->
                 <li class="nav-item">
-                    <a class='nav-link' href='{{ url('/dashboard') }}'><span class="nav-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
+                    <a class='nav-link' href='{{ url('/admin') }}'><span class="nav-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round"
                                 class="icon icon-tabler icons-tabler-outline icon-tabler-article">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <path
@@ -223,7 +223,7 @@
                     </ul>
                 </li>
 
-                
+
 
             </ul>
 
@@ -408,8 +408,8 @@
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#e-mail" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#e-mail" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <span class="nav-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -437,8 +437,8 @@
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <span class="nav-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -458,8 +458,8 @@
                                 <a class='nav-link' href='../apps/e-commerce/ecommerce-products.html'>Products</a>
                             </li>
                             <li class="nav-item">
-                                <a class='nav-link'
-                                    href='../apps/e-commerce/ecommerce-products-details.html'>Product Detail</a>
+                                <a class='nav-link' href='../apps/e-commerce/ecommerce-products-details.html'>Product
+                                    Detail</a>
                             </li>
                             <li class="nav-item">
                                 <a class='nav-link' href='../apps/e-commerce/ecommerce-product-edit.html'>Add
@@ -482,8 +482,8 @@
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <span class="nav-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -510,8 +510,8 @@
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <span class="nav-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -539,8 +539,7 @@
                                     data-bs-toggle="dropdown" aria-expanded="false">Single</a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a class='nav-link'
-                                            href='../apps/project/project-overview.html'>Overview</a>
+                                        <a class='nav-link' href='../apps/project/project-overview.html'>Overview</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class='nav-link' href='../apps/project/project-task.html'>Task</a>
@@ -564,8 +563,8 @@
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <span class="nav-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -595,8 +594,8 @@
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <span class="nav-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -622,8 +621,8 @@
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <span class="nav-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -660,8 +659,8 @@
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <span class="nav-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -696,8 +695,8 @@
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <span class="nav-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -724,8 +723,8 @@
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <span class="nav-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -767,8 +766,8 @@
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <span class="nav-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -871,8 +870,8 @@
                     </li>
                     <!-- Nav item -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <span class="nav-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -1121,15 +1120,16 @@
                                 <div>
                                     <div
                                         class="d-flex gap-3 align-items-center border-dashed border-bottom px-4 py-4">
-                                        <img src="{{ asset('assets') }}/img/logo.webp"
-                                            alt="" class="avatar avatar-md rounded-circle" />
+                                        <img src="{{ asset('assets') }}/img/logo.webp" alt=""
+                                            class="avatar avatar-md rounded-circle" />
                                         <div>
                                             <h4 class="mb-0 fs-5">Admin</h4>
                                             <p class="mb-0 text-secondar small">smknaa@gmail.com</p>
                                         </div>
                                     </div>
                                     <div class="p-3 d-flex flex-column gap-1">
-                                        <a href="{{ url('/dashboard') }}" class="dropdown-item d-flex align-items-center gap-2">
+                                        <a href="{{ url('/dashboard') }}"
+                                            class="dropdown-item d-flex align-items-center gap-2">
                                             <span><svg xmlns="http://www.w3.org/2000/svg" width="20"
                                                     height="20" viewBox="0 0 24 24" fill="none"
                                                     stroke="currentColor" stroke-width="1.5"
@@ -1143,10 +1143,11 @@
                                             </span>
                                             <span>Home</span>
                                         </a>
-                                        
+
                                     </div>
                                     <div class="border-dashed border-top mb-4 pt-4 px-6">
-                                        <a href="{{ url('/') }}" class="text-secondary d-flex align-items-center gap-2">
+                                        <a href="{{ url('/') }}"
+                                            class="text-secondary d-flex align-items-center gap-2">
                                             <span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20"
                                                     height="20" viewBox="0 0 24 24" fill="none"
@@ -1169,7 +1170,7 @@
                 </div>
             </div>
             <!--Offcanvas notification-->
-            
+
             <!-- Modal of pages -->
             <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
                 aria-hidden="true">
@@ -1187,8 +1188,9 @@
                                 <div class="d-flex flex-column border-bottom border-dashed py-4">
                                     <div>
                                         <ul class="list-unstyled lh-lg mb-0">
-                                            
-                                            <li><a class='text-inherit' href='{{ url('/dashboard') }}'>Dashboard</a></li>
+
+                                            <li><a class='text-inherit'
+                                                    href='{{ url('/dashboard') }}'>Dashboard</a></li>
                                         </ul>
                                     </div>
                                 </div>

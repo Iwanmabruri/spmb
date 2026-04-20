@@ -1,7 +1,7 @@
 @extends('welcome')
 @section('konten')
     <!-- WELCOME -->
-    <section class="pt-4 pt-md-11">
+    <section class="pt-4 pt-md-11" id="home">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12 col-md-5 col-lg-6 order-md-2">
@@ -16,7 +16,7 @@
 
                     <!-- Heading -->
                     <h1 class="display-3 text-center text-md-start">
-                        Welcome to <span class="text-primary">SPMB</span>. <br>
+                        Welcome to <span class="text-success">SPMB</span>. <br>
                         SMK NAA 2026.
                     </h1>
 
@@ -28,13 +28,15 @@
 
                     <!-- Buttons -->
                     <div class="text-center text-md-start">
+                        {{-- <a href="{{ url('/admin') }}" class="btn btn-success shadow lift me-1">
+                            Login Admin <i class="fe fe-arrow-right d-none d-md-inline ms-3"></i>
+                        </a> --}}
+                        {{-- <a href="docs/index.html" class="btn btn-success-subtle lift">
+                            Download Brosur
+                        </a> --}}
                         <a href="" class="btn btn-success shadow lift me-1">
-                            <a href="{{ url('/dashboard') }}" class="btn btn-success shadow lift me-1">
-                                Login Admin <i class="fe fe-arrow-right d-none d-md-inline ms-3"></i>
-                            </a>
-                            <a href="docs/index.html" class="btn btn-success-subtle lift">
-                                Download Brosur
-                            </a>
+                            Download Brosur <i class="fe fe-download d-none d-md-inline ms-3"></i>
+                        </a>
                     </div>
 
                 </div>
@@ -101,7 +103,7 @@
 
 
     <!-- ABOUT -->
-    <section class="pt-5 pt-md-7">
+    <section class="pt-5 pt-md-7" id="profil">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-12 col-md-6">
@@ -149,7 +151,7 @@
 
                     <!-- Text -->
                     <p class="text-body-secondary mb-6 mb-md-0">
-                        Total Data Lulusan
+                        Total Data Pendaftar
                     </p>
 
                 </div>
@@ -162,7 +164,7 @@
 
                     <!-- Text -->
                     <p class="text-body-secondary mb-6 mb-md-0">
-                        Data Lulusan Yang Sudah Bekerja
+                        Pendaftar Jurusan RPL
                     </p>
 
                 </div>
@@ -175,7 +177,7 @@
 
                     <!-- Text -->
                     <p class="text-body-secondary mb-0">
-                        Data Lulusan Yang Belum Bekerja
+                        Pendaftar Jurusan RPL
                     </p>
 
                 </div>
@@ -184,7 +186,7 @@
     </section>
 
     <!-- ARTICLES -->
-    <section class="pb-8 pt-4 pb-md-11 pt-md-10">
+    <section class="pb-8 pt-4 pb-md-11 pt-md-10" id="jurusan">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -279,7 +281,7 @@
     </section>
 
     <!-- CTA -->
-    <section class="py-8 py-md-11 bg-dark">
+    <section class="py-8 py-md-11 bg-dark" id="syarat">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 col-lg-8 text-center">
@@ -299,7 +301,7 @@
                     <!-- Button -->
                     <a href="https://themes.getbootstrap.com/product/landkit/" target="_blank"
                         class="btn btn-success lift">
-                        Download Brosur <i class="fe fe-arrow-right"></i>
+                        Download Brosur <i class="fe fe-download d-none d-md-inline ms-3"></i>
                     </a>
 
                 </div>

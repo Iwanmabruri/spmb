@@ -501,7 +501,7 @@
     </div>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg bg-white">
+    <nav class="navbar navbar-expand-lg bg-white sticky-top">
         <div class="container">
 
             <!-- Brand -->
@@ -528,27 +528,27 @@
 
                 <!-- Navigation -->
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarLandings" data-bs-toggle="dropdown"
-                            href="#" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item">
+                        <a class="nav-link" id="navbarLandings" href="{{ url('/#home') }}" aria-haspopup="true"
+                            aria-expanded="false">
                             Beranda
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarPages" data-bs-toggle="dropdown"
-                            href="#" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item">
+                        <a class="nav-link" id="navbarPages" href="{{ url('/#profil') }}" aria-haspopup="true"
+                            aria-expanded="false">
                             Profil
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarAccount" data-bs-toggle="dropdown"
-                            href="#" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item">
+                        <a class="nav-link" id="navbarAccount" href="{{ url('/#jurusan') }}" aria-haspopup="true"
+                            aria-expanded="false">
                             Program Keahlian
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDocumentation" data-bs-toggle="dropdown"
-                            href="#" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item">
+                        <a class="nav-link" id="navbarDocumentation" href="{{ url('/#syarat') }}"
+                            aria-haspopup="true" aria-expanded="false">
                             Syarat & Alur
                         </a>
                     </li>
@@ -561,8 +561,8 @@
                 </ul>
 
                 <!-- Button -->
-                <a class="navbar-btn btn btn-sm btn-success lift ms-auto"
-                    href="{{ route('dashboard') }}" target="_blank">
+                <a class="navbar-btn btn btn-sm btn-success lift ms-auto" href="{{ route('dashboard') }}"
+                    target="_blank">
                     Login
                 </a>
 
