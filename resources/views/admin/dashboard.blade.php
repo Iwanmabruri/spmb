@@ -1,6 +1,6 @@
 @extends('template')
 @section('title')
-    Dashboard | SPMB 
+    Dashboard | SPMB
 @endsection
 @section('konten')
     <div class="custom-container">
@@ -8,21 +8,28 @@
             <div class="col-lg-12 col-md-12 col-12">
                 <!-- Page header -->
                 <div class="mb-5">
-                    <h1 class="mb-3 h2">Blank</h1>
+                    <h1 class="mb-3 h2">Dashboard</h1>
                 </div>
             </div>
         </div>
         <div class="row mb-6 g-6">
-            <div class="col-xl-8 col-lg-6">
+            <div class="col-xl-12 col-lg-8">
                 <div class="bg-gradient-mixed p-8 py-10 rounded-3 p-lg-7">
                     <!--heading-->
-                    <h1 class="fs-3">👋 Hello Ana,</h1>
-                    <p class="mb-0">Welcome to your E-commerce Dashboard! Monitor your sales,</p>
-                    <p>track your progress, and gain valuable insights.</p>
-                    <a href="#!" class="btn btn-dark">Start AI</a>
+                    <h1 class="fs-3">👋 Hello Admin,</h1>
+                    <p class="mb-0">Sistem Informasi Penerimaan Murid Baru (SPMB).</p>
+                    <p>Dashboard administrasi untuk pengelolaan data, pengarsipan berkas, dan analisis grafik pendaftaran.
+                    </p>
+                    {{-- <a href="#!" class="btn btn-dark">Start AI</a> --}}
+                    <div class="btn btn-dark d-inline-flex align-items-center"
+                        style="cursor: default; pointer-events: none;">
+                        <i class="bi bi-clock me-2"></i> <span id="clock" class="fw-bold"></span>
+                        <span class="mx-2">|</span>
+                        <span id="date"></span>
+                    </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-6">
+            {{-- <div class="col-xl-4 col-lg-6">
                 <!-- card -->
                 <div class="card card-lg">
                     <!-- card body -->
@@ -94,7 +101,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="row row-cols-1 row-cols-xl-3 row-cols-md-3 mb-6 g-6">
             <div class="col">
@@ -115,10 +122,10 @@
                                     <path d="M6 5l14 1l-1 7h-13" />
                                 </svg>
                             </div>
-                            <div>Orders</div>
+                            <div>Total Pendaftar</div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center lh-1">
-                            <div class="fs-3 fw-bold">5,312</div>
+                            <div class="fs-3 fw-bold">200</div>
                             <div class="text-success small">
                                 <span>2.29%</span>
                                 <span>
@@ -153,10 +160,10 @@
                                     <path d="M12 7v10" />
                                 </svg>
                             </div>
-                            <div>Revenue</div>
+                            <div>Pendaftar Jurusan PPLG</div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center lh-1">
-                            <div class="fs-3 fw-bold">$120,000</div>
+                            <div class="fs-3 fw-bold">100</div>
                             <div class="text-warning small">
                                 <span>2.19%</span>
                                 <span>
@@ -181,9 +188,9 @@
                     <div class="card-body d-flex flex-column gap-8">
                         <div class="d-flex align-items-center gap-3">
                             <div class="icon-shape icon-lg rounded-circle bg-info-darker text-info-lighter">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round"
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"
                                     class="icon icon-tabler icons-tabler-outline icon-tabler-user-circle">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                     <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
@@ -191,10 +198,10 @@
                                     <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
                                 </svg>
                             </div>
-                            <div>Conversion Rate</div>
+                            <div>Pendaftar Jurusan AKL</div>
                         </div>
                         <div class="d-flex justify-content-between align-items-center lh-1">
-                            <div class="fs-3 fw-bold">3.5%</div>
+                            <div class="fs-3 fw-bold">100</div>
                             <div class="text-danger small">
                                 <span>3.19%</span>
                                 <span>
@@ -214,4 +221,35 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+
+            // Pengaturan Waktu (Jam:Menit:Detik)
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+
+            // Pengaturan Tanggal Indonesia (Contoh: Selasa, 21 April 2026)
+            const dateOptions = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            const dateString = now.toLocaleDateString('id-ID', dateOptions);
+
+            // Masukkan ke elemen HTML
+            document.getElementById('clock').textContent = timeString;
+            document.getElementById('date').textContent = dateString;
+        }
+
+        // Update setiap 1 detik
+        setInterval(updateDateTime, 1000);
+
+        // Jalankan pertama kali saat halaman dibuka
+        updateDateTime();
+    </script>
 @endsection

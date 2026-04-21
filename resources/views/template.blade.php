@@ -14,7 +14,7 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('assets_admin') }}/libs/swiper/swiper-bundle.min.css" />
     <!-- Favicon icon-->
-    <link rel="apple-touch-icon" sizes="57x57"
+    {{-- <link rel="apple-touch-icon" sizes="57x57"
         href="{{ asset('assets_admin') }}/images/favicon/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60"
         href="{{ asset('assets_admin') }}/images/favicon/apple-icon-60x60.png" />
@@ -39,10 +39,10 @@
     <link rel="icon" type="image/png" sizes="96x96"
         href="{{ asset('assets_admin') }}/images/favicon/favicon-96x96.png" />
     <link rel="icon" type="image/png" sizes="16x16"
-        href="{{ asset('assets_admin') }}/images/favicon/favicon-16x16.png" />
+        href="{{ asset('assets_admin') }}/images/favicon/favicon-16x16.png" /> --}}
 
     <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="{{ asset('assets') }}/img/logo1.png" />
+    <meta name="msapplication-TileImage" content="{{ asset('assets') }}/img/logo.webp" />
     <meta name="theme-color" content="#ffffff" />
     <!-- Color modes -->
     <script src="{{ asset('assets_admin') }}/js/vendors/color-modes.js"></script>
@@ -93,7 +93,8 @@
                                 <path d="M7 12h10" />
                                 <path d="M7 16h10" />
                             </svg>
-                            <span class="text">Dashboard</span></a>
+                            <span class="text">Dashboard</span>
+                    </a>
                 </li>
 
                 <!-- Nav item -->
@@ -101,10 +102,9 @@
                     <a class="nav-link dropdown-toggle" href="#e-mail" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-user">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
                                 <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
@@ -129,9 +129,9 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round"
                                 class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <path d="M4 6h16" />
@@ -1020,8 +1020,8 @@
                                 data-template="collapseMessage">
                                 <span class="collapse-mini">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round"
                                         class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-bar-left text-secondary">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <path d="M4 12l10 0" />
@@ -1032,8 +1032,8 @@
                                 </span>
                                 <span class="collapse-expanded">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round"
                                         class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-bar-right text-secondary">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <path d="M20 12l-10 0" />
