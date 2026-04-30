@@ -51,88 +51,87 @@
                 <!-- card -->
                 <div class="card card-lg">
                     <div class="card-header border-bottom-0">
-                        List Data Jurusan
+                        <h3 class="text-truncate h5 mb-0" id="withLabel">List Data Jurusan</h3>
                     </div>
 
-                    <div class="table-responsive">
-                        <table class="table text-nowrap mb-0 table-centered table-hover" data-check-container>
-                            <thead class="sticky-top">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Bidang Keahlian</th>
-                                    <th>Program Keahlian</th>
-                                    <th>Konsentrasi Keahlian</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody class="list">
-                                @forelse ($data as $item)
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table text-nowrap mb-0 table-centered table-hover" data-check-container>
+                                <thead class="sticky-top">
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td class="order_name">{{ $item->bidang_keahlian }}</td>
-                                        <td class="order_name">{{ $item->program_keahlian }}</td>
-                                        <td class="order_name">{{ $item->kons_keahlian }}</td>
-                                        <td>
-                                            @if ($item->status == 'Aktif')
-                                                <span class="badge bg-success">Aktif</span>
-                                            @else
-                                                <span class="badge bg-danger">Non Aktif</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('edit.jurusan', $item->id) }}"
-                                                class="btn btn-outline-warning btn-icon btn-sm">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
-                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                                    <path
-                                                        d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415" />
-                                                    <path d="M16 5l3 3" />
-                                                </svg>
-                                            </a>
-                                            <form action="{{ route('destroy.jurusan', $item->id) }}" method="POST"
-                                                class="d-inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-outline-danger btn-icon btn-sm"
-                                                    onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                        <th>#</th>
+                                        <th>Bidang Keahlian</th>
+                                        <th>Program Keahlian</th>
+                                        <th>Konsentrasi Keahlian</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="list">
+                                    @forelse ($data as $item)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td class="order_name">{{ $item->bidang_keahlian }}</td>
+                                            <td class="order_name">{{ $item->program_keahlian }}</td>
+                                            <td class="order_name">{{ $item->kons_keahlian }}</td>
+                                            <td>
+                                                @if ($item->status == 'Aktif')
+                                                    <span class="badge bg-success">Aktif</span>
+                                                @else
+                                                    <span class="badge bg-danger">Non Aktif</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('edit.jurusan', $item->id) }}"
+                                                    class="btn btn-outline-warning btn-icon btn-sm">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                         stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
+                                                        class="icon icon-tabler icons-tabler-outline icon-tabler-edit">
                                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <path d="M4 7l16 0" />
-                                                        <path d="M10 11l0 6" />
-                                                        <path d="M14 11l0 6" />
-                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                        <path
+                                                            d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                                        <path
+                                                            d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415" />
+                                                        <path d="M16 5l3 3" />
                                                     </svg>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="5" class="text-center">Data tidak ditemukan</td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
+                                                </a>
+                                                <form action="{{ route('destroy.jurusan', $item->id) }}" method="POST"
+                                                    class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-outline-danger btn-icon btn-sm"
+                                                        onclick="return confirm('Yakin ingin menghapus data ini?')">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                            height="24" viewBox="0 0 24 24" fill="none"
+                                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M4 7l16 0" />
+                                                            <path d="M10 11l0 6" />
+                                                            <path d="M14 11l0 6" />
+                                                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                        </svg>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" class="text-center">Data tidak ditemukan</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div
-                        class="btn-toolbar card-footer border-top border-dashed d-flex flex-md-row flex-column justify-content-md-between align-items-md-center">
-                        <p class="mb-0 listjs-showing-items-label"></p>
+
+                    <div class="card-footer border-top border-dashed d-flex flex-md-row flex-column ">
                         <div class="d-flex flex-column flex-md-row gap-4">
                             <div class="d-flex align-items-center gap-2">
-                                <label class="form-label text-nowrap mb-0">Rows per page:</label>
-                                <select class="form-select listjs-items-per-page" data-choices="">
-                                    <option value="10" selected>10</option>
-                                    <option value="16">16</option>
-                                </select>
+                                <label class="form-label text-nowrap mb-0">Total Data : {{ $total }}</label>
                             </div>
                         </div>
                     </div>

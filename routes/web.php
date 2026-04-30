@@ -25,12 +25,24 @@ Route::delete('/jurusan/delete/{id}', [JurusanController::class, 'destroy'])->na
 
 //Agama
 Route::get('/admin/agama', [AgamaController::class, 'index'])->name('agama');
+Route::post('admin/agama/store', [AgamaController::class, 'store'])->name('agama.store');
+Route::post('admin/agama/update/{id}', [AgamaController::class, 'update'])->name('agama.update');
+Route::post('admin/agama/delete/{id}', [AgamaController::class, 'destroy'])->name('agama.delete');
 
 //Pendidikan
 Route::get('/admin/pendidikan', [PendidikanController::class, 'index'])->name('pendidikan');
+Route::post('admin/pendidikan/store', [PendidikanController::class, 'store'])->name('pendidikan.store');
+Route::post('admin/pendidikan/update/{id}', [PendidikanController::class, 'update'])->name('pendidikan.update');
+Route::post('admin/pendidikan/delete/{id}', [PendidikanController::class, 'destroy'])->name('pendidikan.delete');
 
 //Pekerjaan
 Route::get('/admin/pekerjaan', [PekerjaanController::class, 'index'])->name('pekerjaan');
+Route::post('admin/pekerjaan/store', [PekerjaanController::class, 'store'])->name('pekerjaan.store');
+Route::post('admin/pekerjaan/update/{id}', [PekerjaanController::class, 'update'])->name('pekerjaan.update');
+Route::post('admin/pekerjaan/delete/{id}', [PekerjaanController::class, 'destroy'])->name('pekerjaan.delete');
 
 //Pekerjaan
 Route::get('/admin/penghasilan', [PenghasilanController::class, 'index'])->name('penghasilan');
+Route::post('admin/penghasilan/store', [PenghasilanController::class, 'store'])->name('penghasilan.store');
+Route::post('admin/penghasilan/update/{id}', [PenghasilanController::class, 'update'])->name('penghasilan.update');
+Route::post('admin/penghasilan/delete/{id}', [PenghasilanController::class, 'destroy'])->name('penghasilan.delete');

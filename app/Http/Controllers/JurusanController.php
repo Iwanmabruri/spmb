@@ -10,7 +10,8 @@ class JurusanController extends Controller
     public function index()
     {
         $data = Jurusan::all();
-        return view('admin.jurusan.index', compact('data'));
+        $total = $data->count();
+        return view('admin.jurusan.index', compact('data', 'total'));
     }
 
     public function create()

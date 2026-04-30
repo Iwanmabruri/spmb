@@ -273,8 +273,19 @@
                     </ul>
                 </li>
 
-
-
+                <li>
+                    <div class="text-center py-5 upgrade-ui ">
+                        <div>
+                            <img src="{{ asset('assets_admin') }}/images/avatar/avatar-1.jpg" alt=""
+                                class="avatar avatar-md rounded-circle">
+                            <div class="my-3">
+                                <h5 class="mb-1 fs-6">Admin</h5>
+                                <span class="text-secondary">Panitia SPMB SMKNAA</span>
+                            </div>
+                            <a href="#!" class="btn btn-primary">Logout</a>
+                        </div>
+                    </div>
+                </li>
             </ul>
 
         </div>
