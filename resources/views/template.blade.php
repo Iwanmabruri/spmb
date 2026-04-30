@@ -81,17 +81,17 @@
             <ul class="navbar-nav flex-column  ">
                 <!-- Nav item -->
                 <li class="nav-item">
-                    <a class='nav-link' href='{{ url('/admin') }}'><span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    <a class='nav-link' href='{{ route('dashboard') }}'><span class="nav-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                                 stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-article">
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-layout-dashboard">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" />
+                                <path d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" />
                                 <path
-                                    d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
-                                <path d="M7 8h10" />
-                                <path d="M7 12h10" />
-                                <path d="M7 16h10" />
+                                    d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" />
+                                <path d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" />
                             </svg>
                             <span class="text">Dashboard</span>
                     </a>
@@ -102,36 +102,86 @@
                     <a class="nav-link dropdown-toggle" href="#e-mail" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user">
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-couchdb">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                <path
+                                    d="M6 12h12v-2a2 2 0 0 1 2 -2a2 2 0 0 0 -2 -2h-12a2 2 0 0 0 -2 2a2 2 0 0 1 2 2v2" />
+                                <path d="M6 15h12" />
+                                <path d="M6 18h12" />
+                                <path d="M21 11v7" />
+                                <path d="M3 11v7" />
                             </svg>
                         </span>
-                        <span class="text">Menu SPMB</span>
+                        <span class="text">Data Master</span>
                     </a>
                     <ul class="dropdown-menu flex-column">
                         <li class="nav-item">
-                            <a class='nav-link' href='#'>Api Santri</a>
+                            <a class='nav-link' href='{{ route('jurusan') }}'>Jurusan</a>
                         </li>
                         <li class="nav-item">
-                            <a class='nav-link' href='#'>Data Siswa</a>
+                            <a class='nav-link' href='{{ route('agama') }}'>Agama</a>
                         </li>
                         <li class="nav-item">
-                            <a class='nav-link' href='#'>Tambahan</a>
+                            <a class='nav-link' href='{{ route('pendidikan') }}'>Pendidikan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class='nav-link' href='{{ route('pekerjaan') }}'>Pekerjaan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class='nav-link' href='{{ route('penghasilan') }}'>Penghasilan</a>
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="">
+                        <span class="nav-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-cloud-down">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path
+                                    d="M12 18.004h-5.343c-2.572 -.004 -4.657 -2.011 -4.657 -4.487c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.38 0 2.573 .813 3.13 1.99" />
+                                <path d="M19 16v6" />
+                                <path d="M22 19l-3 3l-3 -3" />
+                            </svg>
+                        </span>
+                        <span class="text">Ambil Data</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="">
+                        <span class="nav-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round"
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-users-group">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" />
+                                <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                <path d="M17 10h2a2 2 0 0 1 2 2v1" />
+                                <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                <path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
+                            </svg>
+                        </span>
+                        <span class="text">Data Siswa</span>
+                    </a>
+                </li>
+
                 <!-- Nav item -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round"
                                 class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <path d="M4 6h16" />
@@ -1020,8 +1070,8 @@
                                 data-template="collapseMessage">
                                 <span class="collapse-mini">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                        stroke-linecap="round" stroke-linejoin="round"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                                         class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-bar-left text-secondary">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <path d="M4 12l10 0" />
@@ -1032,8 +1082,8 @@
                                 </span>
                                 <span class="collapse-expanded">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                        stroke-linecap="round" stroke-linejoin="round"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                                         class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-bar-right text-secondary">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <path d="M20 12l-10 0" />
@@ -1247,6 +1297,8 @@
         <script src="{{ asset('assets_admin') }}/js/vendors/choice.js"></script>
         <script src="{{ asset('assets_admin') }}/libs/swiper/swiper-bundle.min.js"></script>
         <script src="{{ asset('assets_admin') }}/js/vendors/swiper.js"></script>
+
+        @stack('scripts')
 
 
 </body>

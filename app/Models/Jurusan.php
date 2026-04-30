@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Jurusan extends Model
+{
+    protected $table = 'jurusan';
+
+    protected $primaryKey = 'id';
+
+    protected $fillable = [
+        'bidang_keahlian',
+        'program_keahlian',
+        'kons_keahlian',
+        'status'
+    ];
+
+    public $timestamps = false; // pakai created_at & updated_at
+}
