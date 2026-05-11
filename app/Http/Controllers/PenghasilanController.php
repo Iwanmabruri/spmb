@@ -15,34 +15,46 @@ class PenghasilanController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'kategori' => 'required'
-        ]);
+        try {
+            $request->validate([
+                'kategori' => 'required'
+            ]);
 
-        Penghasilan::create([
-            'kategori' => $request->kategori
-        ]);
+            Penghasilan::create([
+                'kategori' => $request->kategori
+            ]);
 
-        return back()->with('success', 'Data berhasil ditambahkan');
+            return back()->with('success', 'Data berhasil ditambahkan');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Data gagal ditambahkan');
+        }
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'kategori' => 'required'
-        ]);
+        try {
+            $request->validate([
+                'kategori' => 'required'
+            ]);
 
-        $penghasilan = Penghasilan::findOrFail($id);
-        $penghasilan->update([
-            'kategori' => $request->kategori
-        ]);
+            $penghasilan = Penghasilan::findOrFail($id);
+            $penghasilan->update([
+                'kategori' => $request->kategori
+            ]);
 
-        return back()->with('success', 'Data berhasil diupdate');
+            return back()->with('success', 'Data berhasil diupdate');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Data gagal diupdate');
+        }
     }
 
     public function destroy($id)
     {
-        Penghasilan::findOrFail($id)->delete();
-        return back()->with('success', 'Data berhasil dihapus');
+        try {
+            Penghasilan::findOrFail($id)->delete();
+            return back()->with('success', 'Data berhasil dihapus');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Data gagal dihapus');
+        }
     }
 }

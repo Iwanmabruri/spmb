@@ -33,7 +33,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('store.jurusan') }}" method="POST">
+                <form action="{{ route('store.jurusan') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card card-lg">
                         <div class="card-header">
@@ -57,6 +57,17 @@
                                 <label for="inputText" class="form-label">Konsentrasi Keahlian</label>
                                 <input type="text" class="form-control" name="kons_keahlian"
                                     placeholder="Input Konsentrasi Keahlian" required />
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="inputText" class="form-label">Deskripsi</label>
+                                <input type="textarea" class="form-control" name="deskripsi" placeholder="Input Deskripsi"
+                                    required />
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="inputText" class="form-label">Foto</label>
+                                <input type="file" class="form-control" name="foto" required />
                             </div>
 
                             <div class="">

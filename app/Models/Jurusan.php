@@ -14,6 +14,8 @@ class Jurusan extends Model
         'bidang_keahlian',
         'program_keahlian',
         'kons_keahlian',
+        'deskripsi',
+        'foto',
         'status'
     ];
 

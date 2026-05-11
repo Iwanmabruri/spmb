@@ -15,34 +15,46 @@ class PekerjaanController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_pekerjaan' => 'required'
-        ]);
+        try {
+            $request->validate([
+                'nama_pekerjaan' => 'required'
+            ]);
 
-        Pekerjaan::create([
-            'nama_pekerjaan' => $request->nama_pekerjaan
-        ]);
+            Pekerjaan::create([
+                'nama_pekerjaan' => $request->nama_pekerjaan
+            ]);
 
-        return back()->with('success', 'Data berhasil ditambahkan');
+            return back()->with('success', 'Data berhasil ditambahkan');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Data gagal ditambahkan');
+        }
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nama_pekerjaan' => 'required'
-        ]);
+        try {
+            $request->validate([
+                'nama_pekerjaan' => 'required'
+            ]);
 
-        $pekerjaan = Pekerjaan::findOrFail($id);
-        $pekerjaan->update([
-            'nama_pekerjaan' => $request->nama_pekerjaan
-        ]);
+            $pekerjaan = Pekerjaan::findOrFail($id);
+            $pekerjaan->update([
+                'nama_pekerjaan' => $request->nama_pekerjaan
+            ]);
 
-        return back()->with('success', 'Data berhasil diupdate');
+            return back()->with('success', 'Data berhasil diupdate');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Data gagal diupdate');
+        }
     }
 
     public function destroy($id)
     {
-        Pekerjaan::findOrFail($id)->delete();
-        return back()->with('success', 'Data berhasil dihapus');
+        try {
+            Pekerjaan::findOrFail($id)->delete();
+            return back()->with('success', 'Data berhasil dihapus');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Data gagal dihapus');
+        }
     }
 }

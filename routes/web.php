@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AgamaController;
+use App\Http\Controllers\AmbildataController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\MuridController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PenghasilanController;
@@ -21,7 +23,7 @@ Route::get('/admin/jurusan/create', [JurusanController::class, 'create'])->name(
 Route::post('admin/jurusan/store', [JurusanController::class, 'store'])->name('store.jurusan');
 Route::get('admin/jurusan/{id}/edit', [JurusanController::class, 'edit'])->name('edit.jurusan');
 Route::put('admin/jurusan/{id}', [JurusanController::class, 'update'])->name('update.jurusan');
-Route::delete('/jurusan/delete/{id}', [JurusanController::class, 'destroy'])->name('destroy.jurusan');
+Route::delete('admin/jurusan/delete/{id}', [JurusanController::class, 'destroy'])->name('destroy.jurusan');
 
 //Agama
 Route::get('/admin/agama', [AgamaController::class, 'index'])->name('agama');
@@ -46,3 +48,55 @@ Route::get('/admin/penghasilan', [PenghasilanController::class, 'index'])->name(
 Route::post('admin/penghasilan/store', [PenghasilanController::class, 'store'])->name('penghasilan.store');
 Route::post('admin/penghasilan/update/{id}', [PenghasilanController::class, 'update'])->name('penghasilan.update');
 Route::post('admin/penghasilan/delete/{id}', [PenghasilanController::class, 'destroy'])->name('penghasilan.delete');
+
+//Ambil Data
+Route::get('/admin/ambildata', [AmbildataController::class, 'index'])->name('ambildata');
+Route::post('/admin/ambildata', [AmbildataController::class, 'synchronization'])->name('santri.sync');
+Route::get('/admin/ambildata/detail/{id}', [AmbildataController::class, 'detail'])->name('santri.detail');
+Route::post('/admin/ambildata/tambah/{id}', [AmbildataController::class, 'tambahMurid'])->name('santri.tambah');
+// Route::get('/admin/siswa/lengkapi/{id}', [MuridController::class, 'lengkapi'])->name('siswa.lengkapi');
+// Route::post('/admin/siswa/lengkapi/{id}', [MuridController::class, 'updateLengkapi'])->name('siswa.updateLengkapi');
+Route::post('/cari_niup', [AmbildataController::class, 'cariNiup'])->name('cariNiup');
+//Data Siswa
+Route::prefix('admin/murid')->group(function () {
+
+    // INDEX
+    Route::get('/', [MuridController::class, 'index'])->name('murid');
+
+    // STEP 1
+
+    Route::post('/simpan1', [MuridController::class, 'store1'])->name('murid.store');
+    Route::get('/step1/{id}', [MuridController::class, 'createStep1'])->name('murid.step1');
+    Route::post('/step1', [MuridController::class, 'storeStep1'])->name('murid.store.step1');
+
+    // STEP 2
+    Route::get('/step2/{id}', [MuridController::class, 'step2'])->name('murid.step2');
+    Route::post('/step2/{id}', [MuridController::class, 'storeStep2'])->name('murid.store.step2');
+
+    // STEP 3
+    Route::get('/step3/{id}', [MuridController::class, 'step3'])->name('murid.step3');
+    Route::post('/step3/{id}', [MuridController::class, 'storeStep3'])->name('murid.store.step3');
+
+    //STEP 4
+    Route::get('/step4/{id}', [MuridController::class, 'step4'])->name('murid.step4');
+    Route::post('/step4/{id}', [MuridController::class, 'storeStep4'])->name('murid.store.step4');
+
+    Route::get('edit/step1/{id}', [MuridController::class, 'editstep1'])->name('murid.edit.step1');
+    Route::put('update/step1/{id}', [MuridController::class, 'updateStep1'])->name('murid.update.step1');
+    Route::get('edit/step2/{id}', [MuridController::class, 'editstep2'])->name('murid.edit.step2');
+    Route::put('update/step2/{id}', [MuridController::class, 'updateStep2'])->name('murid.update.step2');
+    Route::get('edit/step3/{id}', [MuridController::class, 'editstep3'])->name('murid.edit.step3');
+    Route::put('update/step3/{id}', [MuridController::class, 'updateStep3'])->name('murid.update.step3');
+    Route::get('edit/step4/{id}', [MuridController::class, 'editstep4'])->name('murid.edit.step4');
+    Route::put('update/step4/{id}', [MuridController::class, 'updateStep4'])->name('murid.update.step4');
+
+    Route::get('/print/{id}', [MuridController::class, 'print'])->name('murid.print');
+    Route::get('/{id}/detail', [MuridController::class, 'show'])->name('murid.detail');
+
+    Route::post('/upload-berkas/{id}', [MuridController::class, 'uploadBerkas'])
+        ->name('murid.upload.berkas');
+});
+
+Route::get('/get-kota/{provinsi_id}', [MuridController::class, 'get_kabupaten']);
+Route::get('/get-kecamatan/{kabupaten_id}', [MuridController::class, 'get_kecamatan']);
+Route::get('/get-desa/{kecamatan_id}', [MuridController::class, 'get_desa']);

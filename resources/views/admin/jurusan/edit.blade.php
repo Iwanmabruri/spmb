@@ -33,7 +33,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('update.jurusan', $data->id) }}" method="POST">
+                <form action="{{ route('update.jurusan', $data->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="card card-lg">
@@ -60,6 +60,32 @@
                                     value="{{ $data->kons_keahlian }}" required />
                             </div>
 
+                            <div class="mb-2">
+                                <label for="inputText" class="form-label">Deskripsi</label>
+                                <input type="textarea" class="form-control" name="deskripsi" placeholder="Input Deskripsi"
+                                    value="{{ $data->deskripsi }}" required />
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label fw-bold">Foto Jurusan</label>
+
+                                {{-- Preview Foto Lama --}}
+                                @if ($data->foto)
+                                    <div class="mb-2">
+                                        <small class="text-muted d-block mb-1">Foto saat ini:</small>
+                                        <img src="{{ asset('storage/' . $data->foto) }}" class="img-thumbnail"
+                                            style="height: 150px;">
+                                    </div>
+                                @endif
+
+                                <input type="file" name="foto"
+                                    class="form-control @error('foto') is-invalid @enderror">
+                                <div class="form-text">Biarkan kosong jika tidak ingin mengubah foto.</div>
+                                @error('foto')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             <div class="">
                                 <label for="selectOption" class="form-label">Status</label>
                                 <select class="form-select" name="status" aria-label=" label select example">
@@ -82,3 +108,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script></script>
+@endpush

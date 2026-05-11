@@ -3,19 +3,6 @@
     Page Pekerjaan | SPMB
 @endsection
 @section('konten')
-    @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show auto-hide">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-    @endif
-
-    @if (session('error'))
-        <div class="alert alert-danger alert-dismissible fade show auto-hide">
-            {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
-    @endif
     <div class="custom-container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-12">
@@ -78,26 +65,22 @@
                                                         </svg>
                                                     </button>
 
-                                                    <form action="{{ route('pekerjaan.delete', $item->id) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        <button type="submit"
-                                                            class="btn btn-outline-danger btn-icon btn-sm"
-                                                            onclick="return confirm('Yakin ingin menghapus data ini?')">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none"
-                                                                stroke="currentColor" stroke-width="1.5"
-                                                                stroke-linecap="round" stroke-linejoin="round"
-                                                                class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
-                                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                                <path d="M4 7l16 0" />
-                                                                <path d="M10 11l0 6" />
-                                                                <path d="M14 11l0 6" />
-                                                                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                                                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                                                            </svg>
-                                                        </button>
-                                                    </form>
+                                                    <button type="button"
+                                                        class="btn btn-outline-danger btn-icon btn-sm btnDelete"
+                                                        data-id="{{ $item->id }}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                            height="24" viewBox="0 0 24 24" fill="none"
+                                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                            <path d="M4 7l16 0" />
+                                                            <path d="M10 11l0 6" />
+                                                            <path d="M14 11l0 6" />
+                                                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                                                        </svg>
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -171,15 +154,60 @@
 @endsection
 @push('scripts')
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            setTimeout(function() {
-                document.querySelectorAll('.auto-hide').forEach(function(el) {
-                    el.style.transition = "opacity 0.5s ease";
-                    el.style.opacity = "0";
+        document.addEventListener('DOMContentLoaded', function() {
 
-                    setTimeout(() => el.remove(), 500);
+            @if (session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: "{{ session('success') }}",
+                    timer: 2500,
+                    showConfirmButton: false
                 });
-            }, 3000);
+            @endif
+
+            @if (session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: "{{ session('error') }}"
+                });
+            @endif
+
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btnDelete').forEach(button => {
+                button.addEventListener('click', function() {
+                    let id = this.dataset.id;
+
+                    Swal.fire({
+                        title: 'Yakin?',
+                        text: "Data tidak bisa dikembalikan!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, hapus!',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+
+                            let form = document.createElement('form');
+                            form.method = 'POST';
+                            form.action = '/admin/pekerjaan/delete/' + id;
+
+                            let csrf = document.createElement('input');
+                            csrf.type = 'hidden';
+                            csrf.name = '_token';
+                            csrf.value = '{{ csrf_token() }}';
+
+                            form.appendChild(csrf);
+                            document.body.appendChild(form);
+                            form.submit();
+                        }
+                    });
+                });
+            });
         });
     </script>
 @endpush

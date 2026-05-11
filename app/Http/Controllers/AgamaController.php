@@ -15,34 +15,46 @@ class AgamaController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_agama' => 'required'
-        ]);
+        try {
+            $request->validate([
+                'nama_agama' => 'required'
+            ]);
 
-        Agama::create([
-            'nama_agama' => $request->nama_agama
-        ]);
+            Agama::create([
+                'nama_agama' => $request->nama_agama
+            ]);
 
-        return back()->with('success', 'Data berhasil ditambahkan');
+            return back()->with('success', 'Data berhasil ditambahkan');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Data gagal ditambahkan');
+        }
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nama_agama' => 'required'
-        ]);
+        try {
+            $request->validate([
+                'nama_agama' => 'required'
+            ]);
 
-        $agama = Agama::findOrFail($id);
-        $agama->update([
-            'nama_agama' => $request->nama_agama
-        ]);
+            $agama = Agama::findOrFail($id);
+            $agama->update([
+                'nama_agama' => $request->nama_agama
+            ]);
 
-        return back()->with('success', 'Data berhasil diupdate');
+            return back()->with('success', 'Data berhasil diupdate');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Data gagal diupdate');
+        }
     }
 
     public function destroy($id)
     {
-        Agama::findOrFail($id)->delete();
-        return back()->with('success', 'Data berhasil dihapus');
+        try {
+            Agama::findOrFail($id)->delete();
+            return back()->with('success', 'Data berhasil dihapus');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Data gagal dihapus');
+        }
     }
 }

@@ -66,6 +66,10 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{ asset('assets_admin') }}/css/theme.min.css">
 
+    <style>
+        @yield('CSSManual')
+    </style>
+
 </head>
 
 <body>
@@ -137,7 +141,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{ route('ambildata') }}">
                         <span class="nav-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -155,7 +159,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{{ route('murid') }}">
                         <span class="nav-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -271,20 +275,6 @@
                             <a class='nav-link' href='authentication/otp-varification.html'>Otp Varification </a>
                         </li>
                     </ul>
-                </li>
-
-                <li>
-                    <div class="text-center py-5 upgrade-ui ">
-                        <div>
-                            <img src="{{ asset('assets_admin') }}/images/avatar/avatar-1.jpg" alt=""
-                                class="avatar avatar-md rounded-circle">
-                            <div class="my-3">
-                                <h5 class="mb-1 fs-6">Admin</h5>
-                                <span class="text-secondary">Panitia SPMB SMKNAA</span>
-                            </div>
-                            <a href="#!" class="btn btn-primary">Logout</a>
-                        </div>
-                    </div>
                 </li>
             </ul>
 
@@ -1291,6 +1281,10 @@
 
             @yield('konten')
         </div>
+
+        {{-- Jquery --}}
+        <script src="{{ asset('assets_admin') }}/jquery/jquery.min.js"></script>
+
         <script src="{{ asset('assets_admin') }}/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('assets_admin') }}/libs/simplebar/dist/simplebar.min.js"></script>
 
@@ -1308,6 +1302,34 @@
         <script src="{{ asset('assets_admin') }}/js/vendors/choice.js"></script>
         <script src="{{ asset('assets_admin') }}/libs/swiper/swiper-bundle.min.js"></script>
         <script src="{{ asset('assets_admin') }}/js/vendors/swiper.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <script>
+            @if (session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: '{{ session('success') }}'
+                });
+            @endif
+
+            @if (session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: '{{ session('error') }}'
+                });
+            @endif
+
+            @if ($errors->any())
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Validasi gagal',
+                    html: `{!! implode('<br>', $errors->all()) !!}`
+                });
+            @endif
+        </script>
 
         @stack('scripts')
 
