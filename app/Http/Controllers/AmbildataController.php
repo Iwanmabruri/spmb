@@ -193,17 +193,25 @@ class AmbildataController extends Controller
     | HALAMAN LIST DATA
     |--------------------------------------------------------------------------
     */
-    public function index()
+    public function index(Request $request)
     {
-        $santri = Virtual::latest()->get();
+        $data = null;
 
-        $lastSync = Virtual::latest('updated_at')
-            ->value('updated_at');
+        if ($request->filled('niup')) {
 
-        return view(
-            'admin.ambildata',
-            compact('santri', 'lastSync')
-        );
+            $response = Http::get(
+                'http://127.0.0.1:3000/siswa/' . $request->niup
+            );
+
+            if ($response->successful()) {
+
+                $json = $response->json();
+
+                $data = $json[0] ?? $json;
+            }
+        }
+
+        return view('admin.ambildata', compact('data'));
     }
 
     /*
@@ -311,20 +319,5 @@ class AmbildataController extends Controller
 
             return back()->with('error', 'Gagal menambahkan murid: ' . $e->getMessage());
         }
-    }
-
-    public function cariNiup(Request $request)
-    {
-        $response = Http::get('http://localhost:3000/siswa/' . $request->niup);
-
-        if (!$response->successful()) {
-
-            return back()->with(
-                'error',
-                'Gagal mengambil data API'
-            );
-        }
-
-        return $response->json('data');
     }
 }

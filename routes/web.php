@@ -56,7 +56,6 @@ Route::get('/admin/ambildata/detail/{id}', [AmbildataController::class, 'detail'
 Route::post('/admin/ambildata/tambah/{id}', [AmbildataController::class, 'tambahMurid'])->name('santri.tambah');
 // Route::get('/admin/siswa/lengkapi/{id}', [MuridController::class, 'lengkapi'])->name('siswa.lengkapi');
 // Route::post('/admin/siswa/lengkapi/{id}', [MuridController::class, 'updateLengkapi'])->name('siswa.updateLengkapi');
-Route::post('/cari_niup', [AmbildataController::class, 'cariNiup'])->name('cariNiup');
 //Data Siswa
 Route::prefix('admin/murid')->group(function () {
 
