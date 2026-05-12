@@ -18,7 +18,7 @@ class MuridController extends Controller
 {
     public function index()
     {
-        $murid = Murid::all();
+        $murid = Murid::latest()->get();
         return view('admin.siswa.index', compact('murid'));
     }
 

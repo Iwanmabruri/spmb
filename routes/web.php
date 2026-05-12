@@ -51,6 +51,10 @@ Route::post('admin/penghasilan/delete/{id}', [PenghasilanController::class, 'des
 
 //Ambil Data
 Route::get('/admin/ambildata', [AmbildataController::class, 'index'])->name('ambildata');
+Route::post('/admin/ambildata/store', [AmbildataController::class, 'storemurid'])->name('ambildata.store');
+Route::get('/admin/murid/{id}/lengkapi', [AmbildataController::class, 'lengkapi'])->name('murid.lengkapi');
+Route::post('/admin/murid/update/{id}', [AmbildataController::class, 'updatelengkapi'])->name('murid.updatelengkapi');
+
 Route::post('/admin/ambildata', [AmbildataController::class, 'synchronization'])->name('santri.sync');
 Route::get('/admin/ambildata/detail/{id}', [AmbildataController::class, 'detail'])->name('santri.detail');
 Route::post('/admin/ambildata/tambah/{id}', [AmbildataController::class, 'tambahMurid'])->name('santri.tambah');

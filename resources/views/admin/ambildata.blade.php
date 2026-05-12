@@ -101,7 +101,8 @@
 
                                     <div class="p-4 text-center">
 
-                                        <img src="" class="rounded-4 shadow-sm mb-4"
+                                        <img src="{{ !empty($data['foto_warna_santri']) ? $data['foto_warna_santri'] : asset('images/default.png') }}"
+                                            class="rounded-4 shadow-sm mb-4"
                                             style="width: 220px; height: 300px; object-fit: cover;">
 
                                         <h3 class="fw-bold mb-1">
@@ -246,8 +247,9 @@
                                         <div class="border-top pt-3">
 
                                             <div class="">
-                                                <form action="">
+                                                <form action="{{ route('ambildata.store') }}" method="POST">
                                                     @csrf
+                                                    <input type="hidden" name="niup" value="{{ $data['niup'] }}">
                                                     <button class="btn btn-dark float-end">
                                                         Tambah ke Data Murid
                                                     </button>

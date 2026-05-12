@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agama;
+use App\Models\Jurusan;
 use App\Models\Murid;
+use App\Models\Pekerjaan;
+use App\Models\Pendidikan;
+use App\Models\Penghasilan;
 use App\Models\Virtual;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class AmbildataController extends Controller
@@ -15,178 +21,178 @@ class AmbildataController extends Controller
     | DOWNLOAD FILE DARI API
     |--------------------------------------------------------------------------
     */
-    private function downloadFile($url, $folder = 'File_Santri')
-    {
-        if (!$url || !str_contains($url, 'http')) {
-            return $url;
-        }
+    // private function downloadFile($url, $folder = 'File_Santri')
+    // {
+    //     if (!$url || !str_contains($url, 'http')) {
+    //         return $url;
+    //     }
 
-        try {
+    //     try {
 
-            $response = Http::timeout(30)->get($url);
+    //         $response = Http::timeout(30)->get($url);
 
-            if (!$response->successful()) {
-                return null;
-            }
+    //         if (!$response->successful()) {
+    //             return null;
+    //         }
 
-            $filename = time() . '_' . uniqid() . '.' . pathinfo($url, PATHINFO_EXTENSION);
+    //         $filename = time() . '_' . uniqid() . '.' . pathinfo($url, PATHINFO_EXTENSION);
 
-            Storage::disk('public')->put(
-                $folder . '/' . $filename,
-                $response->body()
-            );
+    //         Storage::disk('public')->put(
+    //             $folder . '/' . $filename,
+    //             $response->body()
+    //         );
 
-            return $folder . '/' . $filename;
-        } catch (\Exception $e) {
-            return null;
-        }
-    }
+    //         return $folder . '/' . $filename;
+    //     } catch (\Exception $e) {
+    //         return null;
+    //     }
+    // }
 
     /*
     |--------------------------------------------------------------------------
     | SYNC DATA API
     |--------------------------------------------------------------------------
     */
-    public function synchronization()
-    {
-        $response = Http::get(
-            'http://localhost:3000/api/apiSpmb'
-        );
+    // public function synchronization()
+    // {
+    //     $response = Http::get(
+    //         'http://localhost:3000/api/apiSpmb'
+    //     );
 
-        // cek response API
-        if (!$response->successful()) {
+    //     // cek response API
+    //     if (!$response->successful()) {
 
-            return back()->with(
-                'error',
-                'Gagal mengambil data API'
-            );
-        }
+    //         return back()->with(
+    //             'error',
+    //             'Gagal mengambil data API'
+    //         );
+    //     }
 
-        // ambil data array dari API
-        $datas = $response->json('data');
+    //     // ambil data array dari API
+    //     $datas = $response->json('data');
 
-        // validasi data
-        if (!$datas || !is_array($datas)) {
+    //     // validasi data
+    //     if (!$datas || !is_array($datas)) {
 
-            return back()->with(
-                'error',
-                'Data API tidak valid'
-            );
-        }
+    //         return back()->with(
+    //             'error',
+    //             'Data API tidak valid'
+    //         );
+    //     }
 
-        // field file yang akan didownload
-        $fileFields = [
-            'foto_warna_santri',
-            'foto_wali_santri_warna',
-            'foto_scan_kk',
-            'foto_scan_akta',
-            'foto_scan_skck',
-            'foto_scan_ket_sehat',
-        ];
+    //     // field file yang akan didownload
+    //     $fileFields = [
+    //         'foto_warna_santri',
+    //         'foto_wali_santri_warna',
+    //         'foto_scan_kk',
+    //         'foto_scan_akta',
+    //         'foto_scan_skck',
+    //         'foto_scan_ket_sehat',
+    //     ];
 
-        foreach ($datas as $data) {
+    //     foreach ($datas as $data) {
 
-            /*
-            |--------------------------------------------------------------------------
-            | DOWNLOAD SEMUA FILE
-            |--------------------------------------------------------------------------
-            */
-            $fileData = [];
+    //         /*
+    //         |--------------------------------------------------------------------------
+    //         | DOWNLOAD SEMUA FILE
+    //         |--------------------------------------------------------------------------
+    //         */
+    //         $fileData = [];
 
-            foreach ($fileFields as $field) {
+    //         foreach ($fileFields as $field) {
 
-                $fileData[$field] = null;
+    //             $fileData[$field] = null;
 
-                if (!empty($data[$field])) {
+    //             if (!empty($data[$field])) {
 
-                    $fileData[$field] = $this->downloadFile(
-                        $data[$field],
-                        'File_Santri'
-                    );
-                }
-            }
+    //                 $fileData[$field] = $this->downloadFile(
+    //                     $data[$field],
+    //                     'File_Santri'
+    //                 );
+    //             }
+    //         }
 
-            /*
-            |--------------------------------------------------------------------------
-            | INSERT / UPDATE DATA
-            |--------------------------------------------------------------------------
-            */
-            Virtual::updateOrCreate(
+    //         /*
+    //         |--------------------------------------------------------------------------
+    //         | INSERT / UPDATE DATA
+    //         |--------------------------------------------------------------------------
+    //         */
+    //         Virtual::updateOrCreate(
 
-                [
-                    'niup' => $data['niup'],
-                ],
+    //             [
+    //                 'niup' => $data['niup'],
+    //             ],
 
-                [
-                    'nik' => $data['nik'],
-                    'nama' => $data['nama'],
-                    'tempat_lahir' => $data['tempat_lahir'],
-                    'tanggal_lahir' => $data['tanggal_lahir'],
-                    'jenis_kelamin' => $data['jenis_kelamin'],
+    //             [
+    //                 'nik' => $data['nik'],
+    //                 'nama' => $data['nama'],
+    //                 'tempat_lahir' => $data['tempat_lahir'],
+    //                 'tanggal_lahir' => $data['tanggal_lahir'],
+    //                 'jenis_kelamin' => $data['jenis_kelamin'],
 
-                    'dlm_klrg' => $data['dlm_klrg'],
-                    'ank_ke' => $data['ank_ke'],
-                    'sdr' => $data['sdr'],
+    //                 'dlm_klrg' => $data['dlm_klrg'],
+    //                 'ank_ke' => $data['ank_ke'],
+    //                 'sdr' => $data['sdr'],
 
-                    'alamat_lengkap' => $data['alamat_lengkap'],
-                    'desa' => $data['desa'],
-                    'kec' => $data['kec'],
-                    'kab' => $data['kab'],
-                    'prov' => $data['prov'],
-                    'pos' => $data['pos'],
+    //                 'alamat_lengkap' => $data['alamat_lengkap'],
+    //                 'desa' => $data['desa'],
+    //                 'kec' => $data['kec'],
+    //                 'kab' => $data['kab'],
+    //                 'prov' => $data['prov'],
+    //                 'pos' => $data['pos'],
 
-                    // AYAH
-                    'nik_a' => $data['nik_a'],
-                    'nm_a' => $data['nm_a'],
-                    'tgl_lahir_a' => $data['tgl_lahir_a'],
+    //                 // AYAH
+    //                 'nik_a' => $data['nik_a'],
+    //                 'nm_a' => $data['nm_a'],
+    //                 'tgl_lahir_a' => $data['tgl_lahir_a'],
 
-                    // IBU
-                    'nik_i' => $data['nik_i'],
-                    'nm_i' => $data['nm_i'],
-                    'tgl_lahir_i' => $data['tgl_lahir_i'],
+    //                 // IBU
+    //                 'nik_i' => $data['nik_i'],
+    //                 'nm_i' => $data['nm_i'],
+    //                 'tgl_lahir_i' => $data['tgl_lahir_i'],
 
-                    // WALI
-                    'nik_w' => $data['nik_w'],
-                    'nm_w' => $data['nm_w'],
-                    'almt_w' => $data['almt_w'],
-                    'desa_w' => $data['desa_w'],
-                    'kec_w' => $data['kec_w'],
-                    'kab_w' => $data['kab_w'],
-                    'prov_w' => $data['prov_w'],
-                    'pos_w' => $data['pos_w'],
-                    'hp_w' => $data['hp_w'],
+    //                 // WALI
+    //                 'nik_w' => $data['nik_w'],
+    //                 'nm_w' => $data['nm_w'],
+    //                 'almt_w' => $data['almt_w'],
+    //                 'desa_w' => $data['desa_w'],
+    //                 'kec_w' => $data['kec_w'],
+    //                 'kab_w' => $data['kab_w'],
+    //                 'prov_w' => $data['prov_w'],
+    //                 'pos_w' => $data['pos_w'],
+    //                 'hp_w' => $data['hp_w'],
 
-                    /*
-                    |--------------------------------------------------------------------------
-                    | FILE HASIL DOWNLOAD
-                    |--------------------------------------------------------------------------
-                    */
-                    'foto_warna_santri' =>
-                    $fileData['foto_warna_santri'],
+    //                 /*
+    //                 |--------------------------------------------------------------------------
+    //                 | FILE HASIL DOWNLOAD
+    //                 |--------------------------------------------------------------------------
+    //                 */
+    //                 'foto_warna_santri' =>
+    //                 $fileData['foto_warna_santri'],
 
-                    'foto_wali_santri_warna' =>
-                    $fileData['foto_wali_santri_warna'],
+    //                 'foto_wali_santri_warna' =>
+    //                 $fileData['foto_wali_santri_warna'],
 
-                    'foto_scan_kk' =>
-                    $fileData['foto_scan_kk'],
+    //                 'foto_scan_kk' =>
+    //                 $fileData['foto_scan_kk'],
 
-                    'foto_scan_akta' =>
-                    $fileData['foto_scan_akta'],
+    //                 'foto_scan_akta' =>
+    //                 $fileData['foto_scan_akta'],
 
-                    'foto_scan_skck' =>
-                    $fileData['foto_scan_skck'],
+    //                 'foto_scan_skck' =>
+    //                 $fileData['foto_scan_skck'],
 
-                    'foto_scan_ket_sehat' =>
-                    $fileData['foto_scan_ket_sehat'],
-                ]
-            );
-        }
+    //                 'foto_scan_ket_sehat' =>
+    //                 $fileData['foto_scan_ket_sehat'],
+    //             ]
+    //         );
+    //     }
 
-        return back()->with(
-            'success',
-            'Data berhasil disinkronkan'
-        );
-    }
+    //     return back()->with(
+    //         'success',
+    //         'Data berhasil disinkronkan'
+    //     );
+    // }
 
     /*
     |--------------------------------------------------------------------------
@@ -214,20 +220,197 @@ class AmbildataController extends Controller
         return view('admin.ambildata', compact('data'));
     }
 
+    public function storemurid(Request $request)
+    {
+        // dd($request->all());
+        $response = Http::get(
+            'http://127.0.0.1:3000/siswa/' . $request->niup
+        );
+
+        if (!$response->successful()) {
+            return back()->with('error', 'Data tidak ditemukan');
+        }
+
+        $json = $response->json();
+
+        $data = $json[0] ?? $json;
+
+        $cek = Murid::where('niup', $data['niup'])->first();
+
+        if ($cek) {
+            return redirect()->route('siswa.edit', $cek->id_person)
+                ->with('info', 'Data sudah ada');
+        }
+
+        $fotoFields = [
+            'foto_warna_santri',
+            'foto_wali_santri_warna',
+            'foto_scan_kk',
+            'foto_scan_akta',
+            'foto_scan_skck',
+            'foto_scan_ket_sehat',
+        ];
+
+        $fotoData = [];
+
+        foreach ($fotoFields as $field) {
+
+            $fotoData[$field] = null;
+
+            if (!empty($data[$field])) {
+
+                try {
+
+                    $fotoUrl = $data[$field];
+
+                    // extension file
+                    $ext = pathinfo($fotoUrl, PATHINFO_EXTENSION);
+
+                    // nama file
+                    $namaFile = time() . '_' . $field . '.' . $ext;
+
+                    // folder public sesuai nama field
+                    $folder = public_path($field);
+
+                    // buat folder jika belum ada
+                    if (!File::exists($folder)) {
+                        File::makeDirectory($folder, 0755, true);
+                    }
+
+                    // download file
+                    $fileContent = Http::get($fotoUrl)->body();
+
+                    // simpan file
+                    file_put_contents(
+                        $folder . '/' . $namaFile,
+                        $fileContent
+                    );
+
+                    // simpan path ke database
+                    $fotoData[$field] = $field . '/' . $namaFile;
+                } catch (\Exception $e) {
+
+                    $fotoData[$field] = null;
+                }
+            }
+        }
+
+        if (empty($data)) {
+            return back()->with('error', 'Data API kosong');
+        }
+
+        try {
+            $murid = Murid::create([
+                'niup' => $data['niup'],
+                'nik' => $data['nik'],
+                'nama' => $data['nama'],
+
+                'tempat_lahir' => $data['tempat_lahir'],
+                'tanggal_lahir' => $data['tanggal_lahir'],
+                'jenis_kelamin' => $data['jenis_kelamin'],
+
+                'dlm_klrg' => $data['dlm_klrg'],
+                'ank_ke' => $data['ank_ke'],
+                'sdr' => $data['sdr'],
+
+                'alamat_lengkap' => $data['alamat_lengkap'],
+                'desa' => $data['desa'],
+                'kec' => $data['kec'],
+                'kab' => $data['kab'],
+                'prov' => $data['prov'],
+                'pos' => $data['pos'],
+
+                'nik_a' => $data['nik_a'],
+                'nm_a' => $data['nm_a'],
+                'tgl_lahir_a' => $data['tgl_lahir_a'],
+
+                'nik_i' => $data['nik_i'],
+                'nm_i' => $data['nm_i'],
+                'tgl_lahir_i' => $data['tgl_lahir_i'],
+
+                'nik_w' => $data['nik_w'],
+                'nm_w' => $data['nm_w'],
+
+                'almt_w' => $data['almt_w'],
+                'desa_w' => $data['desa_w'],
+                'kec_w' => $data['kec_w'],
+                'kab_w' => $data['kab_w'],
+                'prov_w' => $data['prov_w'],
+                'pos_w' => $data['pos_w'],
+                'hp_w' => $data['hp_w'],
+
+                'foto_warna_santri' => $fotoData['foto_warna_santri'],
+                'foto_wali_santri_warna' => $fotoData['foto_wali_santri_warna'],
+                'foto_scan_kk' => $fotoData['foto_scan_kk'],
+                'foto_scan_akta' => $fotoData['foto_scan_akta'],
+                'foto_scan_skck' => $fotoData['foto_scan_skck'],
+                'foto_scan_ket_sehat' => $fotoData['foto_scan_ket_sehat'],
+
+                'tgl_daftar' => now(),
+            ]);
+            return redirect()
+                ->route('murid.lengkapi', $murid->id_person)
+                ->with('success', 'Data murid berhasil ditambahkan');
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
+    }
+
+    public function lengkapi($id)
+    {
+        $siswa = Murid::findOrFail($id);
+        $agama = Agama::all();
+        $jurusan = Jurusan::all();
+        $pendidikan = Pendidikan::all();
+        $pekerjaan = Pekerjaan::all();
+        $penghasilan = Penghasilan::all();
+
+        return view('admin.lengkapi', compact('siswa', 'agama', 'jurusan', 'pendidikan', 'pekerjaan', 'penghasilan'));
+    }
+
+    public function updatelengkapi(Request $request, $id)
+    {
+        try {
+
+            $murid = Murid::findOrFail($id);
+
+            $murid->update([
+
+                'no_kk' => $request->no_kk,
+                'no_akta' => $request->no_akta,
+                'nisn' => $request->nisn,
+                'agama' => $request->agama_id,
+                'kec' => $request->kec,
+                'desa' => $request->desa,
+                'pos' => $request->pos,
+
+            ]);
+
+            $murid->update($request->all());
+
+            return redirect()
+                ->route('murid')
+                ->with('success', 'Data berhasil dilengkapi');
+        } catch (\Throwable $th) {
+
+            return back()->with('error', $th->getMessage());
+        }
+    }
+
     /*
     |--------------------------------------------------------------------------
     | DETAIL DATA SANTRI
     |--------------------------------------------------------------------------
     */
-    public function detail($id)
-    {
-        $murid = Virtual::findOrFail($id);
+    // public function detail($id)
+    // {
+    //     $murid = Virtual::findOrFail($id);
 
-        return view(
-            'admin.detailsantri',
-            compact('murid')
-        );
-    }
+    //     return view(
+    //         'admin.detailsantri',
+    //         compact('murid')
+    //     );
+    // }
 
     public function tambahMurid($id)
     {
