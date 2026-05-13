@@ -517,6 +517,26 @@ class MuridController extends Controller
         return view('admin.siswa.editstep3', compact('murid', 'pekerjaan', 'pendidikan', 'penghasilan', 'agama'));
     }
 
+    public function destroy($id)
+    {
+        $murid = Murid::findOrFail($id);
+
+        // hapus foto jika ada
+        if (
+            $murid->foto_warna_santri &&
+            file_exists(public_path($murid->foto_warna_santri))
+        ) {
+
+            unlink(public_path($murid->foto_warna_santri));
+        }
+
+        $murid->delete();
+
+        return redirect()
+            ->route('murid')
+            ->with('success', 'Data berhasil dihapus');
+    }
+
     // public function lengkapi($id)
     // {
     //     $agama = Agama::all();

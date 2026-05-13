@@ -98,6 +98,9 @@ Route::prefix('admin/murid')->group(function () {
 
     Route::post('/upload-berkas/{id}', [MuridController::class, 'uploadBerkas'])
         ->name('murid.upload.berkas');
+
+    Route::delete('/hapus/{id}', [MuridController::class, 'destroy'])
+        ->name('murid.destroy');
 });
 
 Route::get('/get-kota/{provinsi_id}', [MuridController::class, 'get_kabupaten']);

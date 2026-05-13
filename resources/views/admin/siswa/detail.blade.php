@@ -36,7 +36,7 @@
 
                                 @php
                                     $foto = $murid->foto_warna_santri
-                                        ? asset('storage/' . $murid->foto_warna_santri)
+                                        ? asset($murid->foto_warna_santri)
                                         : asset('images/default-user.png');
                                 @endphp
 

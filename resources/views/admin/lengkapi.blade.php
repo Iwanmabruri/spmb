@@ -127,7 +127,7 @@
 
                                             <div class="col-md-3">
                                                 <label class="form-label">Jurusan</label>
-                                                <select name="jurusan" class="form-select">
+                                                <select name="jurusan_id" class="form-select">
                                                     <option value="">-- Pilih --</option>
                                                     @foreach ($jurusan as $j)
                                                         <option value="{{ $j->id }}">{{ $j->program_keahlian }}
