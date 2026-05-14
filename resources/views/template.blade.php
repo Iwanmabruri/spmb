@@ -178,104 +178,52 @@
                     </a>
                 </li>
 
-                <!-- Nav item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-menu-deep">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M4 6h16" />
-                                <path d="M7 12h13" />
-                                <path d="M10 18h10" />
-                            </svg>
-                        </span>
-                        <span class="text">Menu Website</span>
-                    </a>
-                    <ul class="dropdown-menu flex-column">
-                        <li class="nav-item">
-                            <a class='nav-link' href='#'>Isi 1</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='#'>Isi 2</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='#'>Isi 3</a>
-                        </li>
-                    </ul>
-                </li>
-
                 <li class="nav-item">
                     <div class="nav-heading">Pages</div>
                     <hr class="mx-5 nav-line mb-1" />
                 </li>
                 <!-- Nav item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('banner.index') }}">
                         <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-file">
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-photo">
+
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
-                                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+                                <path d="M15 8h.01" />
+                                <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" />
+                                <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
+                                <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
                             </svg>
                         </span>
-                        <span class="text">Pages</span>
+
+                        <span class="text">Update Banner</span>
                     </a>
-                    <ul class="dropdown-menu flex-column">
-
-
-
-                        <li class="nav-item">
-                            <a class='nav-link' href='error/maintenance.html'>Maintenance</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='error/404-error.html'>404 Error</a>
-                        </li>
-                    </ul>
                 </li>
-                <!-- Nav item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('mitra.index') }}">
                         <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-lock">
+                                class="icon icon-tabler icons-tabler-outline icon-tabler-building-factory">
+
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" />
-                                <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
-                                <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
+                                <path d="M3 21h18" />
+                                <path d="M5 21v-12l5 4v-4l5 4h4" />
+                                <path d="M19 21v-10l-4 3" />
+                                <path d="M9 17h1" />
+                                <path d="M14 17h1" />
                             </svg>
                         </span>
-                        <span class="text">Authentication</span>
+
+                        <span class="text">Mitra Industri/Brand</span>
                     </a>
-                    <ul class="dropdown-menu flex-column">
-                        <li class="nav-item">
-                            <a class='nav-link' href='authentication/sign-in.html'>Sign In</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='authentication/sign-up.html'>Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='authentication/forget-password.html'>Forget Password</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='authentication/reset-password.html'>Reset Password</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class='nav-link' href='authentication/otp-varification.html'>Otp Varification </a>
-                        </li>
-                    </ul>
                 </li>
+
             </ul>
 
         </div>
@@ -1071,8 +1019,8 @@
                                 data-template="collapseMessage">
                                 <span class="collapse-mini">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round"
                                         class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-bar-left text-secondary">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <path d="M4 12l10 0" />
@@ -1083,8 +1031,8 @@
                                 </span>
                                 <span class="collapse-expanded">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round"
                                         class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-bar-right text-secondary">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <path d="M20 12l-10 0" />
@@ -1113,8 +1061,8 @@
                             <button type="button" class="btn btn-white" data-bs-toggle="modal"
                                 data-bs-target="#searchModal">
                                 <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round"
                                         class="icon icon-tabler icons-tabler-outline icon-tabler-search">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                         <circle cx="10" cy="10" r="7" />

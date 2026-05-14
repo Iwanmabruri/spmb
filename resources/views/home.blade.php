@@ -1,15 +1,35 @@
 @extends('welcome')
+@section('CSSManual')
+    <style>
+        .swiper-slide {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+@endsection
 @section('konten')
     <!-- WELCOME -->
-    <section class="pt-4 pt-md-11" id="home">
+    <section class="pt-4 pt-md-8" id="home">
+        @php
+            $hero = \App\Models\Banner::orderBy('id', 'desc')->first();
+        @endphp
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-12 col-md-5 col-lg-6 order-md-2">
 
                     <!-- Image -->
-                    <img src="{{ asset('assets') }}/img/illustrations/imgBG1.png"
-                        class="img-fluid mw-md-150 mw-lg-130 mb-6 mb-md-0" alt="..." data-aos="fade-up"
-                        data-aos-delay="100">
+                    @php
+                        $hero = \App\Models\Banner::orderBy('id', 'desc')->first();
+                    @endphp
+
+                    <img src="{{ $hero && $hero->gambar
+                        ? asset('upload/banner/' . $hero->gambar)
+                        : asset('assets/img/illustrations/imgBG1.png') }}"
+                        class="img-fluid mw-md-150 mw-lg-130 mb-6 mb-md-0" alt="Banner" data-aos="fade-up"
+                        data-aos-delay="100"
+                        onerror="this.onerror=null;this.src='{{ asset('assets/img/illustrations/imgBG1.png') }}';">
 
                 </div>
                 <div class="col-12 col-md-7 col-lg-6 order-md-1" data-aos="fade-up">
@@ -18,12 +38,13 @@
                     <h1 class="display-3 text-center text-md-start">
                         Welcome to <span class="text-success">SPMB</span>. <br>
                         SMK NAA 2026.
+                        {{-- {!! $hero->judul !!} --}}
                     </h1>
 
                     <!-- Text -->
                     <p class="lead text-center text-md-start text-body-secondary mb-6 mb-lg-8">
-                        Website ini merupakan layanan digital untuk menyediakan informasi resmi terkait pendaftaran peserta
-                        didik baru, meliputi persyaratan, jadwal, dan alur pendaftaran.
+                        {!! $hero->deskripsi ??
+                            'Website ini merupakan layanan digital untuk menyediakan informasi resmi terkait pendaftaran peserta didik baru.' !!}
                     </p>
 
                     <!-- Buttons -->
@@ -47,58 +68,74 @@
 
     <!-- BRANDS -->
     <section class="py-6 py-md-8 border-bottom">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-6 col-sm-4 col-md-2 mb-4 mb-md-0">
+        {{-- <div class="container overflow hidden"> --}}
+        <div class="container px-4 py-3">
 
-                    <!-- Brand -->
-                    <div class="img-fluid text-gray-600 mb-2 mb-md-0">
-                        <img src="{{ asset('assets') }}/img/hastag.png" alt="">
-                    </div>
+            <div class="swiper mitraSwiper">
+
+                <div class="swiper-wrapper">
+
+                    @forelse ($mitra as $m)
+                        <div class="swiper-slide text-center">
+
+                            <div class="bg-white rounded-3 shadow-sm d-flex align-items-center justify-content-center mx-auto"
+                                style="
+                            height: 80px;
+                            padding: 10px;
+                        ">
+
+                                @php
+                                    $imgPath = public_path('upload/mitra/' . $m->image);
+                                @endphp
+
+                                <img src="{{ file_exists($imgPath) ? asset('upload/mitra/' . $m->image) : asset('assets/img/hastag.png') }}"
+                                    style="max-height:50px;max-width:100%;object-fit:contain;">
+
+                            </div>
+
+                        </div>
+
+                    @empty
+
+                        @php
+                            $defaultLogo = [
+                                'hastag.png',
+                                'kemendikdasmen.png',
+                                'bromo.png',
+                                'humma.png',
+                                'bsi.png',
+                                'LK.png',
+                            ];
+                        @endphp
+
+                        @foreach ($defaultLogo as $logo)
+                            <div class="swiper-slide text-center">
+
+                                <div class="bg-white rounded-3 shadow-sm d-flex align-items-center justify-content-center mx-auto"
+                                    style="
+                                height: 80px;
+                                padding: 10px;
+                            ">
+
+                                    <img src="{{ asset('assets/img/' . $logo) }}"
+                                        style="
+                                    max-height: 50px;
+                                    max-width: 100%;
+                                    object-fit: contain;
+                                ">
+
+                                </div>
+
+                            </div>
+                        @endforeach
+                    @endforelse
 
                 </div>
-                <div class="col-6 col-sm-4 col-md-2 mb-4 mb-md-0">
 
-                    <!-- Brand -->
-                    <div class="img-fluid text-gray-600 mb-2 mb-md-0">
-                        <img src="{{ asset('assets') }}/img/kemendikdasmen.png" alt="">
-                    </div>
+            </div>
 
-                </div>
-                <div class="col-6 col-sm-4 col-md-2 mb-4 mb-md-0">
-
-                    <!-- Brand -->
-                    <div class="img-fluid text-gray-600 mb-2 mb-md-0">
-                        <img src="{{ asset('assets') }}/img/bromo.png" alt="">
-                    </div>
-
-                </div>
-                <div class="col-6 col-sm-4 col-md-2 mb-4 mb-md-0">
-
-                    <!-- Brand -->
-                    <div class="img-fluid text-gray-600 mb-2 mb-md-0">
-                        <img src="{{ asset('assets') }}/img/humma.png" alt="">
-                    </div>
-
-                </div>
-                <div class="col-6 col-sm-4 col-md-2 mb-4 mb-md-0">
-
-                    <!-- Brand -->
-                    <div class="img-fluid text-gray-600 mb-2 mb-md-0">
-                        <img src="{{ asset('assets') }}/img/bsi.png" alt="">
-                    </div>
-
-                </div>
-                <div class="col-6 col-sm-4 col-md-2 mb-4 mb-md-0">
-
-                    <!-- Brand -->
-                    <div class="img-fluid text-gray-600 mb-2 mb-md-0">
-                        <img src="{{ asset('assets') }}/img/LK.png" alt="">
-                    </div>
-
-                </div>
-            </div> <!-- / .row -->
-        </div> <!-- / .container -->
+        </div>
+        {{-- </div> --}}
     </section>
 
 
@@ -146,7 +183,10 @@
 
                     <!-- Heading -->
                     <h1 class="display-2 fw-bold text-success">
-                        <span data-countup='{"startVal": 0}' data-to="97" data-aos data-aos-id="countup:in">0</span>
+                        <span data-countup='{"startVal": 0}' data-to="{{ $totalPendaftar }}" data-aos
+                            data-aos-id="countup:in">
+                            {{ $totalPendaftar }}
+                        </span>
                     </h1>
 
                     <!-- Text -->
@@ -155,11 +195,15 @@
                     </p>
 
                 </div>
+
                 <div class="col-12 col-md-4 text-center">
 
                     <!-- Heading -->
                     <h1 class="display-2 fw-bold text-success">
-                        <span data-countup='{"startVal": 0}' data-to="97" data-aos data-aos-id="countup:in">0</span>
+                        <span data-countup='{"startVal": 0}' data-to="{{ $rpl }}" data-aos
+                            data-aos-id="countup:in">
+                            {{ $rpl }}
+                        </span>
                     </h1>
 
                     <!-- Text -->
@@ -168,16 +212,20 @@
                     </p>
 
                 </div>
+
                 <div class="col-12 col-md-4 text-center">
 
                     <!-- Heading -->
                     <h1 class="display-2 fw-bold text-success">
-                        <span data-countup='{"startVal": 0}' data-to="97" data-aos data-aos-id="countup:in">0</span>
+                        <span data-countup='{"startVal": 0}' data-to="{{ $akl }}" data-aos
+                            data-aos-id="countup:in">
+                            {{ $akl }}
+                        </span>
                     </h1>
 
                     <!-- Text -->
                     <p class="text-body-secondary mb-0">
-                        Pendaftar Jurusan RPL
+                        Pendaftar Jurusan AKL
                     </p>
 
                 </div>
@@ -186,7 +234,7 @@
     </section>
 
     <!-- ARTICLES -->
-    <section class="pb-8 pt-4 pb-md-11 pt-md-10" id="jurusan">
+    <section class="pb-8 pb-md-11" id="jurusan">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -318,3 +366,29 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        new Swiper(".mitraSwiper", {
+            loop: true,
+            speed: 3000,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
+            slidesPerView: 3,
+            spaceBetween: 15,
+
+            breakpoints: {
+                576: {
+                    slidesPerView: 3,
+                },
+                768: {
+                    slidesPerView: 4,
+                },
+                992: {
+                    slidesPerView: 6,
+                }
+            }
+        });
+    </script>
+@endpush

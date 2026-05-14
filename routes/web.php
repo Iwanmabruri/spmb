@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AgamaController;
 use App\Http\Controllers\AmbildataController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\MuridController;
 use App\Http\Controllers\PekerjaanController;
@@ -9,9 +10,21 @@ use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PenghasilanController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+// Route::get('/', function () {
+//     return view('home');
+// })->name('home');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/banner', [HomeController::class, 'indexBanner'])->name('banner.index');
+Route::post('/banner/store', [HomeController::class, 'storeBanner'])->name('banner.store');
+// Route::get('/banner/edit/{id}', [HomeController::class, 'editBanner'])->name('banner.edit');
+Route::put('/banner/update/{id}', [HomeController::class, 'updateBanner'])->name('banner.update');
+Route::delete('/banner/delete/{id}', [HomeController::class, 'destroyBanner'])->name('banner.destroy');
+
+Route::get('/mitra', [HomeController::class, 'indexMitra'])->name('mitra.index');
+Route::post('/mitra/store', [HomeController::class, 'storeMitra'])->name('mitra.store');
+Route::put('/mitra/update/{id}', [HomeController::class, 'updateMitra'])->name('mitra.update');
+Route::delete('/mitra/delete/{id}', [HomeController::class, 'destroyMitra'])->name('mitra.destroy');
 
 Route::get('/admin', function () {
     return view('admin.dashboard');

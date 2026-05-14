@@ -360,7 +360,7 @@ class AmbildataController extends Controller
     {
         $siswa = Murid::findOrFail($id);
         $agama = Agama::all();
-        $jurusan = Jurusan::all();
+        $jurusan = Jurusan::where('status', 'Aktif')->get();
         $pendidikan = Pendidikan::all();
         $pekerjaan = Pekerjaan::all();
         $penghasilan = Penghasilan::all();
