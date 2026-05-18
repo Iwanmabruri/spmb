@@ -300,7 +300,7 @@
 
                     <tr>
                         <td class="label">Pekerjaan</td>
-                        <td>: {{ $murid->pekerjaananAyah->nama_pekerjaan ?? '-' }}</td>
+                        <td>: {{ $murid->pekerjaanAyah->nama_pekerjaan ?? '-' }}</td>
                     </tr>
 
                     <tr>
@@ -331,7 +331,7 @@
 
                     <tr>
                         <td class="label">Pekerjaan</td>
-                        <td>: {{ $murid->pekerjaananIbu->nama_pekerjaan ?? '-' }}</td>
+                        <td>: {{ $murid->pekerjaanIbu->nama_pekerjaan ?? '-' }}</td>
                     </tr>
 
                     <tr>
@@ -365,7 +365,7 @@
 
                     <tr>
                         <td class="label">Pekerjaan</td>
-                        <td>: {{ $murid->pekerjaananWali->nama_pekerjaan ?? '-' }}</td>
+                        <td>: {{ $murid->pekerjaanWali->nama_pekerjaan ?? '-' }}</td>
                     </tr>
 
                     <tr>

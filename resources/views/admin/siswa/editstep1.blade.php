@@ -35,7 +35,7 @@
                         <form id="formStep1" action="{{ route('murid.update.step1', $murid->id_person) }}" method="POST">
                             @csrf
                             @method('PUT')
-
+                            <input hidden name="st" value="{{ $st }}">
                             <div class="row g-3">
 
                                 <div class="col-md-4">
@@ -110,7 +110,7 @@
                                         <option value="">-- Pilih --</option>
                                         @foreach ($agama as $a)
                                             <option value="{{ $a->id }}"
-                                                {{ old('agama', $murid->agama ?? '') == $a->id ? 'selected' : '' }}>
+                                                {{ old('agama', $murid->agama->id ?? '') == $a->id ? 'selected' : '' }}>
                                                 {{ $a->nama_agama }}
                                             </option>
                                         @endforeach
@@ -148,7 +148,7 @@
                                         <option value="">-- Pilih --</option>
                                         @foreach ($jurusan as $j)
                                             <option value="{{ $j->id }}"
-                                                {{ old('jurusan', $murid->jurusan ?? '') == $j->id ? 'selected' : '' }}>
+                                                {{ old('jurusan', $murid->jurusan->id ?? '') == $j->id ? 'selected' : '' }}>
                                                 {{ $j->program_keahlian }}
                                             </option>
                                         @endforeach

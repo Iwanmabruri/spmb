@@ -27,7 +27,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Lengkapi Data Siswa</h4>
+                        <h4>Lengkapi Data Siswa <span class="text-danger">{{ $siswa->nama }}</span></h4>
                     </div>
                     <form action="{{ route('murid.updatelengkapi', $siswa->id_person) }}" method="POST">
                         @csrf

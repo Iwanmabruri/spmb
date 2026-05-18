@@ -69,7 +69,7 @@
         </div>
         <div class="row d-flex justify-content-center mb-5">
             <div class="col-md-6">
-                <form action="{{ route('ambildata') }}" method="GET">
+                <form id="cariForm" action="{{ route('ambildata') }}" method="GET">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="number" class="form-control" name="niup" placeholder="Nomor Induk Umum Pesantren"
@@ -247,7 +247,8 @@
                                         <div class="border-top pt-3">
 
                                             <div class="">
-                                                <form action="{{ route('ambildata.store') }}" method="POST">
+                                                <form action="{{ route('ambildata.store') }}" id="tambahMurid"
+                                                    method="POST">
                                                     @csrf
                                                     <input type="hidden" name="niup" value="{{ $data['niup'] }}">
                                                     <button class="btn btn-dark float-end">
@@ -319,4 +320,14 @@
             });
         </script>
     @endif
+
+    <script>
+        $('#cariForm').on('submit', function() {
+            $('#loader').css('display', 'flex');
+        });
+
+        $('#tambahMurid').on('submit', function() {
+            $('#loader').css('display', 'flex');
+        });
+    </script>
 @endpush

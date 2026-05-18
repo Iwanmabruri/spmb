@@ -70,10 +70,44 @@
         @yield('CSSManual')
     </style>
 
+    <style>
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.4);
+            /* transparan */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            display: none;
+        }
+
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 9px solid;
+            border-color: #474bff #0000;
+            animation: spinner-0tkp9a 1s infinite;
+        }
+
+        @keyframes spinner-0tkp9a {
+            to {
+                transform: rotate(.5turn);
+            }
+        }
+
+        .swal2-container {
+            z-index: 20000 !important;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Vertical Sidebar -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
     <div>
         <div id="miniSidebar">
             <div class="brand-logo">

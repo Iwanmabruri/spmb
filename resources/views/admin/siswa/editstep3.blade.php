@@ -37,7 +37,7 @@
                         <form id="formStep3" action="{{ route('murid.update.step3', $murid->id_person) }}" method="POST">
                             @csrf
                             @method('PUT')
-
+                            <input hidden name="st" value="{{ $st }}">
                             <div class="row g-3">
 
                                 <div class="col-md-3">
@@ -96,8 +96,8 @@
                                     <select name="pndkn_a" class="form-select">
                                         <option value="">-- Pilih --</option>
                                         @foreach ($pendidikan as $p)
-                                            <option value="{{ $p->id }}">
-                                                {{ old('pndkn_a', $murid->pndkn_a ?? '') == $p->id ? 'selected' : '' }}
+                                            <option value="{{ $p->id }}"
+                                                {{ old('pndkn_a', $murid->pndkn_a ?? '') == $p->id ? 'selected' : '' }}>
                                                 {{ $p->jenjang }}
                                             </option>
                                         @endforeach
@@ -109,8 +109,8 @@
                                     <select name="penghasilan_a" class="form-select">
                                         <option value="">-- Pilih --</option>
                                         @foreach ($penghasilan as $p)
-                                            <option value="{{ $p->id }}">
-                                                {{ old('penghasilan_a', $murid->penghasilan_a ?? '') == $p->id ? 'selected' : '' }}
+                                            <option value="{{ $p->id }}"
+                                                {{ old('penghasilan_a', $murid->penghasilan_a ?? '') == $p->id ? 'selected' : '' }}>
                                                 {{ $p->kategori }}
                                             </option>
                                         @endforeach
@@ -180,8 +180,9 @@
                                     <select name="pndkn_i" class="form-select">
                                         <option value="">-- Pilih --</option>
                                         @foreach ($pendidikan as $p)
-                                            <option value="{{ $p->id }}">
-                                                {{ old('pndkn_i', $murid->pndkn_i ?? '') == $p->id ? 'selected' : '' }}
+                                            <option value="{{ $p->id }}"
+                                                {{ old('pndkn_i', $murid->pndkn_i ?? '') == $p->id ? 'selected' : '' }}>
+
                                                 {{ $p->jenjang }}
                                             </option>
                                         @endforeach
@@ -193,8 +194,8 @@
                                     <select name="penghasilan_i" class="form-select">
                                         <option value="">-- Pilih --</option>
                                         @foreach ($penghasilan as $p)
-                                            <option value="{{ $p->id }}">
-                                                {{ old('penghasilan_i', $murid->penghasilan_i ?? '') == $p->id ? 'selected' : '' }}
+                                            <option value="{{ $p->id }}"
+                                                {{ old('penghasilan_i', $murid->penghasilan_i ?? '') == $p->id ? 'selected' : '' }}>
                                                 {{ $p->kategori }}
                                             </option>
                                         @endforeach
@@ -209,7 +210,8 @@
                         <div class="d-flex justify-content-between align-items-center">
 
                             <!-- Kiri -->
-                            <a href="{{ route('murid.edit.step2', $murid->id_person) }}" class="btn btn-secondary">
+                            <a href="{{ route('murid.edit.step2', [$murid->id_person, $st]) }}"
+                                class="btn btn-secondary">
                                 Kembali
                             </a>
 
@@ -227,43 +229,45 @@
         </div>
     </div>
 @endsection
-<script>
-    document.querySelectorAll('input[type="text"]').forEach(function(input) {
-        input.addEventListener('input', function() {
-            this.value = this.value.toUpperCase();
+@push('scripts')
+    <script>
+        document.querySelectorAll('input[type="text"]').forEach(function(input) {
+            input.addEventListener('input', function() {
+                this.value = this.value.toUpperCase();
+            });
         });
-    });
-</script>
-<script>
-    document.getElementById('formStep3').addEventListener('submit', function(e) {
-        e.preventDefault();
+    </script>
+    <script>
+        document.getElementById('formStep3').addEventListener('submit', function(e) {
+            e.preventDefault();
 
-        let form = this;
+            let form = this;
 
-        Swal.fire({
-            title: 'Yakin?',
-            text: "Data akan disimpan",
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: 'Ya, simpan!',
-            cancelButtonText: 'Batal'
-        }).then((result) => {
-            if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Yakin?',
+                text: "Data akan disimpan",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, simpan!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
 
-                // popup kedua
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Berhasil!',
-                    text: 'Step 3 berhasil tersimpan',
-                    timer: 1500,
-                    showConfirmButton: false
-                });
+                    // popup kedua
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: 'Step 3 berhasil tersimpan',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
 
-                // delay submit biar alert kelihatan
-                setTimeout(() => {
-                    form.submit();
-                }, 1500);
-            }
+                    // delay submit biar alert kelihatan
+                    setTimeout(() => {
+                        form.submit();
+                    }, 1500);
+                }
+            });
         });
-    });
-</script>
+    </script>
+@endpush

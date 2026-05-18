@@ -410,13 +410,13 @@ class MuridController extends Controller
         return view('admin.siswa.printbiodata', compact('murid'));
     }
 
-    public function editstep1($id)
+    public function editstep1($id, $st)
     {
         $murid = Murid::findOrFail($id);
         $agama = Agama::all();
         $jurusan = Jurusan::all();
 
-        return view('admin.siswa.editstep1', compact('murid', 'agama', 'jurusan'));
+        return view('admin.siswa.editstep1', compact('murid', 'agama', 'jurusan', 'st'));
     }
 
     public function updateStep1(Request $request, $id)
@@ -450,8 +450,7 @@ class MuridController extends Controller
                 'status_step' => 1,
             ]);
 
-            return redirect()->route('murid.edit.step2', $murid->id_person)
-                ->with('success', 'Step 1 berhasil diupdate');
+            return redirect()->route('murid.edit.step2', [$murid->id_person, $request->st]);
         } catch (\Throwable $th) {
             return back()
                 ->with('error', 'Gagal menyimpan Step 1')
@@ -459,12 +458,12 @@ class MuridController extends Controller
         }
     }
 
-    public function editstep2($id)
+    public function editstep2($id, $st)
     {
         $murid = Murid::findOrFail($id);
         $provinsi = Provinsi::all();
 
-        return view('admin.siswa.editstep2', compact('murid', 'provinsi'));
+        return view('admin.siswa.editstep2', compact('murid', 'provinsi', 'st'));
     }
 
     public function updateStep2(Request $request, $id)
@@ -493,8 +492,7 @@ class MuridController extends Controller
                 'status_step' => 2,
             ]);
 
-            return redirect()->route('murid.edit.step3', $murid->id_person)
-                ->with('success', 'Step 2 berhasil disimpan');
+            return redirect()->route('murid.edit.step3', [$murid->id_person, $request->st]);
         } catch (\Exception $e) {
 
             return back()
@@ -503,7 +501,7 @@ class MuridController extends Controller
         }
     }
 
-    public function editstep3($id)
+    public function editstep3($id, $st)
     {
         $murid = Murid::findOrFail($id);
         $pekerjaan = Pekerjaan::all();
@@ -512,9 +510,153 @@ class MuridController extends Controller
         $agama = Agama::all();
         // proteksi step
         if ($murid->status_step < 2) {
-            return redirect()->route('murid.edit.step2', $id);
+            return redirect()->route('murid.edit.step2', [$id, $st]);
         }
-        return view('admin.siswa.editstep3', compact('murid', 'pekerjaan', 'pendidikan', 'penghasilan', 'agama'));
+        return view('admin.siswa.editstep3', compact('murid', 'pekerjaan', 'pendidikan', 'penghasilan', 'agama', 'st'));
+    }
+
+    public function updateStep3(Request $request, $id)
+    {
+        $murid = Murid::findOrFail($id);
+
+        $request->validate([
+            'nik_a' => 'required',
+            'nm_a' => 'required',
+            'tgl_lahir_a' => 'required',
+            'tmpt_lahir_a' => 'required',
+            'agama_a' => 'required',
+            'pkrjn_a' => 'required',
+            'pndkn_a' => 'required',
+            'penghasilan_a' => 'required',
+
+            'nik_i' => 'required',
+            'nm_i' => 'required',
+            'tgl_lahir_i' => 'required',
+            'tmpt_lahir_i' => 'required',
+            'agama_i' => 'required',
+            'pkrjn_i' => 'required',
+            'pndkn_i' => 'required',
+            'penghasilan_i' => 'required'
+        ]);
+
+        try {
+            $murid->update([
+                'nik_a' => $request->nik_a,
+                'nm_a' => $request->nm_a,
+                'tgl_lahir_a' => $request->tgl_lahir_a,
+                'tmpt_lahir_a' => $request->tmpt_lahir_a,
+                'agama_a' => $request->agama_a,
+                'pkrjn_a' => $request->pkrjn_a,
+                'pndkn_a' => $request->pndkn_a,
+                'penghasilan_a' => $request->penghasilan_a,
+
+                'nik_i' => $request->nik_i,
+                'nm_i' => $request->nm_i,
+                'tgl_lahir_i' => $request->tgl_lahir_i,
+                'tmpt_lahir_i' => $request->tmpt_lahir_i,
+                'agama_i' => $request->agama_i,
+                'pkrjn_i' => $request->pkrjn_i,
+                'pndkn_i' => $request->pndkn_i,
+                'penghasilan_i' => $request->penghasilan_i,
+
+                'status_step' => 3,
+            ]);
+
+            return redirect()->route('murid.edit.step4', [$murid->id_person, $request->st]);
+        } catch (\Exception $e) {
+
+            return back()
+                ->with('error', 'Gagal menyimpan Step 3')
+                ->withInput();
+        }
+    }
+
+    public function editstep4($id, $st)
+    {
+        $murid = Murid::findOrFail($id);
+        $pekerjaan = Pekerjaan::all();
+        $pendidikan = Pendidikan::all();
+        $penghasilan = Penghasilan::all();
+        $agama = Agama::all();
+        $provinsi = Provinsi::all();
+        // proteksi step
+        if ($murid->status_step < 3) {
+            return redirect()->route('murid.edit.step3', [$id, $st]);
+        }
+        return view('admin.siswa.editstep4', compact('murid', 'pekerjaan', 'pendidikan', 'penghasilan', 'agama', 'provinsi', 'st'));
+    }
+
+    public function updateStep4(Request $request, $id)
+    {
+        $murid = Murid::findOrFail($id);
+
+        $request->validate([
+            'nm_w' => 'required',
+            'nik_w' => 'required',
+            'tmpt_lahir_w' => 'required',
+            'tgl_lahir_w' => 'required',
+            'agama_w' => 'required',
+            'pkrjn_w' => 'required',
+            'pndkn_w' => 'required',
+            'penghasilan_w' => 'required',
+            'almt_w' => 'required',
+            'desa_w' => 'required',
+            'kec_w' => 'required',
+            'kab_w' => 'required',
+            'prov_w' => 'required',
+            'pos_w' => 'required',
+        ]);
+
+        try {
+            if ($request->st == 't') {
+                $murid->update([
+                    'nm_w' => $request->nm_w,
+                    'nik_w' => $request->nik_w,
+                    'tmpt_lahir_w' => $request->tmpt_lahir_w,
+                    'tgl_lahir_w' => $request->tgl_lahir_w,
+                    'agama_w' => $request->agama_w,
+                    'pkrjn_w' => $request->pkrjn_w,
+                    'pndkn_w' => $request->pndkn_w,
+                    'penghasilan_w' => $request->penghasilan_w,
+                    'hp_w' => $request->hp_w,
+                    'almt_w' => $request->almt_w,
+                    'desa_w' => $request->desa_w,
+                    'kec_w' => $request->kec_w,
+                    'kab_w' => $request->kab_w,
+                    'prov_w' => $request->prov_w,
+                    'pos_w' => $request->pos_w,
+                    'tgl_daftar' => now(),
+                    'status_step' => 4,
+                ]);
+            } else {
+                $murid->update([
+                    'nm_w' => $request->nm_w,
+                    'nik_w' => $request->nik_w,
+                    'tmpt_lahir_w' => $request->tmpt_lahir_w,
+                    'tgl_lahir_w' => $request->tgl_lahir_w,
+                    'agama_w' => $request->agama_w,
+                    'pkrjn_w' => $request->pkrjn_w,
+                    'pndkn_w' => $request->pndkn_w,
+                    'penghasilan_w' => $request->penghasilan_w,
+                    'hp_w' => $request->hp_w,
+                    'almt_w' => $request->almt_w,
+                    'desa_w' => $request->desa_w,
+                    'kec_w' => $request->kec_w,
+                    'kab_w' => $request->kab_w,
+                    'prov_w' => $request->prov_w,
+                    'pos_w' => $request->pos_w,
+                    'status_step' => 4,
+                ]);
+            }
+
+            return redirect()->route('murid')
+                ->with('success', 'Data wali berhasil disimpan');
+        } catch (\Exception $e) {
+
+            return back()
+                ->with('error', 'Gagal menyimpan data wali')
+                ->withInput();
+        }
     }
 
     public function destroy($id)

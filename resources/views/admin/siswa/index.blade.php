@@ -110,7 +110,7 @@
                                                 </a>
 
                                                 <!-- EDIT -->
-                                                <a href="{{ route('murid.edit.step1', $m->id_person) }}"
+                                                <a href="{{ route('murid.edit.step1', [$m->id_person, 'e']) }}"
                                                     class="btn btn-warning btn-icon btn-sm rounded-circle text-white"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
 
@@ -382,9 +382,7 @@
                 },
                 success: function(hasil) {
 
-                    let url = "{{ route('murid.step1', ['id' => ':id']) }}";
-
-                    url = url.replace(':id', hasil);
+                    let url = "/admin/murid/edit/step1/" + hasil + "/t";
 
                     window.location.href = url;
                 }

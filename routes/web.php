@@ -97,13 +97,13 @@ Route::prefix('admin/murid')->group(function () {
     Route::get('/step4/{id}', [MuridController::class, 'step4'])->name('murid.step4');
     Route::post('/step4/{id}', [MuridController::class, 'storeStep4'])->name('murid.store.step4');
 
-    Route::get('edit/step1/{id}', [MuridController::class, 'editstep1'])->name('murid.edit.step1');
+    Route::get('edit/step1/{id}/{st}', [MuridController::class, 'editstep1'])->name('murid.edit.step1');
     Route::put('update/step1/{id}', [MuridController::class, 'updateStep1'])->name('murid.update.step1');
-    Route::get('edit/step2/{id}', [MuridController::class, 'editstep2'])->name('murid.edit.step2');
+    Route::get('edit/step2/{id}/{st}', [MuridController::class, 'editstep2'])->name('murid.edit.step2');
     Route::put('update/step2/{id}', [MuridController::class, 'updateStep2'])->name('murid.update.step2');
-    Route::get('edit/step3/{id}', [MuridController::class, 'editstep3'])->name('murid.edit.step3');
+    Route::get('edit/step3/{id}/{st}', [MuridController::class, 'editstep3'])->name('murid.edit.step3');
     Route::put('update/step3/{id}', [MuridController::class, 'updateStep3'])->name('murid.update.step3');
-    Route::get('edit/step4/{id}', [MuridController::class, 'editstep4'])->name('murid.edit.step4');
+    Route::get('edit/step4/{id}/{st}', [MuridController::class, 'editstep4'])->name('murid.edit.step4');
     Route::put('update/step4/{id}', [MuridController::class, 'updateStep4'])->name('murid.update.step4');
 
     Route::get('/print/{id}', [MuridController::class, 'print'])->name('murid.print');
