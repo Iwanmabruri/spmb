@@ -19,11 +19,10 @@ class MuridController extends Controller
 {
     public function index()
     {
-        $murid = Murid::latest()->where('status', '1')->get();
-        return view('admin.siswa.index', compact('murid'));
+        return view('admin.siswa.index');
     }
 
-    public function siswa_data()
+    public function murid_data()
     {
         $siswa = Murid::where('status', '1')->orderBy('id_person', 'desc')->get();
 

@@ -78,7 +78,7 @@ Route::prefix('admin/murid')->group(function () {
 
     // INDEX
     Route::get('/', [MuridController::class, 'index'])->name('murid');
-
+    Route::get('/murid/data', [MuridController::class, 'murid_data'])->name('murid.data');
     // STEP 1
 
     Route::post('/simpan1', [MuridController::class, 'store1'])->name('murid.store');

@@ -98,30 +98,30 @@
                 info: true,
                 autoWidth: false,
                 responsive: true,
-                // processing: true,
-                // serverSide: true,
-                // 
-                // columns: [{
-                //         data: 'DT_RowIndex',
-                //         orderable: false,
-                //         searchable: false
-                //     },
-                //     {
-                //         data: 'niup'
-                //     },
-                //     {
-                //         data: 'nama'
-                //     },
-                //     {
-                //         data: 'asal_sekolah'
-                //     },
-                //     {
-                //         data: 'tgl_daftar'
-                //     },
-                //     {
-                //         data: 'action'
-                //     }
-                // ]
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('murid.data') }}",
+                columns: [{
+                        data: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'niup'
+                    },
+                    {
+                        data: 'nama'
+                    },
+                    {
+                        data: 'asal_sekolah'
+                    },
+                    {
+                        data: 'tgl_daftar'
+                    },
+                    {
+                        data: 'action'
+                    }
+                ]
             });
         });
         document.querySelectorAll('.texttooltip').forEach(function(el) {
