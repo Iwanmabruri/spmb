@@ -79,10 +79,9 @@
                                 </thead>
                                 @foreach ($murid as $m)
                                     <form id="delete-form-{{ $m->id_person }}"
-                                        action="{{ route('murid.destroy', $m->id_person) }}" method="POST"
-                                        class="d-inline">
+                                        action="{{ route('murid.hapus', $m->id_person) }}" method="POST" class="d-inline">
                                         @csrf
-                                        @method('DELETE')
+                                        @method('POST')
                                         <tbody>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $m->nisn }}</td>
@@ -373,19 +372,32 @@
 
     <script>
         $("#bt_tambah").click(function() {
-            $.ajax({
-                type: 'POST',
-                url: "{{ route('murid.store') }}",
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                },
-                success: function(hasil) {
+            Swal.fire({
+                title: 'Peringatan!',
+                text: "Fitur ini hanya digunakan saat fitur ambil data tidak berfungsi, pastikan data yang akan ditambahkan belum ada di database!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, lanjutkan!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#loader').css('display', 'flex');
+                    $.ajax({
+                        type: 'POST',
+                        url: "{{ route('murid.store') }}",
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                        },
+                        success: function(hasil) {
+                            $('#loader').css('display', 'none');
+                            let url = "/admin/murid/edit/step1/" + hasil + "/t";
 
-                    let url = "/admin/murid/edit/step1/" + hasil + "/t";
-
-                    window.location.href = url;
+                            window.location.href = url;
+                        }
+                    });
                 }
-            });
+            })
+
         });
     </script>
     <script>

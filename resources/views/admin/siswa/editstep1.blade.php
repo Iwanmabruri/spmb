@@ -232,11 +232,17 @@
                     <div class="card-footer border-top border-dashed">
 
                         <div class="d-flex justify-content-between align-items-center">
-
+                            @if ($st == 't')
+                                <a href="#" onclick="batal()" class="btn btn-secondary">
+                                    Batal
+                                </a>
+                            @else
+                                <a href="{{ route('murid') }}" class="btn btn-secondary">
+                                    Kembali
+                                </a>
+                            @endif
                             <!-- Kiri -->
-                            <a href="{{ route('murid') }}" class="btn btn-secondary">
-                                Batal
-                            </a>
+
 
                             <!-- Kanan -->
                             <button type="submit" class="btn btn-primary">
@@ -261,9 +267,7 @@
     <script>
         document.getElementById('formStep1').addEventListener('submit', function(e) {
             e.preventDefault();
-
             let form = this;
-
             Swal.fire({
                 title: 'Yakin?',
                 text: "Data akan disimpan",
@@ -273,7 +277,7 @@
                 cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
-
+                    $('#loader').css('display', 'flex');
                     // popup kedua
                     Swal.fire({
                         icon: 'success',
@@ -290,5 +294,35 @@
                 }
             });
         });
+
+        function batal() {
+            Swal.fire({
+                title: 'Anda yakin?',
+                text: 'Apakah anda yakin untuk membatalkan?',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Tidak',
+                confirmButtonText: 'Ya, batalkan!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "{{ route('murid.batal') }}",
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            "id": "{{ $murid->id_person }}"
+                        },
+                        success: function(hasil) {
+                            $('#loader').css('display', 'none');
+                            let url = "{{ route('murid') }}";
+
+                            window.location.href = url;
+                        }
+                    });
+                }
+            });
+        }
     </script>
 @endpush

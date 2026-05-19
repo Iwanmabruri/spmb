@@ -18,7 +18,7 @@ class MuridController extends Controller
 {
     public function index()
     {
-        $murid = Murid::latest()->get();
+        $murid = Murid::latest()->where('status', '1')->get();
         return view('admin.siswa.index', compact('murid'));
     }
 
@@ -465,6 +465,7 @@ class MuridController extends Controller
                 'berat_badan' => $request->berat_badan,
                 'hoby' => $request->hoby,
                 'cita_cita' => $request->cita_cita,
+                'niup' => $request->niup,
                 'status_step' => 1,
             ]);
 
@@ -644,6 +645,7 @@ class MuridController extends Controller
                     'prov_w' => $request->prov_w,
                     'pos_w' => $request->pos_w,
                     'tgl_daftar' => now(),
+                    'status' => 1,
                     'status_step' => 4,
                 ]);
             } else {
@@ -667,8 +669,7 @@ class MuridController extends Controller
                 ]);
             }
 
-            return redirect()->route('murid')
-                ->with('success', 'Data wali berhasil disimpan');
+            return redirect()->route('murid');
         } catch (\Exception $e) {
 
             return back()
@@ -677,49 +678,27 @@ class MuridController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function batal(Request $request)
+    {
+        $id = $request->id;
+        $murid = Murid::findOrFail($id);
+
+        $murid->delete();
+
+        return response()->json(['success' => true]);
+    }
+
+    public function hapus($id)
     {
         $murid = Murid::findOrFail($id);
 
         // hapus foto jika ada
-        if (
-            $murid->foto_warna_santri &&
-            file_exists(public_path($murid->foto_warna_santri))
-        ) {
-
-            unlink(public_path($murid->foto_warna_santri));
-        }
-
-        $murid->delete();
+        $murid->update([
+            'status' => "0"
+        ]);
 
         return redirect()
             ->route('murid')
             ->with('success', 'Data berhasil dihapus');
     }
-
-    // public function lengkapi($id)
-    // {
-    //     $agama = Agama::all();
-    //     $jurusan = Jurusan::all();
-    //     $pekerjaan = Pekerjaan::all();
-    //     $pendidikan = Pendidikan::all();
-    //     $penghasilan = Penghasilan::all();
-    //     $siswa = Murid::with([
-    //         'agama',
-    //         'desa',
-    //         'kabupaten',
-    //         'jurusan',
-    //         'pekerjaanAyah',
-    //         'pendidikanAyah',
-    //         'penghasilanAyah',
-    //         'pekerjaanIbu',
-    //         'pendidikanIbu',
-    //         'penghasilanIbu',
-    //         'pekerjaanWali',
-    //         'pendidikanWali',
-    //         'penghasilanWali'
-    //     ])->findOrFail($id);
-
-    //     return view('admin.lengkapi', compact('siswa', 'agama', 'jurusan', 'pekerjaan', 'pendidikan', 'penghasilan'));
-    // }
 }
