@@ -73,7 +73,6 @@
                                         <th>NISN</th>
                                         <th>Nama Lengkap</th>
                                         <th>Asal Sekolah</th>
-                                        <th>Tgl Daftar</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -114,9 +113,6 @@
                     },
                     {
                         data: 'asal_sekolah'
-                    },
-                    {
-                        data: 'tgl_daftar'
                     },
                     {
                         data: 'action'
