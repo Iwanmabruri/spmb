@@ -82,21 +82,6 @@ Route::prefix('admin/murid')->group(function () {
     // STEP 1
 
     Route::post('/simpan1', [MuridController::class, 'store1'])->name('murid.store');
-    Route::get('/step1/{id}', [MuridController::class, 'createStep1'])->name('murid.step1');
-    Route::post('/step1', [MuridController::class, 'storeStep1'])->name('murid.store.step1');
-
-    // STEP 2
-    Route::get('/step2/{id}', [MuridController::class, 'step2'])->name('murid.step2');
-    Route::post('/step2/{id}', [MuridController::class, 'storeStep2'])->name('murid.store.step2');
-
-    // STEP 3
-    Route::get('/step3/{id}', [MuridController::class, 'step3'])->name('murid.step3');
-    Route::post('/step3/{id}', [MuridController::class, 'storeStep3'])->name('murid.store.step3');
-
-    //STEP 4
-    Route::get('/step4/{id}', [MuridController::class, 'step4'])->name('murid.step4');
-    Route::post('/step4/{id}', [MuridController::class, 'storeStep4'])->name('murid.store.step4');
-
     Route::get('edit/step1/{id}/{st}', [MuridController::class, 'editstep1'])->name('murid.edit.step1');
     Route::put('update/step1/{id}', [MuridController::class, 'updateStep1'])->name('murid.update.step1');
     Route::get('edit/step2/{id}/{st}', [MuridController::class, 'editstep2'])->name('murid.edit.step2');
