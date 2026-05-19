@@ -346,6 +346,7 @@ class AmbildataController extends Controller
                 'foto_scan_skck' => $fotoData['foto_scan_skck'],
                 'foto_scan_ket_sehat' => $fotoData['foto_scan_ket_sehat'],
 
+                'status' => 1,
                 'tgl_daftar' => now(),
             ]);
             return redirect()

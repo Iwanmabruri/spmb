@@ -44,7 +44,7 @@
                     <div class="text-end">
                         <form action="{{ route('santri.sync') }}" method="POST" id="syncForm">
                             @csrf
-                            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalTambah">Data
+                            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalTambah" disabled>Data
                                 Synchronization
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
