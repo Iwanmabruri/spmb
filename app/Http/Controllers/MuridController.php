@@ -25,7 +25,7 @@ class MuridController extends Controller
 
     public function siswa_data()
     {
-        $siswa = Murid::where('status', '1')->orderBy('id', 'desc')->get();
+        $siswa = Murid::where('status', '1')->orderBy('id_person', 'desc')->get();
 
         return DataTables::of($siswa)
             ->addIndexColumn()
