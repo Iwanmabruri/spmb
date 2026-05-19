@@ -67,7 +67,7 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table text-nowrap mb-0 table-centered table-hover" id="datatable">
-                                <thead class="sticky-top">
+                                <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>NISN</th>
