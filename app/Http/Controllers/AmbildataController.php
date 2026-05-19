@@ -238,8 +238,8 @@ class AmbildataController extends Controller
         $cek = Murid::where('niup', $data['niup'])->first();
 
         if ($cek) {
-            return redirect()->route('siswa.edit', $cek->id_person)
-                ->with('info', 'Data sudah ada');
+            return back()
+                ->with('info', 'Data ' . $cek->nama . ' Sudah terdaftar sebagai murid baru');
         }
 
         $fotoFields = [
@@ -379,14 +379,40 @@ class AmbildataController extends Controller
                 'no_kk' => $request->no_kk,
                 'no_akta' => $request->no_akta,
                 'nisn' => $request->nisn,
-                'agama' => $request->agama_id,
-                'kec' => $request->kec,
-                'desa' => $request->desa,
-                'pos' => $request->pos,
+                'asal_sekolah' => $request->asal_sekolah,
+                'nomor_ijazah' => $request->nomor_ijazah,
+                'agama_id' => $request->agama_id,
+                'kewarganegaraan' => $request->kewarganegaraan,
+                'tinggi_badan' => $request->tinggi_badan,
+                'berat_badan' => $request->berat_badan,
+                'tinggal_di' => $request->tinggal_di,
+                'hoby' => $request->hoby,
+                'cita_cita' => $request->cita_cita,
+                'jenis_daftar' => $request->jenis_daftar,
+                'jurusan_id' => $request->jurusan_id,
+
+                'tmpt_lahir_a' => $request->tmpt_lahir_a,
+                'agama_a' => $request->agama_a,
+                'pndkn_a' => $request->pndkn_a,
+                'pkrjn_a' => $request->pkrjn_a,
+                'penghasilan_a' => $request->penghasilan_a,
+
+                'tmpt_lahir_i' => $request->tmpt_lahir_i,
+                'agama_i' => $request->agama_i,
+                'pndkn_i' => $request->pndkn_i,
+                'pkrjn_i' => $request->pkrjn_i,
+                'penghasilan_i' => $request->penghasilan_i,
+
+                'tmpt_lahir_w' => $request->tmpt_lahir_w,
+                'tgl_lahir_w' => $request->tgl_lahir_w,
+                'agama_w' => $request->agama_w,
+                'pndkn_w' => $request->pndkn_w,
+                'pkrjn_w' => $request->pkrjn_w,
+                'penghasilan_w' => $request->penghasilan_w,
+                'hp_w' => $request->hp_w,
 
             ]);
-
-            $murid->update($request->all());
+            // $murid->update($request->all());
 
             return redirect()
                 ->route('murid')

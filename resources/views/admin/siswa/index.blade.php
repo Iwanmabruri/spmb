@@ -132,7 +132,8 @@
 
                                                 <!-- UPLOAD -->
                                                 <a href="#" class="btn btn-primary btn-icon btn-sm rounded-circle"
-                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Upload Berkas">
+                                                    data-bs-toggle="modal" data-bs-target="#modalUpload{{ $m->id_person }}"
+                                                    title="Upload Berkas">
 
                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                         class="icon icon-tabler icon-tabler-upload" width="16"
@@ -193,82 +194,80 @@
                                                 </button>
                                             </td>
                                         </tbody>
-                                        <div class="modal fade" id="modalUpload{{ $m->id_person }}" tabindex="-1">
-                                            <div class="modal-dialog modal-lg">
-                                                <form action="{{ route('murid.upload.berkas', $m->id_person) }}"
-                                                    method="POST" enctype="multipart/form-data" class="formUpload">
-                                                    @csrf
-
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title">Upload Berkas - {{ $m->nama }}
-                                                            </h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal"></button>
-                                                        </div>
-
-                                                        <div class="modal-body">
-                                                            <div class="row g-3">
-
-                                                                <div class="col-md-4">
-                                                                    <label>Foto Santri</label>
-                                                                    <input type="file" name="foto_warna_santri"
-                                                                        class="form-control">
-                                                                </div>
-
-                                                                <div class="col-md-4">
-                                                                    <label>Foto Wali</label>
-                                                                    <input type="file" name="foto_wali_santri_warna"
-                                                                        class="form-control">
-                                                                </div>
-
-                                                                <div class="col-md-4">
-                                                                    <label>Scan KK</label>
-                                                                    <input type="file" name="foto_scan_kk"
-                                                                        class="form-control">
-                                                                </div>
-
-                                                                <div class="col-md-4">
-                                                                    <label>Scan Akta</label>
-                                                                    <input type="file" name="foto_scan_akta"
-                                                                        class="form-control">
-                                                                </div>
-
-                                                                <div class="col-md-4">
-                                                                    <label>SKCK</label>
-                                                                    <input type="file" name="foto_scan_skck"
-                                                                        class="form-control">
-                                                                </div>
-
-                                                                <div class="col-md-4">
-                                                                    <label>Surat Sehat</label>
-                                                                    <input type="file" name="foto_scan_ket_sehat"
-                                                                        class="form-control">
-                                                                </div>
-
-                                                                <div class="col-md-4">
-                                                                    <label>Ijazah</label>
-                                                                    <input type="file" name="foto_ijazah"
-                                                                        class="form-control">
-                                                                </div>
-
-                                                                <div class="col-md-4">
-                                                                    <label>KIP</label>
-                                                                    <input type="file" name="file_kip"
-                                                                        class="form-control">
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-success">Upload</button>
-                                                        </div>
-
-                                                    </div>
-                                            </div>
-                                        </div>
                                     </form>
+                                    <div class="modal fade" id="modalUpload{{ $m->id_person }}" tabindex="-1">
+                                        <div class="modal-dialog modal-lg">
+
+                                            <form action="{{ route('murid.upload.berkas', $m->id_person) }}"
+                                                method="POST" enctype="multipart/form-data" class="formUpload">
+
+                                                @csrf
+
+                                                <div class="modal-content">
+
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">
+                                                            Upload Berkas - {{ $m->nama }}
+                                                        </h5>
+
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <div class="row g-3">
+
+                                                            <div class="col-md-4">
+                                                                <label>Pas Foto Murid</label>
+                                                                <input type="file" name="foto_warna_santri"
+                                                                    class="form-control">
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <label>Scan KK Terbaru</label>
+                                                                <input type="file" name="foto_scan_kk"
+                                                                    class="form-control">
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <label>Scan Akta Kelahiran</label>
+                                                                <input type="file" name="foto_scan_akta"
+                                                                    class="form-control">
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <label>Surat Keterangan Lulus</label>
+                                                                <input type="file" name="foto_skl"
+                                                                    class="form-control">
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <label>Ijazah</label>
+                                                                <input type="file" name="foto_ijazah"
+                                                                    class="form-control">
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <label>Surat Keterangan Kelakuan Baik</label>
+                                                                <input type="file" name="foto_scan_skck"
+                                                                    class="form-control">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-success">
+                                                            Upload
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+                                    </div>
                                 @endforeach
                             </table>
                         </div>
@@ -326,7 +325,7 @@
         });
     </script>
     <script>
-        document.querySelectorAll('[data-tooltip="true"]').forEach(function(el) {
+        document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function(el) {
             new bootstrap.Tooltip(el);
         });
     </script>

@@ -334,53 +334,71 @@ class MuridController extends Controller
 
             // FOTO SANTRI
             if ($request->hasFile('foto_warna_santri')) {
-                $data['foto_warna_santri'] = $request->file('foto_warna_santri')
-                    ->store('berkas/foto', 'public');
-            }
 
-            // FOTO WALI
-            if ($request->hasFile('foto_wali_santri_warna')) {
-                $data['foto_wali_santri_warna'] = $request->file('foto_wali_santri_warna')
-                    ->store('berkas/foto', 'public');
+                $file = $request->file('foto_warna_santri');
+                $namaFile = time() . '_foto.' . $file->getClientOriginalExtension();
+
+                $file->move(public_path('foto_warna_santri'), $namaFile);
+
+                $data['foto_warna_santri'] = 'foto_warna_santri/' . $namaFile;
             }
 
             // KK
             if ($request->hasFile('foto_scan_kk')) {
-                $data['foto_scan_kk'] = $request->file('foto_scan_kk')
-                    ->store('berkas/dokumen', 'public');
+
+                $file = $request->file('foto_scan_kk');
+                $namaFile = time() . '_kk.' . $file->getClientOriginalExtension();
+
+                $file->move(public_path('foto_scan_kk'), $namaFile);
+
+                $data['foto_scan_kk'] = 'foto_scan_kk/' . $namaFile;
             }
 
             // AKTA
             if ($request->hasFile('foto_scan_akta')) {
-                $data['foto_scan_akta'] = $request->file('foto_scan_akta')
-                    ->store('berkas/dokumen', 'public');
+
+                $file = $request->file('foto_scan_akta');
+                $namaFile = time() . '_akta.' . $file->getClientOriginalExtension();
+
+                $file->move(public_path('foto_scan_akta'), $namaFile);
+
+                $data['foto_scan_akta'] = 'foto_scan_akta/' . $namaFile;
             }
 
-            // SKCK
-            if ($request->hasFile('foto_scan_skck')) {
-                $data['foto_scan_skck'] = $request->file('foto_scan_skck')
-                    ->store('berkas/dokumen', 'public');
-            }
+            // SKL
+            if ($request->hasFile('foto_skl')) {
 
-            // KET SEHAT
-            if ($request->hasFile('foto_scan_ket_sehat')) {
-                $data['foto_scan_ket_sehat'] = $request->file('foto_scan_ket_sehat')
-                    ->store('berkas/dokumen', 'public');
+                $file = $request->file('foto_skl');
+                $namaFile = time() . '_skl.' . $file->getClientOriginalExtension();
+
+                $file->move(public_path('foto_skl'), $namaFile);
+
+                $data['foto_skl'] = 'foto_skl/' . $namaFile;
             }
 
             // IJAZAH
             if ($request->hasFile('foto_ijazah')) {
-                $data['foto_ijazah'] = $request->file('foto_ijazah')
-                    ->store('berkas/dokumen', 'public');
+
+                $file = $request->file('foto_ijazah');
+                $namaFile = time() . '_ijazah.' . $file->getClientOriginalExtension();
+
+                $file->move(public_path('foto_ijazah'), $namaFile);
+
+                $data['foto_ijazah'] = 'foto_ijazah/' . $namaFile;
             }
 
-            // KIP
-            if ($request->hasFile('file_kip')) {
-                $data['file_kip'] = $request->file('file_kip')
-                    ->store('berkas/dokumen', 'public');
+            // SKCK
+            if ($request->hasFile('foto_scan_skck')) {
+
+                $file = $request->file('foto_scan_skck');
+                $namaFile = time() . '_skck.' . $file->getClientOriginalExtension();
+
+                $file->move(public_path('foto_scan_skck'), $namaFile);
+
+                $data['foto_scan_skck'] = 'foto_scan_skck/' . $namaFile;
             }
 
-            // 🔥 SIMPAN KE DATABASE
+            // SIMPAN DB
             $murid->update($data);
 
             return back()->with('success', 'Berkas berhasil diupload');

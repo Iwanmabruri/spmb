@@ -321,6 +321,24 @@
         </script>
     @endif
 
+    @if (session('info'))
+        <script>
+            Swal.fire({
+                icon: 'info',
+                title: 'Informasi',
+                text: '{{ session('info') }}',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    window.location.href = "{{ route('murid') }}";
+
+                }
+            });
+        </script>
+    @endif
+
     <script>
         $('#cariForm').on('submit', function() {
             $('#loader').css('display', 'flex');

@@ -25,171 +25,234 @@
                 </div>
             </div>
         </div>
+        @php
+            if ($murid->foto_warna_santri) {
+                $foto = asset($murid->foto_warna_santri);
+            } else {
+                if ($murid->jenis_kelamin == 'P' || strtolower($murid->jenis_kelamin) == 'perempuan') {
+                    $foto = asset('images/pr.png');
+                } else {
+                    $foto = asset('images/lk.png');
+                }
+            }
+        @endphp
         <!-- row -->
         <div class="row justify-content-center">
             <div class="col-lg-12">
-                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-                    <div class="card-body p-0">
-                        <div class="row g-0">
-                            {{-- LEFT --}}
-                            <div class="col-lg-4 border-end bg-light">
+                <div class="card border-0 shadow-sm rounded-4">
 
-                                @php
-                                    $foto = $murid->foto_warna_santri
-                                        ? asset($murid->foto_warna_santri)
-                                        : asset('images/default-user.png');
-                                @endphp
+                    <div class="card-body p-4 p-lg-5">
 
-                                <div class="p-4 text-center">
+                        <div class="row g-5">
 
-                                    <img src="{{ $foto }}" class="rounded-4 shadow-sm mb-4"
-                                        style="width: 220px; height: 300px; object-fit: cover;">
+                            {{-- FOTO --}}
+                            <div class="col-lg-3 text-center">
 
-                                    <h3 class="fw-bold mb-1">
-                                        {{ strtoupper($murid->nama) }}
-                                    </h3>
+                                <img src="{{ $foto }}" class="rounded-4 shadow-sm mb-3"
+                                    style="width: 200px; height: 260px; object-fit: cover;">
 
-                                    <div class="text-muted mb-3">
-                                        NISN :
-                                        {{ $murid->nisn ?? '-' }}
-                                    </div>
-
-                                    {{-- <span class="badge bg-success px-3 py-2">
-                                        Data Murid Baru 2026
-                                    </span> --}}
-
-                                </div>
                             </div>
 
-                            {{-- RIGHT --}}
-                            <div class="col-lg-8">
+                            {{-- BIODATA --}}
+                            <div class="col-lg-9">
 
-                                <div class="p-4 p-lg-5">
+                                {{-- HEADER --}}
+                                <div class="mb-4">
 
-                                    <div class="d-flex align-items-center mb-4">
-                                        <div>
-                                            <h4 class="fw-bold mb-0">
-                                                Biodata Murid
-                                            </h4>
+                                    <h2 class="fw-bold mb-1">
+                                        {{ strtoupper($murid->nama) }}
+                                    </h2>
 
-                                            <small class="text-muted">
-                                                Informasi data utama Murid
-                                            </small>
-                                        </div>
+                                    <div class="text-muted">
+                                        NISN : {{ $murid->nisn ?? '-' }}
                                     </div>
 
-                                    <div class="row">
+                                </div>
 
-                                        {{-- LEFT INFO --}}
-                                        <div class="col-md-6">
+                                {{-- ISI --}}
+                                <div class="row">
 
-                                            <div class="mb-4">
-                                                <label class="text-muted small">
-                                                    NIK
-                                                </label>
+                                    {{-- KIRI --}}
+                                    <div class="col-md-6">
 
-                                                <div class="fw-semibold">
-                                                    {{ $murid->nik }}
-                                                </div>
+                                        <div class="mb-4">
+                                            <small class="text-muted d-block">
+                                                NIK
+                                            </small>
+
+                                            <div class="fw-semibold">
+                                                {{ $murid->nik }}
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <small class="text-muted d-block">
+                                                Tempat, Tanggal Lahir
+                                            </small>
+
+                                            <div class="fw-semibold">
+                                                {{ $murid->tempat_lahir }},
+                                                {{ \Carbon\Carbon::parse($murid->tanggal_lahir)->locale('id')->translatedFormat('d F Y') }}
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <small class="text-muted d-block">
+                                                Asal Sekolah
+                                            </small>
+
+                                            <div class="fw-semibold">
+                                                {{ $murid->asal_sekolah ?? '-' }}
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <small class="text-muted d-block">
+                                                Jurusan
+                                            </small>
+
+                                            <div class="fw-semibold">
+                                                {{ $murid->jurusan->program_keahlian ?? '-' }}
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    {{-- KANAN --}}
+                                    <div class="col-md-6">
+
+                                        <div class="mb-4">
+                                            <small class="text-muted d-block">
+                                                Jenis Kelamin
+                                            </small>
+
+                                            <div class="fw-semibold">
+                                                {{ $murid->jenis_kelamin }}
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <small class="text-muted d-block">
+                                                Agama
+                                            </small>
+
+                                            <div class="fw-semibold">
+                                                {{ $murid->agama->nama_agama ?? '-' }}
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <small class="text-muted d-block">
+                                                Status Anak
+                                            </small>
+
+                                            <div class="fw-semibold">
+                                                {{ $murid->dlm_klrg }}
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <small class="text-muted d-block">
+                                                Anak Ke
+                                            </small>
+
+                                            <div class="fw-semibold">
+                                                {{ $murid->ank_ke }}
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        {{-- ALAMAT + STATUS BERKAS --}}
+                        <div class="border-top mt-4 pt-4">
+
+                            <div class="row g-4 align-items-start">
+
+                                {{-- ALAMAT --}}
+                                <div class="col-lg-8">
+
+                                    <small class="text-muted d-block mb-2">
+                                        Alamat
+                                    </small>
+
+                                    <div class="fw-semibold mb-2">
+                                        {{ $murid->alamat_lengkap }}
+                                    </div>
+
+                                    <div class="text-muted">
+                                        {{ $murid->desaDetail->name ?? '-' }},
+                                        {{ $murid->kecamatan['name'] ?? '-' }},
+                                        {{ $murid->kabupaten['name'] ?? '-' }},
+                                        {{ $murid->provinsi['name'] ?? '-' }}
+                                    </div>
+
+                                </div>
+
+                                {{-- STATUS BERKAS --}}
+                                <div class="col-lg-4">
+
+                                    @php
+
+                                        $totalBerkas = 6;
+
+                                        $berkasLengkap = collect([
+                                            $murid->foto_scan_kk,
+                                            $murid->foto_scan_akta,
+                                            $murid->foto_warna_santri,
+                                            $murid->foto_skl,
+                                            $murid->foto_ijazah,
+                                            $murid->foto_scan_skck,
+                                        ])
+                                            ->filter()
+                                            ->count();
+
+                                    @endphp
+
+                                    <div class="border rounded-4 p-3 bg-light h-100">
+
+                                        <div class="d-flex justify-content-between align-items-center">
+
+                                            <div>
+
+                                                <small class="text-muted d-block">
+                                                    Status Berkas
+                                                </small>
+
+                                                @if ($berkasLengkap == $totalBerkas)
+                                                    <div class="fw-semibold text-success">
+                                                        Berkas Lengkap
+                                                    </div>
+                                                @else
+                                                    <div class="fw-semibold text-warning">
+                                                        Berkas Belum Lengkap
+                                                    </div>
+                                                @endif
+
                                             </div>
 
-                                            <div class="mb-4">
-                                                <label class="text-muted small">
-                                                    Tempat, Tanggal Lahir
-                                                </label>
+                                            <div class="text-end">
 
-                                                <div class="fw-semibold">
-                                                    {{ $murid->tempat_lahir }},
-                                                    {{ \Carbon\Carbon::parse($murid->tanggal_lahir)->locale('id')->translatedFormat('d F Y') }}
+                                                <div
+                                                    class="badge {{ $berkasLengkap == $totalBerkas ? 'bg-success' : 'bg-warning text-dark' }} px-3 py-2">
+
+                                                    {{ $berkasLengkap }}/{{ $totalBerkas }}
+
                                                 </div>
-                                            </div>
 
-                                            <div class="mb-4">
-                                                <label class="text-muted small">
-                                                    Jenis Kelamin
-                                                </label>
-
-                                                <div class="fw-semibold">
-                                                    {{ $murid->jenis_kelamin }}
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-4">
-                                                <label class="text-muted small">
-                                                    Status Anak
-                                                </label>
-
-                                                <div class="fw-semibold">
-                                                    {{ $murid->dlm_klrg }}
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-4">
-                                                <label class="text-muted small">
-                                                    Anak Ke
-                                                </label>
-
-                                                <div class="fw-semibold">
-                                                    {{ $murid->ank_ke }}
-                                                </div>
                                             </div>
 
                                         </div>
 
-                                        {{-- RIGHT INFO --}}
-                                        <div class="col-md-6">
-
-                                            <div class="mb-4">
-                                                <label class="text-muted small">
-                                                    Agama
-                                                </label>
-
-                                                <div class="fw-semibold">
-                                                    {{ $murid->agama->nama_agama ?? '-' }}
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-4">
-                                                <label class="text-muted small">
-                                                    Asal Sekolah
-                                                </label>
-
-                                                <div class="fw-semibold">
-                                                    {{ $murid->asal_sekolah ?? '-' }}
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-4">
-                                                <label class="text-muted small">
-                                                    Alamat
-                                                </label>
-
-                                                <div class="fw-semibold">
-                                                    {{ $murid->alamat_lengkap }}
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-4">
-                                                <label class="text-muted small">
-                                                    Tinggal Di
-                                                </label>
-
-                                                <div class="fw-semibold">
-                                                    {{ $murid->tinggal_di }}
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-4">
-                                                <label class="text-muted small">
-                                                    Jurusan
-                                                </label>
-
-                                                <div class="fw-semibold">
-                                                    {{ $murid->jurusan->program_keahlian ?? '-' }}
-                                                </div>
-                                            </div>
-
-                                        </div>
+                                        {{-- INFO --}}
+                                        <small class="text-muted d-block mt-3">
+                                            Cek detail berkas pada bagian upload berkas di bawah halaman ini.
+                                        </small>
 
                                     </div>
 
@@ -204,161 +267,288 @@
                 </div>
 
             </div>
-            <div class="card shadow-sm mt-3">
-                <div class="card-body">
 
-                    <ul class="nav nav-tabs mb-3" role="tablist">
-                        <li class="nav-item">
-                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#diri">Data
-                                Diri</button>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#ortu">Orang Tua</button>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#wali">Wali</button>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#berkas">Berkas</button>
-                        </li>
-                    </ul>
+        </div>
+        <div class="card shadow-sm mt-3">
+            <div class="card-body">
 
-                    <div class="tab-content">
+                <ul class="nav nav-tabs mb-3" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#diri">Data
+                            Diri</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#ortu">Orang Tua</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#wali">Wali</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#berkas">Berkas</button>
+                    </li>
+                </ul>
 
-                        {{-- DATA DIRI --}}
-                        <div class="tab-pane fade show active" id="diri">
-                            <table class="table table-bordered">
-                                <tr>
-                                    <td>No KK</td>
-                                    <td>{{ $murid->no_kk }}</td>
-                                </tr>
-                                <tr>
-                                    <td>No Registrasi Akta</td>
-                                    <td>{{ $murid->no_akta }}</td>
-                                </tr>
-                                <tr>
-                                    <td>No Induk Umum Pesantren</td>
-                                    <td>{{ $murid->niup ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Kewarganegaraan</td>
-                                    <td>{{ $murid->kewarganegaraan ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Jumlah Saudara</td>
-                                    <td>{{ $murid->sdr ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Hobi</td>
-                                    <td>{{ $murid->hoby }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Cita-cita</td>
-                                    <td>{{ $murid->cita_cita }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Tinggi / Berat</td>
-                                    <td>{{ $murid->tinggi_badan }} cm / {{ $murid->berat_badan }} kg</td>
-                                </tr>
-                            </table>
+                <div class="tab-content">
+
+                    {{-- DATA DIRI --}}
+                    <div class="tab-pane fade show active" id="diri">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>No KK</td>
+                                <td>{{ $murid->no_kk }}</td>
+                            </tr>
+                            <tr>
+                                <td>No Registrasi Akta</td>
+                                <td>{{ $murid->no_akta }}</td>
+                            </tr>
+                            <tr>
+                                <td>No Induk Umum Pesantren</td>
+                                <td>{{ $murid->niup ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Kewarganegaraan</td>
+                                <td>{{ $murid->kewarganegaraan ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Jumlah Saudara</td>
+                                <td>{{ $murid->sdr ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Hobi</td>
+                                <td>{{ $murid->hoby }}</td>
+                            </tr>
+                            <tr>
+                                <td>Cita-cita</td>
+                                <td>{{ $murid->cita_cita }}</td>
+                            </tr>
+                            <tr>
+                                <td>Tinggi / Berat</td>
+                                <td>{{ $murid->tinggi_badan }} cm / {{ $murid->berat_badan }} kg</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    {{-- ORANG TUA --}}
+                    <div class="tab-pane fade" id="ortu">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th colspan="2">BIODATA AYAH</th>
+                            </tr>
+                            <tr>
+                                <td>NIK</td>
+                                <td>{{ $murid->nik_a }}</td>
+                            </tr>
+                            <tr>
+                                <td>Nama</td>
+                                <td>{{ $murid->nm_a }}</td>
+                            </tr>
+                            <tr>
+                                <td>Pendidikan</td>
+                                <td>{{ $murid->pendidikanAyah->jenjang ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Pekerjaan</td>
+                                <td>{{ $murid->pekerjaanAyah->nama_pekerjaan ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Penghasilan</td>
+                                <td>{{ $murid->penghasilanAyah->kategori ?? '-' }}</td>
+                            </tr>
+
+                            <tr>
+                                <th colspan="2">BIODATA IBU</th>
+                            </tr>
+                            <tr>
+                                <td>NIK</td>
+                                <td>{{ $murid->nik_i }}</td>
+                            </tr>
+                            <tr>
+                                <td>Nama</td>
+                                <td>{{ $murid->nm_i }}</td>
+                            </tr>
+                            <tr>
+                                <td>Pendidikan</td>
+                                <td>{{ $murid->pendidikanIbu->jenjang ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Pekerjaan</td>
+                                <td>{{ $murid->pekerjaanIbu->nama_pekerjaan ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Penghasilan</td>
+                                <td>{{ $murid->penghasilanIbu->kategori ?? '-' }}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    {{-- WALI --}}
+                    <div class="tab-pane fade" id="wali">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>NIK</td>
+                                <td>{{ $murid->nik_w }}</td>
+                            </tr>
+                            <tr>
+                                <td>Nama</td>
+                                <td>{{ $murid->nm_w }}</td>
+                            </tr>
+                            <tr>
+                                <td>Pendidikan</td>
+                                <td>{{ $murid->pendidikanWali->jenjang ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Pekerjaan</td>
+                                <td>{{ $murid->pekerjaanWali->nama_pekerjaan ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Penghasilan</td>
+                                <td>{{ $murid->penghasilanWali->kategori ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>NO. HP</td>
+                                <td>{{ $murid->hp_w }}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    {{-- BERKAS --}}
+                    <div class="tab-pane fade" id="berkas">
+                        <div class="row g-3">
+
+                            {{-- KK --}}
+                            <div class="col-md-6 col-lg-4 text-center">
+
+                                <div class="border rounded-4 p-3 bg-light">
+
+                                    <div class="fw-semibold mb-2">Kartu Keluarga</div>
+
+                                    @php
+                                        $kk = $murid->foto_scan_kk ?: 'images/notfound.png';
+                                    @endphp
+
+                                    <img src="{{ asset($kk) }}" class="img-fluid rounded-3 shadow-sm"
+                                        style="height:150px; object-fit:cover; cursor:pointer;"
+                                        onclick="openPreview('{{ asset($kk) }}', 'Kartu Keluarga')">
+
+                                </div>
+
+                            </div>
+
+                            {{-- AKTA --}}
+                            <div class="col-md-6 col-lg-4 text-center">
+
+                                <div class="border rounded-4 p-3 bg-light">
+
+                                    <div class="fw-semibold mb-2">Akta Kelahiran</div>
+
+                                    @php
+                                        $akta = $murid->foto_scan_akta ?: 'images/notfound.png';
+                                    @endphp
+
+                                    <img src="{{ asset($akta) }}" class="img-fluid rounded-3 shadow-sm"
+                                        style="height:150px; object-fit:cover; cursor:pointer;"
+                                        onclick="openPreview('{{ asset($akta) }}', 'Akta Kelahiran')">
+
+                                </div>
+
+                            </div>
+
+                            {{-- IJAZAH --}}
+                            <div class="col-md-6 col-lg-6 text-center">
+
+                                <div class="border rounded-4 p-3 bg-light">
+
+                                    <div class="fw-semibold mb-2">Ijazah / SKL</div>
+
+                                    @php
+                                        $ijazah = $murid->foto_ijazah ?: 'images/notfound.png';
+                                    @endphp
+
+                                    <img src="{{ asset($ijazah) }}" class="img-fluid rounded-3 shadow-sm"
+                                        style="height:150px; object-fit:cover; cursor:pointer;"
+                                        onclick="openPreview('{{ asset($ijazah) }}', 'Ijazah / SKL')">
+
+                                </div>
+
+                            </div>
+
+                            {{-- SKL --}}
+                            <div class="col-md-6 col-lg-6 text-center">
+
+                                <div class="border rounded-4 p-3 bg-light">
+
+                                    <div class="fw-semibold mb-2">Surat Keterangan Lulus</div>
+
+                                    @php
+                                        $skl = $murid->foto_skl ?: 'images/notfound.png';
+                                    @endphp
+
+                                    <img src="{{ asset($skl) }}" class="img-fluid rounded-3 shadow-sm"
+                                        style="height:150px; object-fit:cover; cursor:pointer;"
+                                        onclick="openPreview('{{ asset($skl) }}', 'Surat Keterangan Lulus')">
+
+                                </div>
+
+                            </div>
+
+                            {{-- SKKB --}}
+                            <div class="col-md-6 col-lg-4 text-center">
+
+                                <div class="border rounded-4 p-3 bg-light">
+
+                                    <div class="fw-semibold mb-2">SKCK / SKKB</div>
+
+                                    @php
+                                        $skck = $murid->foto_scan_skck ?: 'images/notfound.png';
+                                    @endphp
+
+                                    <img src="{{ asset($skck) }}" class="img-fluid rounded-3 shadow-sm"
+                                        style="height:150px; object-fit:cover; cursor:pointer;"
+                                        onclick="openPreview('{{ asset($skck) }}', 'SKCK / SKKB')">
+
+                                </div>
+
+                            </div>
+
                         </div>
-
-                        {{-- ORANG TUA --}}
-                        <div class="tab-pane fade" id="ortu">
-                            <table class="table table-bordered">
-                                <tr>
-                                    <th colspan="2">BIODATA AYAH</th>
-                                </tr>
-                                <tr>
-                                    <td>NIK</td>
-                                    <td>{{ $murid->nik_a }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Nama</td>
-                                    <td>{{ $murid->nm_a }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Pendidikan</td>
-                                    <td>{{ $murid->pendidikanAyah->jenjang ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Pekerjaan</td>
-                                    <td>{{ $murid->pekerjaanAyah->nama_pekerjaan ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Penghasilan</td>
-                                    <td>{{ $murid->penghasilanAyah->kategori ?? '-' }}</td>
-                                </tr>
-
-                                <tr>
-                                    <th colspan="2">BIODATA IBU</th>
-                                </tr>
-                                <tr>
-                                    <td>NIK</td>
-                                    <td>{{ $murid->nik_i }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Nama</td>
-                                    <td>{{ $murid->nm_i }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Pendidikan</td>
-                                    <td>{{ $murid->pendidikanIbu->jenjang ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Pekerjaan</td>
-                                    <td>{{ $murid->pekerjaanIbu->nama_pekerjaan ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Penghasilan</td>
-                                    <td>{{ $murid->penghasilanIbu->kategori ?? '-' }}</td>
-                                </tr>
-                            </table>
-                        </div>
-
-                        {{-- WALI --}}
-                        <div class="tab-pane fade" id="wali">
-                            <table class="table table-bordered">
-                                <tr>
-                                    <td>NIK</td>
-                                    <td>{{ $murid->nik_w }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Nama</td>
-                                    <td>{{ $murid->nm_w }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Pendidikan</td>
-                                    <td>{{ $murid->pendidikanWali->jenjang ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Pekerjaan</td>
-                                    <td>{{ $murid->pekerjaanWali->nama_pekerjaan ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Penghasilan</td>
-                                    <td>{{ $murid->penghasilanWali->kategori ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>NO. HP</td>
-                                    <td>{{ $murid->hp_w }}</td>
-                                </tr>
-                            </table>
-                        </div>
-
-                        {{-- BERKAS --}}
-                        <div class="tab-pane fade" id="berkas">
-                            <ul>
-                                <li>KK: {{ $murid->foto_scan_kk ? '✔' : '❌' }}</li>
-                                <li>Akta: {{ $murid->foto_scan_akta ? '✔' : '❌' }}</li>
-                                <li>Ijazah: {{ $murid->foto_ijazah ? '✔' : '❌' }}</li>
-                                <li>KIP: {{ $murid->file_kip ? '✔' : '❌' }}</li>
-                            </ul>
-                        </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="previewModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+
+            <div class="modal-content bg-dark">
+
+                <div class="modal-header border-0">
+                    <h5 class="modal-title text-white" id="previewTitle">Preview</h5>
+
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body text-center">
+
+                    <img id="previewImage" class="img-fluid rounded" style="max-height:75vh;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 @endsection
+@push('scripts')
+    <script>
+        function openPreview(image, title) {
+            document.getElementById('previewImage').src = image;
+            document.getElementById('previewTitle').innerText = title;
+
+            let modal = new bootstrap.Modal(document.getElementById('previewModal'));
+            modal.show();
+        }
+    </script>
+@endpush

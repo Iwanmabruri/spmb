@@ -82,6 +82,7 @@ class Murid extends Model
         'foto_scan_skck',
         'foto_scan_ket_sehat',
         'foto_ijazah',
+        'foto_skl',
         'file_kip',
 
         'status',
@@ -195,5 +196,10 @@ class Murid extends Model
     public function desa()
     {
         return $this->belongsTo(Desa::class, 'desa');
+    }
+
+    public function desaDetail()
+    {
+        return $this->belongsTo(Desa::class, 'desa', 'id');
     }
 }

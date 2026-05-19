@@ -66,14 +66,14 @@
                                                     class="form-control">
                                             </div>
 
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <label class="form-label">Nomor Ijazah</label>
                                                 <input type="text" name="nomor_ijazah"
                                                     value="{{ old('nomor_ijazah', $murid->nomor_ijazah ?? '') }}"
                                                     class="form-control" required>
                                             </div>
 
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <label class="form-label">Agama</label>
                                                 <select name="agama_id" class="form-select">
                                                     <option value="">-- Pilih --</option>
@@ -102,7 +102,7 @@
                                                 <input type="number" name="berat_badan" class="form-control">
                                             </div>
 
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <label class="form-label">Tinggal Di</label>
                                                 <select name="tinggal_di" class="form-select" required>
                                                     <option value="">-- Pilih --</option>
@@ -123,6 +123,15 @@
                                             <div class="col-md-3">
                                                 <label class="form-label">Cita-cita</label>
                                                 <input type="text" name="cita_cita" class="form-control">
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <label class="form-label">Jenis Daftar</label>
+                                                <select name="jenis_daftar" class="form-select">
+                                                    <option value="">-- Pilih --</option>
+                                                    <option value="BARU">BARU</option>
+                                                    <option value="PINDAH">PINDAH</option>
+                                                </select>
                                             </div>
 
                                             <div class="col-md-3">
