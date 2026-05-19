@@ -1291,9 +1291,11 @@
         <script src="{{ asset('assets_admin') }}/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
         <script src="{{ asset('assets_admin') }}/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('assets_admin') }}/libs/simplebar/dist/simplebar.min.js"></script>
+        <script src="{{ asset('assets_admin') }}/parsleyjs/parsley.min.js"></script>
+        <script src="{{ asset('assets_admin') }}/parsleyjs/i18n/id.js"></script>
         <!-- Theme JS -->
         <script src="{{ asset('assets_admin') }}/js/theme.min.js"></script>
-
+        <link rel="stylesheet" href="{{ asset('assets_admin') }}/parsleyjs/parsley.css" />
         <!-- jsvectormap -->
         <script src="{{ asset('assets_admin') }}/js/vendors/sidebarnav.js"></script>
         <script src="{{ asset('assets_admin') }}/libs/jsvectormap/dist/js/jsvectormap.min.js"></script>

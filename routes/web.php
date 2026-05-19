@@ -24,6 +24,9 @@ Route::put('/banner/update/{id}', [HomeController::class, 'updateBanner'])->name
 Route::delete('/banner/delete/{id}', [HomeController::class, 'destroyBanner'])->name('banner.destroy');
 
 Route::get('/users', [UserController::class, 'userData'])->name('user.data');
+Route::get('/users/data', [UserController::class, 'getUserData'])->name('user.data.get');
+Route::post('/create_user', [UserController::class, 'registeruser'])->name('create_user');
+Route::post('/users/delete', [UserController::class, 'hapus'])->name('user.delete');
 
 Route::get('/mitra', [HomeController::class, 'indexMitra'])->name('mitra.index');
 Route::post('/mitra/store', [HomeController::class, 'storeMitra'])->name('mitra.store');
