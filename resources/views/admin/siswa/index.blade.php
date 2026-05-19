@@ -106,7 +106,7 @@
                         searchable: false
                     },
                     {
-                        data: 'niup'
+                        data: 'nisn'
                     },
                     {
                         data: 'nama'
