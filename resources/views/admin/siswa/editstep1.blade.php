@@ -38,19 +38,25 @@
                             <input hidden name="st" value="{{ $st }}">
                             <div class="row g-3">
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label class="form-label">Nama Lengkap</label>
                                     <input type="text" name="nama" value="{{ $murid->nama }}" class="form-control"
                                         required>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
+                                    <label class="form-label">NIUP</label>
+                                    <input type="number" name="niup" value="{{ $murid->niup }}" class="form-control"
+                                        required>
+                                </div>
+
+                                <div class="col-md-3">
                                     <label class="form-label">NO KK</label>
                                     <input type="number" name="no_kk" value="{{ $murid->no_kk }}" class="form-control"
                                         required>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label class="form-label">NIK</label>
                                     <input type="number" name="nik" value="{{ $murid->nik }}" class="form-control"
                                         required>
@@ -132,8 +138,8 @@
 
                                 <div class="col-md-2">
                                     <label class="form-label">Anak ke</label>
-                                    <input type="number" name="ank_ke" value="{{ old('ank_ke', $murid->ank_ke ?? '') }}"
-                                        class="form-control">
+                                    <input type="number" name="ank_ke"
+                                        value="{{ old('ank_ke', $murid->ank_ke ?? '') }}" class="form-control">
                                 </div>
 
                                 <div class="col-md-2">
