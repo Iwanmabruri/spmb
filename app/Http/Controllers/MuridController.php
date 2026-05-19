@@ -30,7 +30,7 @@ class MuridController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $btn = '<a href="' . route('murid.detail', ['id' => $row->id_person]) . '"
-                                                    class="btn btn-info btn-icon btn-sm rounded-circle text-white"
+                                                    class="btn btn-info btn-icon btn-sm me-1 rounded-circle text-white"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Detail">
 
                                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +47,7 @@ class MuridController extends Controller
 
                                                 </a>';
                 $btn .= '<a href="' . route('murid.edit.step1', [$row->id_person, 'e']) . '"
-                                                    class="btn btn-warning btn-icon btn-sm rounded-circle text-white"
+                                                    class="btn btn-warning btn-icon btn-sm me-1 rounded-circle text-white"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
 
                                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -65,8 +65,7 @@ class MuridController extends Controller
                                                     </svg>
 
                                                 </a>';
-                $btn .= '<a href="#" class="btn btn-primary btn-icon btn-sm rounded-circle"
-                                                    data-bs-toggle="modal" data-bs-target="#modalUpload' . $row->id_person . '"
+                $btn .= '<button class="btn btn-primary btn-icon btn-sm me-1 rounded-circle btUpload" data-id="' . $row->id_person . '"
                                                     title="Upload Berkas">
 
                                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -82,9 +81,9 @@ class MuridController extends Controller
 
                                                     </svg>
 
-                                                </a>';
+                                                </button>';
                 $btn .= '<a href="' . route('murid.print', $row->id_person) . '" target="_blank"
-                                                    class="btn btn-success btn-icon btn-sm rounded-circle"
+                                                    class="btn btn-success btn-icon btn-sm me-1 rounded-circle"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Print">
 
                                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -104,8 +103,7 @@ class MuridController extends Controller
 
                                                 </a>';
                 $btn .= '<button type="button"
-                                                    class="btn btn-danger btn-icon btn-sm rounded-circle"
-                                                    onclick="" data-bs-toggle="tooltip"
+                                                    class="btn btn-danger btn-icon btn-smS rounded-circle btHapus" data-id="' . $row->id_person . '" data-bs-toggle="tooltip"
                                                     data-bs-placement="top" title="Hapus">
 
                                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -185,9 +183,15 @@ class MuridController extends Controller
         return view('admin.siswa.detail', compact('murid'));
     }
 
-    public function uploadBerkas(Request $request, $id)
+    public function upload($id)
     {
-        $murid = Murid::findOrFail($id);
+        $data = Murid::findOrFail($id);
+        return response()->json($data);
+    }
+
+    public function uploadBerkas(Request $request)
+    {
+        $murid = Murid::findOrFail($request->id_person);
 
         try {
 
@@ -549,17 +553,14 @@ class MuridController extends Controller
         return response()->json(['success' => true]);
     }
 
-    public function hapus($id)
-    {
-        $murid = Murid::findOrFail($id);
 
-        // hapus foto jika ada
-        $murid->update([
-            'status' => "0"
+
+    public function hapus(Request $request)
+    {
+        Murid::where('id_person', $request->id)->update([
+            'status' => '0'
         ]);
 
-        return redirect()
-            ->route('murid')
-            ->with('success', 'Data berhasil dihapus');
+        return response()->json(['status' => 'success', 'message' => 'Data siswa berhasil dihapus.']);
     }
 }

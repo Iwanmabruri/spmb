@@ -90,12 +90,12 @@ Route::prefix('admin/murid')->group(function () {
     Route::put('update/step3/{id}', [MuridController::class, 'updateStep3'])->name('murid.update.step3');
     Route::get('edit/step4/{id}/{st}', [MuridController::class, 'editstep4'])->name('murid.edit.step4');
     Route::put('update/step4/{id}', [MuridController::class, 'updateStep4'])->name('murid.update.step4');
-    Route::post('/batal', [MuridController::class, 'batal'])->name('murid.batal');
-    Route::post('/hapus/{id}', [MuridController::class, 'hapus'])->name('murid.hapus');
     Route::get('/print/{id}', [MuridController::class, 'print'])->name('murid.print');
     Route::get('/{id}/detail', [MuridController::class, 'show'])->name('murid.detail');
-
-    Route::post('/upload-berkas/{id}', [MuridController::class, 'uploadBerkas'])
+    Route::post('/batal', [MuridController::class, 'batal'])->name('murid.batal');
+    Route::post('/hapus', [MuridController::class, 'hapus'])->name('murid.hapus');
+    Route::get('/upload/{id}', [MuridController::class, 'upload'])->name('murid.berkas');
+    Route::post('/upload-berkas', [MuridController::class, 'uploadBerkas'])
         ->name('murid.upload.berkas');
 });
 

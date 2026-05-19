@@ -65,7 +65,7 @@
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{ asset('assets_admin') }}/css/theme.min.css">
-    <link rel="stylesheet" href="{{ asset('assets_admin') }}/datatables/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="{{ asset('assets_admin') }}/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
 
     <style>
         @yield('CSSManual')
@@ -1288,6 +1288,7 @@
         <script src="{{ asset('assets_admin') }}/jquery/jquery.min.js"></script>
 
         <script src="{{ asset('assets_admin') }}/datatables/js/dataTables.min.js"></script>
+        <script src="{{ asset('assets_admin') }}/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
         <script src="{{ asset('assets_admin') }}/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('assets_admin') }}/libs/simplebar/dist/simplebar.min.js"></script>
         <!-- Theme JS -->
