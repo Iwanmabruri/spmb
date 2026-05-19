@@ -66,7 +66,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table text-nowrap mb-0 table-centered table-hover" data-check-container>
+                            <table class="table text-nowrap mb-0 table-centered table-hover" id="datatable">
                                 <thead class="sticky-top">
                                     <tr>
                                         <th>#</th>
@@ -77,208 +77,11 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                @foreach ($murid as $m)
-                                    <form id="delete-form-{{ $m->id_person }}"
-                                        action="{{ route('murid.hapus', $m->id_person) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('POST')
-                                        <tbody>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $m->nisn }}</td>
-                                            <td>{{ $m->nama }}</td>
-                                            <td>{{ $m->asal_sekolah }}</td>
-                                            <td>{{ $m->tgl_daftar }}</td>
-                                            <td>
-                                                <!-- DETAIL -->
-                                                <a href="{{ route('murid.detail', $m->id_person) }}"
-                                                    class="btn btn-info btn-icon btn-sm rounded-circle text-white"
-                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Detail">
-
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="icon icon-tabler icon-tabler-eye" width="16"
-                                                        height="16" viewBox="0 0 24 24" stroke-width="1.5"
-                                                        stroke="currentColor" fill="none" stroke-linecap="round"
-                                                        stroke-linejoin="round">
-
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                                                        <path
-                                                            d="M2 12c2.5 -4 6.5 -6 10 -6s7.5 2 10 6c-2.5 4 -6.5 6 -10 6s-7.5 -2 -10 -6" />
-                                                    </svg>
-
-                                                </a>
-
-                                                <!-- EDIT -->
-                                                <a href="{{ route('murid.edit.step1', [$m->id_person, 'e']) }}"
-                                                    class="btn btn-warning btn-icon btn-sm rounded-circle text-white"
-                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="icon icon-tabler icon-tabler-edit" width="16"
-                                                        height="16" viewBox="0 0 24 24" stroke-width="1.5"
-                                                        stroke="currentColor" fill="none" stroke-linecap="round"
-                                                        stroke-linejoin="round">
-
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <path
-                                                            d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
-                                                        <path
-                                                            d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
-                                                        <path d="M16 5l3 3" />
-                                                    </svg>
-
-                                                </a>
-
-                                                <!-- UPLOAD -->
-                                                <a href="#" class="btn btn-primary btn-icon btn-sm rounded-circle"
-                                                    data-bs-toggle="modal" data-bs-target="#modalUpload{{ $m->id_person }}"
-                                                    title="Upload Berkas">
-
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="icon icon-tabler icon-tabler-upload" width="16"
-                                                        height="16" viewBox="0 0 24 24" stroke-width="1.5"
-                                                        stroke="currentColor" fill="none" stroke-linecap="round"
-                                                        stroke-linejoin="round">
-
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-                                                        <path d="M7 9l5 -5l5 5" />
-                                                        <path d="M12 4l0 12" />
-
-                                                    </svg>
-
-                                                </a>
-
-                                                <!-- PRINT -->
-                                                <a href="{{ route('murid.print', $m->id_person) }}" target="_blank"
-                                                    class="btn btn-success btn-icon btn-sm rounded-circle"
-                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Print">
-
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="icon icon-tabler icon-tabler-printer" width="16"
-                                                        height="16" viewBox="0 0 24 24" stroke-width="1.5"
-                                                        stroke="currentColor" fill="none" stroke-linecap="round"
-                                                        stroke-linejoin="round">
-
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <path d="M17 17h-10v4h10v-4z" />
-                                                        <path d="M7 17v-6h10v6" />
-                                                        <path d="M17 11v-4h-10v4" />
-                                                        <path d="M5 11h14a2 2 0 0 1 2 2v2h-4" />
-                                                        <path d="M3 13v-2a2 2 0 0 1 2 -2h2" />
-
-                                                    </svg>
-
-                                                </a>
-
-                                                <!-- DELETE -->
-                                                <button type="button" class="btn btn-danger btn-icon btn-sm rounded-circle"
-                                                    onclick="hapusData({{ $m->id_person }})" data-bs-toggle="tooltip"
-                                                    data-bs-placement="top" title="Hapus">
-
-                                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                                        class="icon icon-tabler icon-tabler-trash" width="16"
-                                                        height="16" viewBox="0 0 24 24" stroke-width="1.5"
-                                                        stroke="currentColor" fill="none" stroke-linecap="round"
-                                                        stroke-linejoin="round">
-
-                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                        <path d="M4 7l16 0" />
-                                                        <path d="M10 11l0 6" />
-                                                        <path d="M14 11l0 6" />
-                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                                                        <path d="M9 7l0 -3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1l0 3" />
-                                                    </svg>
-
-                                                </button>
-                                            </td>
-                                        </tbody>
-                                    </form>
-                                    <div class="modal fade" id="modalUpload{{ $m->id_person }}" tabindex="-1">
-                                        <div class="modal-dialog modal-lg">
-
-                                            <form action="{{ route('murid.upload.berkas', $m->id_person) }}"
-                                                method="POST" enctype="multipart/form-data" class="formUpload">
-
-                                                @csrf
-
-                                                <div class="modal-content">
-
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">
-                                                            Upload Berkas - {{ $m->nama }}
-                                                        </h5>
-
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal">
-                                                        </button>
-                                                    </div>
-
-                                                    <div class="modal-body">
-                                                        <div class="row g-3">
-
-                                                            <div class="col-md-4">
-                                                                <label>Pas Foto Murid</label>
-                                                                <input type="file" name="foto_warna_santri"
-                                                                    class="form-control">
-                                                            </div>
-
-                                                            <div class="col-md-4">
-                                                                <label>Scan KK Terbaru</label>
-                                                                <input type="file" name="foto_scan_kk"
-                                                                    class="form-control">
-                                                            </div>
-
-                                                            <div class="col-md-4">
-                                                                <label>Scan Akta Kelahiran</label>
-                                                                <input type="file" name="foto_scan_akta"
-                                                                    class="form-control">
-                                                            </div>
-
-                                                            <div class="col-md-4">
-                                                                <label>Surat Keterangan Lulus</label>
-                                                                <input type="file" name="foto_skl"
-                                                                    class="form-control">
-                                                            </div>
-
-                                                            <div class="col-md-4">
-                                                                <label>Ijazah</label>
-                                                                <input type="file" name="foto_ijazah"
-                                                                    class="form-control">
-                                                            </div>
-
-                                                            <div class="col-md-4">
-                                                                <label>Surat Keterangan Kelakuan Baik</label>
-                                                                <input type="file" name="foto_scan_skck"
-                                                                    class="form-control">
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-success">
-                                                            Upload
-                                                        </button>
-                                                    </div>
-
-                                                </div>
-
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                @endforeach
+                                <tbody>
+                                </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="card-footer border-top border-dashed d-flex flex-md-row flex-column ">
-                        <div class="d-flex flex-column flex-md-row gap-4">
-                            <div class="d-flex align-items-center gap-2">
-                                <label class="form-label text-nowrap mb-0">Total Data : </label>
-                            </div>
-                        </div>
-                    </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -286,6 +89,41 @@
 @endsection
 @push('scripts')
     <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable({
+                paging: true,
+                lengthChange: false,
+                searching: true,
+                ordering: false,
+                info: true,
+                autoWidth: false,
+                responsive: true,
+                // processing: true,
+                // serverSide: true,
+                // 
+                // columns: [{
+                //         data: 'DT_RowIndex',
+                //         orderable: false,
+                //         searchable: false
+                //     },
+                //     {
+                //         data: 'niup'
+                //     },
+                //     {
+                //         data: 'nama'
+                //     },
+                //     {
+                //         data: 'asal_sekolah'
+                //     },
+                //     {
+                //         data: 'tgl_daftar'
+                //     },
+                //     {
+                //         data: 'action'
+                //     }
+                // ]
+            });
+        });
         document.querySelectorAll('.texttooltip').forEach(function(el) {
             let tooltip;
 
@@ -397,7 +235,6 @@
                     });
                 }
             })
-
         });
     </script>
     <script>

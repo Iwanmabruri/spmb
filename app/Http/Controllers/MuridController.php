@@ -13,6 +13,7 @@ use App\Models\Pendidikan;
 use App\Models\Penghasilan;
 use App\Models\Provinsi;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class MuridController extends Controller
 {
@@ -22,6 +23,112 @@ class MuridController extends Controller
         return view('admin.siswa.index', compact('murid'));
     }
 
+    public function siswa_data()
+    {
+        $siswa = Murid::where('status', '1')->orderBy('id', 'desc')->get();
+
+        return DataTables::of($siswa)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                $btn = '<a href="' . route('murid.detail', ['id' => $row->id_person]) . '"
+                                                    class="btn btn-info btn-icon btn-sm rounded-circle text-white"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Detail">
+
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-eye" width="16"
+                                                        height="16" viewBox="0 0 24 24" stroke-width="1.5"
+                                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                                                        <path
+                                                            d="M2 12c2.5 -4 6.5 -6 10 -6s7.5 2 10 6c-2.5 4 -6.5 6 -10 6s-7.5 -2 -10 -6" />
+                                                    </svg>
+
+                                                </a>';
+                $btn .= '<a href="' . route('murid.edit.step1', [$row->id_person, 'e']) . '"
+                                                    class="btn btn-warning btn-icon btn-sm rounded-circle text-white"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-edit" width="16"
+                                                        height="16" viewBox="0 0 24 24" stroke-width="1.5"
+                                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <path
+                                                            d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                                        <path
+                                                            d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                                        <path d="M16 5l3 3" />
+                                                    </svg>
+
+                                                </a>';
+                $btn .= '<a href="#" class="btn btn-primary btn-icon btn-sm rounded-circle"
+                                                    data-bs-toggle="modal" data-bs-target="#modalUpload' . $row->id_person . '"
+                                                    title="Upload Berkas">
+
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-upload" width="16"
+                                                        height="16" viewBox="0 0 24 24" stroke-width="1.5"
+                                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                                                        <path d="M7 9l5 -5l5 5" />
+                                                        <path d="M12 4l0 12" />
+
+                                                    </svg>
+
+                                                </a>';
+                $btn .= '<a href="' . route('murid.print', $row->id_person) . '" target="_blank"
+                                                    class="btn btn-success btn-icon btn-sm rounded-circle"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Print">
+
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-printer" width="16"
+                                                        height="16" viewBox="0 0 24 24" stroke-width="1.5"
+                                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <path d="M17 17h-10v4h10v-4z" />
+                                                        <path d="M7 17v-6h10v6" />
+                                                        <path d="M17 11v-4h-10v4" />
+                                                        <path d="M5 11h14a2 2 0 0 1 2 2v2h-4" />
+                                                        <path d="M3 13v-2a2 2 0 0 1 2 -2h2" />
+
+                                                    </svg>
+
+                                                </a>';
+                $btn .= '<button type="button"
+                                                    class="btn btn-danger btn-icon btn-sm rounded-circle"
+                                                    onclick="" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Hapus">
+
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-trash" width="16"
+                                                        height="16" viewBox="0 0 24 24" stroke-width="1.5"
+                                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                        <path d="M4 7l16 0" />
+                                                        <path d="M10 11l0 6" />
+                                                        <path d="M14 11l0 6" />
+                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                                                        <path d="M9 7l0 -3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1l0 3" />
+                                                    </svg>
+
+                                                </button>';
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+    }
 
     public function store1(Request $request)
     {
