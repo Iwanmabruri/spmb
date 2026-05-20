@@ -380,19 +380,26 @@
 
                 <table>
                     <tr>
-                        <td>[{{ $murid->berkas_kk ? '✔' : ' ' }}] Fotokopi KK</td>
+                        <td>[{{ $murid->foto_scan_kk ? '✔' : ' ' }}] Fotokopi KK</td>
                     </tr>
 
                     <tr>
-                        <td>[{{ $murid->berkas_akta ? '✔' : ' ' }}] Fotokopi Akta</td>
+                        <td>[{{ $murid->foto_scan_akta ? '✔' : ' ' }}] Fotokopi Akta</td>
                     </tr>
 
                     <tr>
-                        <td>[{{ $murid->berkas_ijazah ? '✔' : ' ' }}] Ijazah</td>
+                        <td>[{{ $murid->foto_ijazah ? '✔' : ' ' }}] Ijazah</td>
                     </tr>
 
                     <tr>
-                        <td>[{{ $murid->berkas_foto ? '✔' : ' ' }}] Pas Foto</td>
+                        <td>[{{ $murid->foto_skl ? '✔' : ' ' }}] SKL</td>
+                    </tr>
+
+                    <tr>
+                        <td>[{{ $murid->foto_warna_santri ? '✔' : ' ' }}] Pas Foto</td>
+                    </tr>
+                    <tr>
+                        <td>[{{ $murid->foto_scan_skck ? '✔' : ' ' }}] SKKB</td>
                     </tr>
                 </table>
 

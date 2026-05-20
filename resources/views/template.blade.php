@@ -1330,8 +1330,9 @@
             @if ($errors->any())
                 Swal.fire({
                     icon: 'error',
-                    title: 'Validasi gagal',
-                    html: `{!! implode('<br>', $errors->all()) !!}`
+                    title: 'Oppss.... Validasi gagal',
+                    text: 'Silahkan cek kembali data yang masih kosong',
+                    confirmButtonColor: '#16a34a'
                 });
             @endif
         </script>
