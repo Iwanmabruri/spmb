@@ -2,6 +2,20 @@
 @section('title')
     Update Mitra | SPMB
 @endsection
+@section('CSSManual')
+    <style>
+        .is-invalid {
+            border: 1px solid #ef4444 !important;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, .1);
+        }
+
+        .form-select .is-invalid {
+            border-color: #dc3545 !important;
+            padding-right: calc(1.5em + .75rem);
+            background-position: right calc(.375em + .1875rem) center;
+        }
+    </style>
+@endsection
 @section('konten')
     <div class="custom-container">
 
@@ -29,23 +43,35 @@
                             {{-- NAMA --}}
                             <div class="mb-3">
                                 <label class="form-label">Nama Mitra</label>
-                                <input type="text" name="nama" class="form-control" required>
+                                <input type="text" name="nama"
+                                    class="form-control @error('nama') is-invalid @enderror">
+                                @error('nama')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
 
                             {{-- STATUS --}}
                             <div class="mb-3">
                                 <label class="form-label">Status</label>
-                                <select name="status" class="form-select">
+                                <select name="status" class="form-select @error('status') is-invalid @enderror">
+                                    <option>Pilih Status</option>
                                     <option value="1">Aktif</option>
                                     <option value="0">Nonaktif</option>
                                 </select>
+                                @error('status')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
 
                             {{-- GAMBAR --}}
                             <div class="mb-3">
                                 <label class="form-label">Logo</label>
-                                <input type="file" name="image" class="form-control" required>
+                                <input type="file" name="image"
+                                    class="form-control @error('image') is-invalid @enderror">
 
+                                @error('image')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                                 <small class="text-muted">
                                     Disarankan Format PNG transparan
                                 </small>

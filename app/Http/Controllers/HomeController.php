@@ -53,6 +53,16 @@ class HomeController extends Controller
             $file->move(public_path('upload/banner'), $namaFile);
         }
 
+        $request->validate([
+            'judul' => 'required',
+            'deskripsi' => 'required',
+            'gambar' => 'required'
+        ], [
+            'judul.required' => 'Tidak boleh kosong',
+            'deskripsi.required' => 'Tidak boleh kosong',
+            'gambar.required' => 'Tidak boleh kosong'
+        ]);
+
         Banner::create([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
@@ -118,6 +128,10 @@ class HomeController extends Controller
             'nama' => 'required',
             'status' => 'required',
             'image' => 'required|image'
+        ], [
+            'nama.required' => 'Tidak boleh kosong',
+            'status.required' => 'Tidak boleh kosong',
+            'image.required' => 'Tidak boleh kosong'
         ]);
 
         $file = $request->file('image');

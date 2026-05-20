@@ -73,7 +73,8 @@
                     @csrf
                     <div class="input-group mb-3">
                         <input type="number" class="form-control" name="niup" placeholder="Nomor Induk Umum Pesantren"
-                            aria-label="Nomor Induk Umum Pesantren" aria-describedby="cari" value="{{ request('niup') }}" />
+                            required aria-label="Nomor Induk Umum Pesantren" aria-describedby="cari"
+                            value="{{ request('niup') }}" />
                         <button class="input-group-text bg-primary text-light" id="cari">Cari Data</button>
                     </div>
                 </form>

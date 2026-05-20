@@ -2,6 +2,14 @@
 @section('title')
     Update Banner | SPMB
 @endsection
+@section('CSSManual')
+    <style>
+        .is-invalid {
+            border: 1px solid #ef4444 !important;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, .1);
+        }
+    </style>
+@endsection
 @section('konten')
     <div class="custom-container">
         <div class="row">
@@ -31,7 +39,11 @@
                                     Judul Banner
                                 </label>
 
-                                <textarea name="judul" rows="4" class="form-control" placeholder="Masukkan judul banner" required></textarea>
+                                <textarea name="judul" rows="4" class="form-control @error('judul') is-invalid @enderror"
+                                    placeholder="Masukkan judul banner"></textarea>
+                                @error('judul')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
 
                             {{-- DESKRIPSI --}}
@@ -40,7 +52,11 @@
                                     Deskripsi Banner
                                 </label>
 
-                                <textarea name="deskripsi" rows="5" class="form-control" placeholder="Masukkan deskripsi banner" required></textarea>
+                                <textarea name="deskripsi" rows="5" class="form-control @error('deskripsi') is-invalid @enderror"
+                                    placeholder="Masukkan deskripsi banner"></textarea>
+                                @error('deskripsi')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
 
                             {{-- GAMBAR --}}
@@ -49,10 +65,14 @@
                                     Upload Gambar
                                 </label>
 
-                                <input type="file" name="gambar" class="form-control" required>
+                                <input type="file" name="gambar"
+                                    class="form-control @error('gambar') is-invalid @enderror">
                                 <small class="text-muted">
                                     <i>Gambar harus berukuran 1361 x 901 pixel</i>
                                 </small>
+                                @error('gamnbar')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
 
                             {{-- BUTTON --}}
