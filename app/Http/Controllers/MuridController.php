@@ -334,7 +334,12 @@ class MuridController extends Controller
                 'status_step' => 1,
             ]);
 
-            return redirect()->route('murid.edit.step2', [$murid->id_person, $request->st]);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Step 1 berhasil tersimpan',
+                'id_person' => $id,
+                'st' => $request->st
+            ]);
         } catch (\Throwable $th) {
             return back()
                 ->with('error', 'Gagal menyimpan Step 1')
@@ -376,7 +381,12 @@ class MuridController extends Controller
                 'status_step' => 2,
             ]);
 
-            return redirect()->route('murid.edit.step3', [$murid->id_person, $request->st]);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Step 2 berhasil tersimpan',
+                'id_person' => $id,
+                'st' => $request->st
+            ]);
         } catch (\Exception $e) {
 
             return back()
@@ -446,7 +456,12 @@ class MuridController extends Controller
                 'status_step' => 3,
             ]);
 
-            return redirect()->route('murid.edit.step4', [$murid->id_person, $request->st]);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Step 3 berhasil tersimpan',
+                'id_person' => $id,
+                'st' => $request->st
+            ]);
         } catch (\Exception $e) {
 
             return back()
@@ -534,7 +549,12 @@ class MuridController extends Controller
                 ]);
             }
 
-            return redirect()->route('murid');
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Step 4 berhasil tersimpan',
+                'id_person' => $id,
+                'st' => $request->st
+            ]);
         } catch (\Exception $e) {
 
             return back()

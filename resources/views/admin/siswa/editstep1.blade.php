@@ -32,9 +32,8 @@
                         <h3 class="text-truncate h5 mb-0" id="withLabel">BIODATA DIRI - MURID BARU</h3>
                     </div>
                     <div class="card-body">
-                        <form id="formStep1" action="{{ route('murid.update.step1', $murid->id_person) }}" method="POST">
+                        <form id="formStep1" data-parsley-validate>
                             @csrf
-                            @method('PUT')
                             <input hidden name="st" value="{{ $st }}">
                             <div class="row g-3">
 
@@ -138,8 +137,8 @@
 
                                 <div class="col-md-2">
                                     <label class="form-label">Anak ke</label>
-                                    <input type="number" name="ank_ke"
-                                        value="{{ old('ank_ke', $murid->ank_ke ?? '') }}" class="form-control">
+                                    <input type="number" name="ank_ke" value="{{ old('ank_ke', $murid->ank_ke ?? '') }}"
+                                        class="form-control" required>
                                 </div>
 
                                 <div class="col-md-2">
@@ -218,7 +217,7 @@
                                 <div class="col-md-3">
                                     <label class="form-label">Hobi</label>
                                     <input type="text" name="hoby" value="{{ old('hoby', $murid->hoby ?? '') }}"
-                                        class="form-control">
+                                        class="form-control" required>
                                 </div>
 
                                 <div class="col-md-2">
@@ -265,32 +264,60 @@
         });
     </script>
     <script>
-        document.getElementById('formStep1').addEventListener('submit', function(e) {
-            e.preventDefault();
-            let form = this;
-            Swal.fire({
-                title: 'Yakin?',
-                text: "Data akan disimpan",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'Ya, simpan!',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $('#loader').css('display', 'flex');
-                    // popup kedua
+        $(document).ready(function() {
+            $('#formStep1').on('submit', function(e) {
+                e.preventDefault();
+                $(this).parsley().validate();
+                if ($(this).parsley().isValid()) {
                     Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil!',
-                        text: 'Step 1 berhasil tersimpan',
-                        timer: 1500,
-                        showConfirmButton: false
-                    });
+                        title: 'Yakin?',
+                        text: "Data akan disimpan",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, simpan!',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $('#loader').css('display', 'flex');
+                            $.ajax({
+                                url: "{{ route('murid.update.step1', $murid->id_person) }}",
+                                type: "PUT",
+                                data: $(this).serialize(),
+                                success: function(response) {
+                                    $('#loader').css('display', 'none');
+                                    if (response.status == 'success') {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Berhasil',
+                                            text: response.message,
+                                        }).then(() => {
+                                            $('#loader').css('display', 'flex');
+                                            let url =
+                                                "/admin/murid/edit/step2/" +
+                                                response
+                                                .id_person + "/" + response.st;
 
-                    // delay submit biar alert kelihatan
-                    setTimeout(() => {
-                        form.submit();
-                    }, 1500);
+                                            window.location.href = url;
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Gagal',
+                                            text: response.message,
+                                        });
+                                    }
+                                },
+                                error: function(xhr) {
+                                    $('#loader').css('display', 'none');
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error',
+                                        text: 'Terjadi kesalahan pada server.',
+                                    });
+                                }
+                            });
+                        }
+                    });
                 }
             });
         });

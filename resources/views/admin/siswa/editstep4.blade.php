@@ -42,9 +42,8 @@
                                 Copy dari Ibu
                             </button>
                         </div>
-                        <form id="formStep4" action="{{ route('murid.update.step4', $murid->id_person) }}" method="POST">
+                        <form id="formStep4" data-parsley-validate>
                             @csrf
-                            @method('PUT')
                             <input hidden name="st" value="{{ $st }}">
                             <div class="row g-3">
 
@@ -74,7 +73,7 @@
 
                                 <div class="col-md-4">
                                     <label>Agama</label>
-                                    <select name="agama_w" class="form-select">
+                                    <select name="agama_w" class="form-select" required>
                                         <option value="">-- Pilih --</option>
                                         @foreach ($agama as $a)
                                             <option value="{{ $a->id }}"
@@ -87,7 +86,7 @@
 
                                 <div class="col-md-4">
                                     <label>Pekerjaan</label>
-                                    <select name="pkrjn_w" class="form-select">
+                                    <select name="pkrjn_w" class="form-select" required>
                                         <option value="">-- Pilih --</option>
                                         @foreach ($pekerjaan as $p)
                                             <option value="{{ $p->id }}"
@@ -100,7 +99,7 @@
 
                                 <div class="col-md-4">
                                     <label>Pendidikan</label>
-                                    <select name="pndkn_w" class="form-select">
+                                    <select name="pndkn_w" class="form-select" required>
                                         <option value="">-- Pilih --</option>
                                         @foreach ($pendidikan as $p)
                                             <option value="{{ $p->id }}"
@@ -113,7 +112,7 @@
 
                                 <div class="col-md-4">
                                     <label>Penghasilan</label>
-                                    <select name="penghasilan_w" class="form-select">
+                                    <select name="penghasilan_w" class="form-select" required>
                                         <option value="">-- Pilih --</option>
                                         @foreach ($penghasilan as $p)
                                             <option value="{{ $p->id }}"
@@ -132,7 +131,7 @@
                                 <div class="col-md-4">
                                     <label class="form-label">Alamat Lengkap</label>
                                     <input type="text" value="{{ old('almt_w', $murid->almt_w ?? '') }}" name="almt_w"
-                                        class="form-control">
+                                        class="form-control" required>
                                 </div>
 
                                 <div class="col-md-4">
@@ -143,7 +142,7 @@
 
                                 <div class="col-md-4">
                                     <label class="form-label">Provinsi</label>
-                                    <select name="prov_w" id="prov" class="form-select">
+                                    <select name="prov_w" id="prov" class="form-select" required>
                                         <option value="">Pilih Provinsi</option>
                                         @foreach ($provinsi as $p)
                                             <option value="{{ $p->id }}"
@@ -157,7 +156,7 @@
                                 <!-- Kabupaten -->
                                 <div class="col-md-4">
                                     <label class="form-label">Kabupaten</label>
-                                    <select name="kab_w" id="kab" class="form-select">
+                                    <select name="kab_w" id="kab" class="form-select" required>
                                         <option value="">Pilih Kabupaten</option>
                                     </select>
                                 </div>
@@ -165,7 +164,7 @@
                                 <!-- Kecamatan -->
                                 <div class="col-md-4">
                                     <label class="form-label">Kecamatan</label>
-                                    <select name="kec_w" id="kec" class="form-select">
+                                    <select name="kec_w" id="kec" class="form-select" required>
                                         <option value="">Pilih Kecamatan</option>
                                     </select>
                                 </div>
@@ -173,7 +172,7 @@
                                 <!-- Desa -->
                                 <div class="col-md-4">
                                     <label class="form-label">Desa</label>
-                                    <select name="desa_w" id="desa" class="form-select">
+                                    <select name="desa_w" id="desa" class="form-select" required>
                                         <option value="">Pilih Desa</option>
                                     </select>
                                 </div>
@@ -402,34 +401,56 @@
         });
     </script>
     <script>
-        document.getElementById('formStep4').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            let form = this;
-
-            Swal.fire({
-                title: 'Yakin?',
-                text: "Data akan disimpan",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'Ya, simpan!',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $('#loader').css('display', 'flex');
-                    // popup kedua
+        $(document).ready(function() {
+            $('#formStep4').on('submit', function(e) {
+                e.preventDefault();
+                $(this).parsley().validate();
+                if ($(this).parsley().isValid()) {
                     Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil!',
-                        text: 'Step 4 berhasil tersimpan',
-                        timer: 1500,
-                        showConfirmButton: false
+                        title: 'Yakin?',
+                        text: "Data akan disimpan",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, simpan!',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $('#loader').css('display', 'flex');
+                            $.ajax({
+                                url: "{{ route('murid.update.step4', $murid->id_person) }}",
+                                type: "PUT",
+                                data: $(this).serialize(),
+                                success: function(response) {
+                                    $('#loader').css('display', 'none');
+                                    if (response.status == 'success') {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Berhasil',
+                                            text: response.message,
+                                        }).then(() => {
+                                            $('#loader').css('display', 'flex');
+                                            let url = "{{ route('murid') }}";
+                                            window.location.href = url;
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Gagal',
+                                            text: response.message,
+                                        });
+                                    }
+                                },
+                                error: function(xhr) {
+                                    $('#loader').css('display', 'none');
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error',
+                                        text: 'Terjadi kesalahan pada server.',
+                                    });
+                                }
+                            });
+                        }
                     });
-
-                    // delay submit biar alert kelihatan
-                    setTimeout(() => {
-                        form.submit();
-                    }, 1500);
                 }
             });
         });

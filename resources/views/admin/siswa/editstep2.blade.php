@@ -33,15 +33,14 @@
                         <h3 class="text-truncate h5 mb-0" id="withLabel">ALAMAT LENGKAP - {{ $murid->nama }}</h3>
                     </div>
                     <div class="card-body">
-                        <form id="formStep2" action="{{ route('murid.update.step2', $murid->id_person) }}" method="POST">
+                        <form id="formStep2" data-parsley-validate>
                             @csrf
-                            @method('PUT')
                             <input hidden name="st" value="{{ $st }}">
                             <div class="row g-3">
 
                                 <div class="col-md-2">
                                     <label class="form-label">Kewarganegaraan</label>
-                                    <select name="kewarganegaraan" class="form-select">
+                                    <select name="kewarganegaraan" class="form-select" required>
                                         <option value="">-- Pilih --</option>
                                         @foreach (['WNI', 'WNA'] as $w)
                                             <option value="{{ $w }}"
@@ -55,13 +54,13 @@
                                 <div class="col-md-4">
                                     <label class="form-label">Alamat Lengkap</label>
                                     <input type="text" value="{{ old('alamat_lengkap', $murid->alamat_lengkap ?? '') }}"
-                                        name="alamat_lengkap" class="form-control">
+                                        name="alamat_lengkap" class="form-control" required>
                                 </div>
 
                                 <!-- Provinsi -->
                                 <div class="col-md-3">
                                     <label class="form-label">Provinsi</label>
-                                    <select name="prov" id="prov" class="form-select">
+                                    <select name="prov" id="prov" class="form-select" required>
                                         <option value="">Pilih Provinsi</option>
                                         @foreach ($provinsi as $p)
                                             <option value="{{ $p->id }}"
@@ -75,7 +74,7 @@
                                 <!-- Kabupaten -->
                                 <div class="col-md-3">
                                     <label class="form-label">Kabupaten</label>
-                                    <select name="kab" id="kab" class="form-select">
+                                    <select name="kab" id="kab" class="form-select" required>
                                         <option value="">Pilih Kabupaten</option>
                                     </select>
                                 </div>
@@ -83,7 +82,7 @@
                                 <!-- Kecamatan -->
                                 <div class="col-md-4">
                                     <label class="form-label">Kecamatan</label>
-                                    <select name="kec" id="kec" class="form-select">
+                                    <select name="kec" id="kec" class="form-select" required>
                                         <option value="">Pilih Kecamatan</option>
                                     </select>
                                 </div>
@@ -91,7 +90,7 @@
                                 <!-- Desa -->
                                 <div class="col-md-4">
                                     <label class="form-label">Desa</label>
-                                    <select name="desa" id="desa" class="form-select">
+                                    <select name="desa" id="desa" class="form-select" required>
                                         <option value="">Pilih Desa</option>
                                     </select>
                                 </div>
@@ -279,34 +278,60 @@
         });
     </script>
     <script>
-        document.getElementById('formStep2').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            let form = this;
-
-            Swal.fire({
-                title: 'Yakin?',
-                text: "Data akan disimpan",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'Ya, simpan!',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $('#loader').css('display', 'flex');
-                    // popup kedua
+        $(document).ready(function() {
+            $('#formStep2').on('submit', function(e) {
+                e.preventDefault();
+                $(this).parsley().validate();
+                if ($(this).parsley().isValid()) {
                     Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil!',
-                        text: 'Step 2 berhasil tersimpan',
-                        timer: 1500,
-                        showConfirmButton: false
-                    });
+                        title: 'Yakin?',
+                        text: "Data akan disimpan",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ya, simpan!',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $('#loader').css('display', 'flex');
+                            $.ajax({
+                                url: "{{ route('murid.update.step2', $murid->id_person) }}",
+                                type: "PUT",
+                                data: $(this).serialize(),
+                                success: function(response) {
+                                    $('#loader').css('display', 'none');
+                                    if (response.status == 'success') {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Berhasil',
+                                            text: response.message,
+                                        }).then(() => {
+                                            $('#loader').css('display', 'flex');
+                                            let url =
+                                                "/admin/murid/edit/step3/" +
+                                                response
+                                                .id_person + "/" + response.st;
 
-                    // delay submit biar alert kelihatan
-                    setTimeout(() => {
-                        form.submit();
-                    }, 1500);
+                                            window.location.href = url;
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Gagal',
+                                            text: response.message,
+                                        });
+                                    }
+                                },
+                                error: function(xhr) {
+                                    $('#loader').css('display', 'none');
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error',
+                                        text: 'Terjadi kesalahan pada server.',
+                                    });
+                                }
+                            });
+                        }
+                    });
                 }
             });
         });
