@@ -6,12 +6,44 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        return view('admin.login');
+    }
+
+    public function loginuser(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt($request->only('email', 'password'))) {
+            $rute = route('dashboard');
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Login berhasil!',
+                'url' => $rute
+            ]);
+        }
+
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Email atau password salah!'
+        ]);
+    }
+
     public function userData()
     {
-        return view('admin.user');
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
+        return view('admin.user', compact('user'));
     }
 
     public function getUserData(Request $request)
@@ -73,5 +105,11 @@ class UserController extends Controller
         User::where('id', $request->id)->delete();
 
         return response()->json(['status' => 'success', 'message' => 'Data user berhasil dihapus.']);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
     }
 }

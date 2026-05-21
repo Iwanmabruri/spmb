@@ -7,8 +7,8 @@
     <title>Login SPMB SMKNAA</title>
 
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link href="{{ asset('dist_login/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="dist_login/bootstrap-icons/font/bootstrap-icons.min.css" />
 
     <style>
         * {
@@ -287,6 +287,26 @@
             background: #f4f6f9;
         }
 
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.4);
+            /* transparan */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            display: none;
+        }
+
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 9px solid;
+            border-color: #474bff #0000;
+            animation: spinner-0tkp9a 1s infinite;
+        }
+
         /* RESPONSIVE */
         @media(max-width:992px) {
             .left-side {
@@ -320,7 +340,9 @@
 </head>
 
 <body>
-
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
     <div class="login-wrapper">
 
         <div class="login-card">
@@ -344,13 +366,15 @@
                 <div class="login-form-wrapper">
                     <h2>Masuk ke Akun</h2>
                     <p class="subtitle">Silakan masuk untuk melanjutkan ke dashboard</p>
-                    <form>
+                    <form id="formLogin">
+                        @csrf
                         <!-- EMAIL -->
                         <div class="mb-3">
                             <label class="form-label">Email</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                                <input type="email" class="form-control" placeholder="Masukkan email Anda">
+                                <input type="email" class="form-control" name="email"
+                                    placeholder="Masukkan email Anda" required>
                             </div>
                         </div>
 
@@ -359,22 +383,13 @@
                             <label class="form-label">Password</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                                <input type="password" class="form-control" id="password"
-                                    placeholder="Masukkan password Anda">
+                                <input type="password" class="form-control" name="password" id="password"
+                                    placeholder="Masukkan password Anda" required>
                                 <button type="button" class="toggle-password" onclick="togglePassword()">
                                     <i class="bi bi-eye-slash" id="eyeIcon"></i>
                                 </button>
                             </div>
                         </div>
-
-                        <div class="options">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="rememberMe">
-                                <label class="form-check-label" for="rememberMe">Ingat saya</label>
-                            </div>
-                            <a href="#" class="forgot-link">Lupa Password?</a>
-                        </div>
-
                         <button type="submit" class="btn btn-login">Masuk</button>
 
                         <div class="access-box">
@@ -394,9 +409,12 @@
     </div>
 
     <footer>
-        © 2026 SPMB SMKNAA. All rights reserved.
+        © {{ date('Y') }} SPMB SMKNAA. All rights reserved.
     </footer>
 
+    <script src="{{ asset('dist_login/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets_admin') }}/jquery/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function togglePassword() {
             const password = document.getElementById("password");
@@ -411,6 +429,48 @@
                 eyeIcon.classList.add("bi-eye-slash");
             }
         }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#formLogin').on('submit', function(e) {
+                e.preventDefault();
+                let url = "{{ route('loginUser') }}";
+                $('#loader').css('display', 'flex');
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        if (response.status == 'success') {
+                            $('#loader').css('display', 'none');
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: response.message,
+                            }).then(() => {
+                                window.location.href = response.url;
+                            });
+                        } else {
+                            $('#loader').css('display', 'none');
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal',
+                                text: response.message,
+                            });
+                        }
+                    },
+                    error: function() {
+                        $('#loader').css('display', 'none');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Terjadi kesalahan pada server.',
+                        });
+                    }
+                });
+            });
+        })
     </script>
 
 </body>

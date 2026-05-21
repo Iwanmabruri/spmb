@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Pendidikan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PendidikanController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
         $data = Pendidikan::all();
-        return view('admin.pendidikan.index', compact('data'));
+        return view('admin.pendidikan.index', compact('data', 'user'));
     }
 
     public function store(Request $request)

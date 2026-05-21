@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Agama;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AgamaController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
         $data = Agama::all();
-        return view('admin.agama.index', compact('data'));
+        return view('admin.agama.index', compact('data', 'user'));
     }
 
     public function store(Request $request)

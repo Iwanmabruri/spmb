@@ -562,7 +562,7 @@
                 </ul>
 
                 <!-- Button -->
-                <a class="navbar-btn btn btn-sm btn-success lift ms-auto" href="{{ route('dashboard') }}"
+                <a class="navbar-btn btn btn-sm btn-success lift ms-auto" href="{{ route('login') }}"
                     target="_blank">
                     Login
                 </a>

@@ -13,13 +13,18 @@ use App\Models\Pendidikan;
 use App\Models\Penghasilan;
 use App\Models\Provinsi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 
 class MuridController extends Controller
 {
     public function index()
     {
-        return view('admin.siswa.index');
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
+        return view('admin.siswa.index', compact('user'));
     }
 
     public function murid_data()
@@ -164,6 +169,10 @@ class MuridController extends Controller
 
     public function show($id)
     {
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
         $murid = Murid::with([
             'agama',
             'desa',
@@ -180,7 +189,7 @@ class MuridController extends Controller
             'penghasilanWali'
         ])->findOrFail($id);
 
-        return view('admin.siswa.detail', compact('murid'));
+        return view('admin.siswa.detail', compact('murid', 'user'));
     }
 
     public function upload($id)
@@ -295,11 +304,15 @@ class MuridController extends Controller
 
     public function editstep1($id, $st)
     {
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
         $murid = Murid::findOrFail($id);
         $agama = Agama::all();
         $jurusan = Jurusan::all();
 
-        return view('admin.siswa.editstep1', compact('murid', 'agama', 'jurusan', 'st'));
+        return view('admin.siswa.editstep1', compact('murid', 'agama', 'jurusan', 'st', 'user'));
     }
 
     public function updateStep1(Request $request, $id)
@@ -349,10 +362,14 @@ class MuridController extends Controller
 
     public function editstep2($id, $st)
     {
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
         $murid = Murid::findOrFail($id);
         $provinsi = Provinsi::all();
 
-        return view('admin.siswa.editstep2', compact('murid', 'provinsi', 'st'));
+        return view('admin.siswa.editstep2', compact('murid', 'provinsi', 'st', 'user'));
     }
 
     public function updateStep2(Request $request, $id)
@@ -397,6 +414,10 @@ class MuridController extends Controller
 
     public function editstep3($id, $st)
     {
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
         $murid = Murid::findOrFail($id);
         $pekerjaan = Pekerjaan::all();
         $pendidikan = Pendidikan::all();
@@ -406,7 +427,7 @@ class MuridController extends Controller
         if ($murid->status_step < 2) {
             return redirect()->route('murid.edit.step2', [$id, $st]);
         }
-        return view('admin.siswa.editstep3', compact('murid', 'pekerjaan', 'pendidikan', 'penghasilan', 'agama', 'st'));
+        return view('admin.siswa.editstep3', compact('murid', 'pekerjaan', 'pendidikan', 'penghasilan', 'agama', 'st', 'user'));
     }
 
     public function updateStep3(Request $request, $id)
@@ -472,6 +493,10 @@ class MuridController extends Controller
 
     public function editstep4($id, $st)
     {
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
         $murid = Murid::findOrFail($id);
         $pekerjaan = Pekerjaan::all();
         $pendidikan = Pendidikan::all();
@@ -482,7 +507,7 @@ class MuridController extends Controller
         if ($murid->status_step < 3) {
             return redirect()->route('murid.edit.step3', [$id, $st]);
         }
-        return view('admin.siswa.editstep4', compact('murid', 'pekerjaan', 'pendidikan', 'penghasilan', 'agama', 'provinsi', 'st'));
+        return view('admin.siswa.editstep4', compact('murid', 'pekerjaan', 'pendidikan', 'penghasilan', 'agama', 'provinsi', 'st', 'user'));
     }
 
     public function updateStep4(Request $request, $id)

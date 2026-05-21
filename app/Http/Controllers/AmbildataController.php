@@ -10,6 +10,7 @@ use App\Models\Pendidikan;
 use App\Models\Penghasilan;
 use App\Models\Virtual;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -201,6 +202,10 @@ class AmbildataController extends Controller
     */
     public function index(Request $request)
     {
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
         $data = null;
 
         if ($request->filled('niup')) {
@@ -217,7 +222,7 @@ class AmbildataController extends Controller
             }
         }
 
-        return view('admin.ambildata', compact('data'));
+        return view('admin.ambildata', compact('data', 'user'));
     }
 
     public function storemurid(Request $request)
@@ -359,6 +364,10 @@ class AmbildataController extends Controller
 
     public function lengkapi($id)
     {
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
         $siswa = Murid::findOrFail($id);
         $agama = Agama::all();
         $jurusan = Jurusan::where('status', 'Aktif')->get();
@@ -366,7 +375,7 @@ class AmbildataController extends Controller
         $pekerjaan = Pekerjaan::all();
         $penghasilan = Penghasilan::all();
 
-        return view('admin.lengkapi', compact('siswa', 'agama', 'jurusan', 'pendidikan', 'pekerjaan', 'penghasilan'));
+        return view('admin.lengkapi', compact('siswa', 'agama', 'jurusan', 'pendidikan', 'pekerjaan', 'penghasilan', 'user'));
     }
 
     public function updatelengkapi(Request $request, $id)

@@ -112,7 +112,7 @@
     <div>
         <div id="miniSidebar">
             <div class="brand-logo">
-                <a class='d-none d-md-flex align-items-center gap-2' href='{{ url('/dashboard') }}'>
+                <a class='d-none d-md-flex align-items-center gap-2' href='{{ route('dashboard') }}'>
                     <img width="35px" src="{{ asset('assets') }}/img/logo.webp" alt="" />
                     <span class="fw-bold fs-4  site-logo-text">S P M B</span>
                 </a>
@@ -212,71 +212,73 @@
                         <span class="text">Data Siswa</span>
                     </a>
                 </li>
+                @if ($user->role == 'admin')
+                    <li class="nav-item">
+                        <div class="nav-heading">Pages</div>
+                        <hr class="mx-5 nav-line mb-1" />
+                    </li>
+                    <!-- Nav item -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('banner.index') }}">
+                            <span class="nav-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-photo">
 
-                <li class="nav-item">
-                    <div class="nav-heading">Pages</div>
-                    <hr class="mx-5 nav-line mb-1" />
-                </li>
-                <!-- Nav item -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('banner.index') }}">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-photo">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M15 8h.01" />
+                                    <path
+                                        d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" />
+                                    <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
+                                    <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
+                                </svg>
+                            </span>
 
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M15 8h.01" />
-                                <path d="M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" />
-                                <path d="M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5" />
-                                <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3" />
-                            </svg>
-                        </span>
+                            <span class="text">Update Banner</span>
+                        </a>
+                    </li>
 
-                        <span class="text">Update Banner</span>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('mitra.index') }}">
+                            <span class="nav-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-building-factory">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('mitra.index') }}">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-building-factory">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M3 21h18" />
+                                    <path d="M5 21v-12l5 4v-4l5 4h4" />
+                                    <path d="M19 21v-10l-4 3" />
+                                    <path d="M9 17h1" />
+                                    <path d="M14 17h1" />
+                                </svg>
+                            </span>
 
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M3 21h18" />
-                                <path d="M5 21v-12l5 4v-4l5 4h4" />
-                                <path d="M19 21v-10l-4 3" />
-                                <path d="M9 17h1" />
-                                <path d="M14 17h1" />
-                            </svg>
-                        </span>
+                            <span class="text">Mitra Industri/Brand</span>
+                        </a>
+                    </li>
 
-                        <span class="text">Mitra Industri/Brand</span>
-                    </a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.data') }}">
+                            <span class="nav-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('user.data') }}">
-                        <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="icon icon-tabler icons-tabler-outline icon-tabler-settings">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+                                    <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                                </svg>
+                            </span>
 
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path
-                                    d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
-                                <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                            </svg>
-                        </span>
-
-                        <span class="text"> Setting Users</span>
-                    </a>
-                </li>
+                            <span class="text"> Setting Users</span>
+                        </a>
+                    </li>
+                @endif
 
             </ul>
 
@@ -1102,7 +1104,7 @@
                         </div>
                         <!-- Logo -->
                         <!-- <div class="d-block d-md-none">
-        <a href="../index.html">
+        <a href="{{ route('dashboard') }}">
           <img src="{{ asset('assets_admin') }}/images/brand/logo/logo-icon.svg" alt="" />
         </a>
       </div> -->
@@ -1176,12 +1178,12 @@
                                         <img src="{{ asset('assets') }}/img/logo.webp" alt=""
                                             class="avatar avatar-md rounded-circle" />
                                         <div>
-                                            <h4 class="mb-0 fs-5">Admin</h4>
-                                            <p class="mb-0 text-secondar small">smknaa@gmail.com</p>
+                                            <h4 class="mb-0 fs-5">{{ $user->name }}</h4>
+                                            <p class="mb-0 text-secondary small">{{ $user->email }}</p>
                                         </div>
                                     </div>
                                     <div class="p-3 d-flex flex-column gap-1">
-                                        <a href="{{ url('/dashboard') }}"
+                                        <a href="{{ route('dashboard') }}"
                                             class="dropdown-item d-flex align-items-center gap-2">
                                             <span><svg xmlns="http://www.w3.org/2000/svg" width="20"
                                                     height="20" viewBox="0 0 24 24" fill="none"
@@ -1199,7 +1201,7 @@
 
                                     </div>
                                     <div class="border-dashed border-top mb-4 pt-4 px-6">
-                                        <a href="{{ url('/') }}"
+                                        <a href="#" onclick="logout()"
                                             class="text-secondary d-flex align-items-center gap-2">
                                             <span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20"
@@ -1311,6 +1313,23 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script>
+            function logout() {
+                Swal.fire({
+                    title: 'Anda yakin?',
+                    text: 'Apakah anda yakin untuk logout?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Tidak',
+                    confirmButtonText: 'Ya, logout!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "{{ route('logout') }}";
+                    }
+                });
+            }
+
             @if (session('success'))
                 Swal.fire({
                     icon: 'success',

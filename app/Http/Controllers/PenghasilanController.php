@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Penghasilan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PenghasilanController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
         $data = Penghasilan::all();
-        return view('admin.penghasilan.index', compact('data'));
+        return view('admin.penghasilan.index', compact('data', 'user'));
     }
 
     public function store(Request $request)

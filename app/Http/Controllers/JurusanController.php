@@ -4,20 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Jurusan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class JurusanController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
         $data = Jurusan::all();
         $total = $data->count();
-        return view('admin.jurusan.index', compact('data', 'total'));
+        return view('admin.jurusan.index', compact('data', 'total', 'user'));
     }
 
     public function create()
     {
-        return view('admin.jurusan.create');
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
+        return view('admin.jurusan.create', compact('user'));
     }
 
     public function store(Request $request)
@@ -58,8 +67,12 @@ class JurusanController extends Controller
 
     public function edit($id)
     {
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
         $data = Jurusan::findOrFail($id);
-        return view('admin.jurusan.edit', compact('data'));
+        return view('admin.jurusan.edit', compact('data', 'user'));
     }
 
     public function update(Request $request, $id)

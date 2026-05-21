@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Pekerjaan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PekerjaanController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
         $data = Pekerjaan::all();
-        return view('admin.pekerjaan.index', compact('data'));
+        return view('admin.pekerjaan.index', compact('data', 'user'));
     }
 
     public function store(Request $request)
