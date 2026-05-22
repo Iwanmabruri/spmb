@@ -550,6 +550,7 @@ class MuridController extends Controller
                     'prov_w' => $request->prov_w,
                     'pos_w' => $request->pos_w,
                     'tgl_daftar' => now(),
+                    'user_id' => Auth::id(),
                     'status' => "1",
                     'status_step' => 4,
                 ]);

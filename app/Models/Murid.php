@@ -89,6 +89,7 @@ class Murid extends Model
         'jenis_daftar',
         'jurusan_id',
         'tgl_daftar',
+        'user_id',
         'status_step'
     ];
 

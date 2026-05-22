@@ -420,7 +420,7 @@ class AmbildataController extends Controller
                 'pkrjn_w' => $request->pkrjn_w,
                 'penghasilan_w' => $request->penghasilan_w,
                 'hp_w' => $request->hp_w,
-
+                'user_id' => $request->user_id,
             ]);
             // $murid->update($request->all());
 
@@ -520,7 +520,6 @@ class AmbildataController extends Controller
                 'foto_scan_kk' => $virtual->foto_scan_kk,
                 'foto_scan_akta' => $virtual->foto_scan_akta,
                 'foto_scan_skck' => $virtual->foto_scan_skck,
-
                 'tgl_daftar' => now(),
             ]);
 

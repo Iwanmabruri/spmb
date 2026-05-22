@@ -31,6 +31,7 @@
                     </div>
                     <form action="{{ route('murid.updatelengkapi', $siswa->id_person) }}" method="POST">
                         @csrf
+                        <input hidden name="user_id" id="" value="{{ $user->id }}">
                         <div class="card-body">
                             <div class="row g-4">
 
