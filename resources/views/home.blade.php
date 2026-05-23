@@ -56,7 +56,8 @@
                             Download Brosur
                         </a> --}}
                         <a href="" class="btn btn-success shadow lift me-1">
-                            Download Brosur <i class="fe fe-download d-none d-md-inline ms-3"></i>
+                            Lihat Brosur
+                            <i class="fe fe-eye d-none d-md-inline ms-2"></i>
                         </a>
                     </div>
 
