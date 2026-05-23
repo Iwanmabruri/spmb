@@ -93,6 +93,11 @@ class Murid extends Model
         'status_step'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     // =====================
     // RELASI UTAMA
     // =====================

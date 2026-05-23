@@ -20,4 +20,8 @@ class Jurusan extends Model
     ];
 
     public $timestamps = false; // pakai created_at & updated_at
+    public function murid()
+    {
+        return $this->hasMany(Murid::class, 'jurusan_id');
+    }
 }

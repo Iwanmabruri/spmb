@@ -103,122 +103,248 @@
                 </div>
             </div> --}}
         </div>
-        <div class="row row-cols-1 row-cols-xl-3 row-cols-md-3 mb-6 g-6">
+        {{-- =========================
+            CARD STATISTIK DASHBOARD
+        ========================= --}}
+
+        @php
+            $colors = ['success', 'info', 'primary', 'danger', 'warning'];
+
+            $icons = ['ti ti-code', 'ti ti-calculator', 'ti ti-building', 'ti ti-palette', 'ti ti-settings'];
+        @endphp
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-5">
+
+            {{-- TOTAL PENDAFTAR --}}
             <div class="col">
-                <!-- card -->
-                <div class="card card-lg">
-                    <!-- card body -->
-                    <div class="card-body d-flex flex-column gap-8">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="icon-shape icon-lg rounded-circle bg-warning-darker text-warning-lighter">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                    <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                    <path d="M17 17h-11v-14h-2" />
-                                    <path d="M6 5l14 1l-1 7h-13" />
-                                </svg>
-                            </div>
-                            <div>Total Pendaftar</div>
+
+                <div class="card border-0 shadow-sm rounded-4 h-100 dashboard-card">
+
+                    <div class="card-body">
+
+                        <div class="icon-shape icon-lg rounded-4 bg-warning-subtle text-warning mb-4">
+
+                            <i class="ti ti-users fs-3"></i>
+
                         </div>
-                        <div class="d-flex justify-content-between align-items-center lh-1">
-                            <div class="fs-3 fw-bold">200</div>
-                            <div class="text-success small">
-                                <span>2.29%</span>
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-trending-up">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M3 17l6 -6l4 4l8 -8" />
-                                        <path d="M14 7l7 0l0 7" />
-                                    </svg>
-                                </span>
-                            </div>
+
+                        <div class="mb-3">
+
+                            <h5 class="fw-semibold mb-1">
+                                Total Pendaftar Murid Baru Tahun 2026
+                            </h5>
+
+                            <small class="text-muted">
+                                Seluruh data murid baru
+                            </small>
+
                         </div>
+
+                        <h1 class="fw-bold mb-0">
+                            {{ $totalPendaftar }}
+                        </h1>
+
                     </div>
+
                 </div>
+
             </div>
-            <div class="col">
-                <!-- card -->
-                <div class="card card-lg">
-                    <!-- card body -->
-                    <div class="card-body d-flex flex-column gap-8">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="icon-shape icon-lg rounded-circle bg-success-darker text-success-lighter">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-coin">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                                    <path
-                                        d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1" />
-                                    <path d="M12 7v10" />
-                                </svg>
+
+            {{-- STATISTIK JURUSAN --}}
+            @foreach ($statistikJurusan as $index => $jurusan)
+                <div class="col">
+
+                    <div class="card border-0 shadow-sm rounded-4 h-100 dashboard-card">
+
+                        <div class="card-body">
+
+                            {{-- ICON --}}
+                            <div
+                                class="icon-shape icon-lg rounded-4
+                        bg-{{ $colors[$index % count($colors)] }}-subtle
+                        text-{{ $colors[$index % count($colors)] }}
+                        mb-4">
+
+                                <i class="{{ $icons[$index % count($icons)] }} fs-3"></i>
+
                             </div>
-                            <div>Pendaftar Jurusan PPLG</div>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center lh-1">
-                            <div class="fs-3 fw-bold">100</div>
-                            <div class="text-warning small">
-                                <span>2.19%</span>
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-trending-up">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M3 17l6 -6l4 4l8 -8" />
-                                        <path d="M14 7l7 0l0 7" />
-                                    </svg>
-                                </span>
+
+                            {{-- NAMA JURUSAN --}}
+                            <div class="mb-3">
+
+                                <h5 class="fw-semibold mb-1 jurusan-title">
+                                    {{ $jurusan->program_keahlian }}
+                                </h5>
+
+                                <small class="text-muted">
+                                    Total pendaftar jurusan
+                                </small>
+
                             </div>
+
+                            {{-- TOTAL --}}
+                            <h1 class="fw-bold mb-0">
+                                {{ $jurusan->murid_count }}
+                            </h1>
+
                         </div>
+
                     </div>
+
                 </div>
-            </div>
-            <div class="col">
-                <!-- card -->
-                <div class="card card-lg">
-                    <!-- card body -->
-                    <div class="card-body d-flex flex-column gap-8">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="icon-shape icon-lg rounded-circle bg-info-darker text-info-lighter">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="icon icon-tabler icons-tabler-outline icon-tabler-user-circle">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
-                                </svg>
+            @endforeach
+
+        </div>
+        {{-- KINERJA PANITIA --}}
+        <div class="row mb-6">
+
+            <div class="col-xl-8">
+
+                <div class="card border-0 shadow-sm rounded-4">
+
+                    <div class="card-body p-4">
+
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+
+                            <div>
+                                <h4 class="mb-1">Kinerja Panitia</h4>
+
+                                <p class="text-muted mb-0 small">
+                                    Monitoring total input data siswa oleh panitia.
+                                </p>
                             </div>
-                            <div>Pendaftar Jurusan AKL</div>
+
+                            <span class="badge bg-success-subtle text-success px-3 py-2">
+                                {{ $statistikPanitia->count() }} Panitia Aktif
+                            </span>
+
                         </div>
-                        <div class="d-flex justify-content-between align-items-center lh-1">
-                            <div class="fs-3 fw-bold">100</div>
-                            <div class="text-danger small">
-                                <span>3.19%</span>
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-trending-down">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M3 7l6 6l4 -4l8 8" />
-                                        <path d="M21 10l0 7l-7 0" />
-                                    </svg>
-                                </span>
+
+                        @php
+                            $maxInput = $statistikPanitia->max('murid_count') ?: 1;
+                            $colors = ['success', 'primary', 'warning', 'danger', 'info'];
+                        @endphp
+
+                        @forelse ($statistikPanitia as $index => $panitia)
+                            <div class="mb-4">
+
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+
+                                    <div class="d-flex align-items-center gap-3">
+
+                                        <div
+                                            class="icon-shape icon-md rounded-circle bg-{{ $colors[$index % count($colors)] }}-subtle text-{{ $colors[$index % count($colors)] }} fw-bold">
+
+                                            {{ $index + 1 }}
+
+                                        </div>
+
+                                        <div>
+
+                                            <div class="fw-semibold">
+                                                {{ $panitia->name }}
+                                            </div>
+
+                                            <small class="text-muted">
+                                                Panitia Pendaftaran
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="text-end">
+
+                                        <div class="fw-bold fs-5">
+                                            {{ $panitia->murid_count }}
+                                        </div>
+
+                                        <small class="text-muted">
+                                            Input siswa
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="progress" style="height: 8px;">
+
+                                    <div class="progress-bar bg-{{ $colors[$index % count($colors)] }}"
+                                        style="width: {{ ($panitia->murid_count / $maxInput) * 100 }}%">
+                                    </div>
+
+                                </div>
+
                             </div>
-                        </div>
+
+                        @empty
+
+                            <div class="text-center py-5 text-muted">
+                                Belum ada data panitia.
+                            </div>
+                        @endforelse
+
                     </div>
+
                 </div>
+
             </div>
+
+            {{-- PANITIA TERAKTIF --}}
+            <div class="col-xl-4">
+
+                <div class="card border-0 shadow-sm rounded-4 h-100">
+
+                    <div class="card-body p-4">
+
+                        <div class="mb-4">
+
+                            <h4 class="mb-1">Panitia Teraktif</h4>
+
+                            <p class="text-muted small mb-0">
+                                Performa input tertinggi.
+                            </p>
+
+                        </div>
+
+                        @if ($statistikPanitia->count())
+                            @php
+                                $topPanitia = $statistikPanitia->first();
+                            @endphp
+
+                            <div class="text-center py-4">
+
+                                <div class="icon-shape icon-xxl rounded-circle bg-warning-subtle text-warning mx-auto mb-4">
+
+                                    <i class="ti ti-trophy fs-1"></i>
+
+                                </div>
+
+                                <h2 class="mb-1">
+                                    {{ $topPanitia->name }}
+                                </h2>
+
+                                <p class="text-muted mb-4">
+                                    {{ $topPanitia->murid_count }} Input Data Siswa
+                                </p>
+
+                                <div class="alert alert-success mb-0 rounded-3">
+                                    🔥 Panitia paling aktif saat ini
+                                </div>
+
+                            </div>
+                        @else
+                            <div class="text-center py-5 text-muted">
+                                Belum ada data.
+                            </div>
+                        @endif
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
     </div>
 
