@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from dasher-ui.netlify.app/pages/blank by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Jan 2026 15:56:21 GMT -->
-<!-- Added by HTTrack -->
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="{{ asset('assets') }}/img/logo.webp" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="Codescandy" name="author">
     <title>@yield('title')</title>
@@ -178,9 +176,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('ambildata') }}">
                         <span class="nav-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round"
                                 class="icon icon-tabler icons-tabler-outline icon-tabler-cloud-down">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                                 <path

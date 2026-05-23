@@ -347,8 +347,7 @@
                     </p>
 
                     <!-- Button -->
-                    <a href="https://themes.getbootstrap.com/product/landkit/" target="_blank"
-                        class="btn btn-success lift">
+                    <a href="{{ asset('brosur.jpg') }}" download="" class="btn btn-success lift">
                         Download Brosur <i class="fe fe-download d-none d-md-inline ms-3"></i>
                     </a>
 
@@ -365,6 +364,7 @@
             </svg>
         </div>
     </div>
+
 @endsection
 @push('scripts')
     <script>
