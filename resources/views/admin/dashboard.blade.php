@@ -16,7 +16,7 @@
             <div class="col-xl-12 col-lg-8">
                 <div class="bg-gradient-mixed p-8 py-10 rounded-3 p-lg-7">
                     <!--heading-->
-                    <h1 class="fs-3">👋 Hello Admin,</h1>
+                    <h1 class="fs-3">Hello {{ auth()->user()->name }},</h1>
                     <p class="mb-0">Sistem Informasi Penerimaan Murid Baru (SPMB).</p>
                     <p>Dashboard administrasi untuk pengelolaan data, pengarsipan berkas, dan analisis grafik pendaftaran.
                     </p>
