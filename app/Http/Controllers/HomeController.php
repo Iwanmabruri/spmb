@@ -8,6 +8,7 @@ use App\Models\Murid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -36,8 +37,9 @@ class HomeController extends Controller
 
     public function indexBanner()
     {
+        $user = Auth::user();
         $banner = Banner::latest()->get();
-        return view('banner', compact('banner'));
+        return view('banner', compact('banner', 'user'));
     }
 
     public function storeBanner(Request $request)
@@ -116,10 +118,11 @@ class HomeController extends Controller
 
     public function indexMitra()
     {
+        $user = Auth::user();
         $mitra = Mitra::where('status', 1)->get();
         // dd($mitra);
 
-        return view('mitra', compact('mitra'));
+        return view('mitra', compact('mitra', 'user'));
     }
 
     public function storeMitra(Request $request)
