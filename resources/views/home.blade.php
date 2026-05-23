@@ -55,10 +55,11 @@
                         {{-- <a href="docs/index.html" class="btn btn-success-subtle lift">
                             Download Brosur
                         </a> --}}
-                        <a href="" class="btn btn-success shadow lift me-1">
+                        <button class="btn btn-success shadow lift me-1" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
                             Lihat Brosur
                             <i class="fe fe-eye d-none d-md-inline ms-2"></i>
-                        </a>
+                        </button>
                     </div>
 
                 </div>
@@ -366,6 +367,19 @@
         </div>
     </div>
 
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{ asset('brosur.jpg') }}" class="img-fluid" alt="Brosur">
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('scripts')
     <script>
