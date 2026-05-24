@@ -7,6 +7,10 @@
             justify-content: center;
             align-items: center;
         }
+
+        .modal-backdrop.show {
+            opacity: 0.8;
+        }
     </style>
 @endsection
 @section('konten')
@@ -260,7 +264,7 @@
 
                         <!-- Image -->
                         <a class="card-img-top" href="#!">
-                            <img src="assets/img/photos/photo1.JPG" alt="..." class="card-img-top">
+                            <img src="assets/img/photos/pplgok.png" alt="..." class="card-img-top">
                         </a>
 
                         <!-- Shape -->
@@ -277,14 +281,14 @@
 
                             <!-- Heading -->
                             <h3>
-                                Rekayasa Perangkat Lunak
+                                Pengembangan Perangkat Lunak & Gim
                             </h3>
 
                             <!-- Text -->
                             <p class="mb-0 text-body-secondary">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo quaerat, repellat cumque ut
-                                ipsum amet quisquam accusamus hic fugit quasi itaque numquam ex quos vero! Odit repellat
-                                libero necessitatibus veniam.
+                                Belajar coding, pembuatan website, aplikasi, desain digital, dan teknologi modern untuk
+                                mencetak Generasi Unggul Berakhlak Mulia yang kreatif, inovatif, profesional, dan siap
+                                bersaing di dunia kerja maupun industri digital.
                             </p>
 
                         </a>
@@ -297,7 +301,7 @@
 
                         <!-- Image -->
                         <a class="card-img-top" href="#!">
-                            <img src="assets/img/photos/photo2.png" alt="..." class="card-img-top">
+                            <img src="assets/img/photos/akl.png" alt="..." class="card-img-top">
                         </a>
 
                         <!-- Shape -->
@@ -314,14 +318,14 @@
 
                             <!-- Heading -->
                             <h3>
-                                Akuntansi Keuangan
+                                Akuntansi Keuangan Lembaga
                             </h3>
 
                             <!-- Text -->
                             <p class="mb-0 text-body-secondary">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. In dolores, eius placeat animi
-                                perferendis consequatur cupiditate, illo autem officiis optio enim tenetur laborum aliquam
-                                ipsam incidunt. Assumenda facere ea est!
+                                Belajar akuntansi, administrasi bisnis, perpajakan, dan pengelolaan laporan keuangan untuk
+                                membentuk Generasi Unggul Berakhlak Mulia yang teliti, profesional, mandiri, dan siap kerja
+                                maupun berwirausaha.
                             </p>
 
                         </a>
@@ -349,7 +353,7 @@
                     </p>
 
                     <!-- Button -->
-                    <a href="{{ asset('brosur.jpg') }}" download="" class="btn btn-success lift">
+                    <a href="{{ asset('brosur.png') }}" download="" class="btn btn-success lift">
                         Download Brosur <i class="fe fe-download d-none d-md-inline ms-3"></i>
                     </a>
 
@@ -369,14 +373,20 @@
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content border-0 bg-transparent">
+
+                <div class="modal-header border-0 position-absolute end-0 z-3">
+                    <button type="button" class="btn-close bg-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <img src="{{ asset('brosur.jpg') }}" class="img-fluid" alt="Brosur">
+
+                <div class="modal-body p-0 text-center">
+                    <img src="{{ asset('brosur.png') }}" class="img-fluid rounded shadow"
+                        style="max-height: 90vh; width: auto; object-fit: contain;" alt="Brosur">
                 </div>
+
             </div>
         </div>
     </div>

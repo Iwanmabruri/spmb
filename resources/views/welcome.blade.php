@@ -729,7 +729,7 @@
                     </ul>
 
                 </div>
-                <div class="col-6 col-md-4 col-lg-2">
+                {{-- <div class="col-6 col-md-4 col-lg-2">
 
                     <!-- Heading -->
                     <h6 class="fw-bold text-uppercase text-gray-700">
@@ -755,7 +755,7 @@
                         </li>
                     </ul>
 
-                </div>
+                </div> --}}
             </div> <!-- / .row -->
         </div> <!-- / .container -->
     </footer>
@@ -774,6 +774,8 @@
 
     <!-- Theme JS -->
     <script src="{{ asset('assets') }}/js/theme.bundle.js"></script>
+
+    <script src="{{ asset('assets/dist/panzoom.min.js') }}"></script>
 
 </body>
 
