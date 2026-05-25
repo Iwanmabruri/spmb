@@ -48,7 +48,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Data Master</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Data Siswa</li>
+                                <li class="breadcrumb-item active" aria-current="page">Data Murid</li>
                             </ol>
                         </nav>
                     </div>
@@ -61,8 +61,33 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="text-truncate h5 mb-0" id="withLabel">List Data Murid Baru</h3>
+                    <div
+                        class="card-header border-bottom d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+                        <h3 class="text-truncate h5 mb-0" id="withLabel">
+                            List Data Murid Baru
+                        </h3>
+
+                        <div class="d-flex gap-2">
+
+                            {{-- EXPORT EXCEL --}}
+                            <a href="{{ route('siswa.export.excel') }}" class="btn btn-outline-success btn-sm">
+
+                                <i class="ti ti-file-spreadsheet me-1"></i>
+                                Export Excel
+
+                            </a>
+
+                            {{-- EXPORT PDF --}}
+                            {{-- <a href="{{ route('siswa.export.pdf') }}" class="btn btn-outline-danger btn-sm">
+
+                                <i class="ti ti-file-type-pdf me-1"></i>
+                                Export PDF
+
+                            </a> --}}
+
+                        </div>
+
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

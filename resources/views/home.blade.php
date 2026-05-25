@@ -353,7 +353,7 @@
                     </p>
 
                     <!-- Button -->
-                    <a href="{{ asset('brosur.png') }}" download="" class="btn btn-success lift">
+                    <a href="{{ asset('BROSUR-2026.png') }}" download="" class="btn btn-success lift">
                         Download Brosur <i class="fe fe-download d-none d-md-inline ms-3"></i>
                     </a>
 
@@ -383,7 +383,7 @@
                 </div>
 
                 <div class="modal-body p-0 text-center">
-                    <img src="{{ asset('brosur.png') }}" class="img-fluid rounded shadow"
+                    <img src="{{ asset('BROSUR-2026.png') }}" class="img-fluid rounded shadow"
                         style="max-height: 90vh; width: auto; object-fit: contain;" alt="Brosur">
                 </div>
 

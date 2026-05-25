@@ -175,7 +175,7 @@ class MuridController extends Controller
         }
         $murid = Murid::with([
             'agama',
-            'desa',
+            'reldesa',
             'kabupaten',
             'jurusan',
             'pekerjaanAyah',
@@ -285,8 +285,10 @@ class MuridController extends Controller
     {
         $murid = Murid::with([
             'agama',
-            'desa',
+            'reldesa',
+            'kecamatan',
             'kabupaten',
+            'provinsi',
             'jurusan',
             'pekerjaanAyah',
             'pendidikanAyah',
@@ -296,7 +298,8 @@ class MuridController extends Controller
             'penghasilanIbu',
             'pekerjaanWali',
             'pendidikanWali',
-            'penghasilanWali'
+            'penghasilanWali',
+            'user'
         ])->findOrFail($id);
 
         return view('admin.siswa.printbiodata', compact('murid'));

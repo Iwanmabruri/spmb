@@ -199,7 +199,7 @@ class Murid extends Model
         return $this->belongsTo(Kecamatan::class, 'kec');
     }
 
-    public function desa()
+    public function reldesa()
     {
         return $this->belongsTo(Desa::class, 'desa');
     }

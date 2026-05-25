@@ -143,8 +143,20 @@
                     </tr>
 
                     <tr>
-                        <td class="label">Alamat Lengkap</td>
-                        <td>: {{ $murid->alamat_lengkap }}</td>
+                        <td class="label" rowspan="2">Alamat Lengkap</td>
+
+                        <td>
+                            : {{ $murid->alamat_lengkap }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            : {{ $murid->reldesa->name ?? '-' }},
+                            {{ $murid->kecamatan->name ?? '-' }},
+                            {{ $murid->kabupaten->name ?? '-' }},
+                            {{ $murid->provinsi->name ?? '-' }}
+                        </td>
                     </tr>
 
                     <tr>
@@ -408,26 +420,36 @@
     </table>
 
     {{-- TTD --}}
-    <table class="ttd" style="margin-top: 4px">
-        <table class="ttd">
-            <tr>
+    <table class="ttd" width="100%" style="margin-top: 30px;">
+        <tr>
 
-                <td width="50%" class="center">
-                    Pendaftar
-                    <br><br><br><br><br>
-                    <u>{{ $murid->nama }}</u>
-                </td>
+            {{-- KIRI --}}
+            <td width="50%" style="text-align: center; vertical-align: top;">
 
-                <td width="50%" class="center">
-                    Banyuwangi, {{ date('d M Y') }}
-                    <br>
-                    Panitia
-                    <br><br><br><br><br>
-                    <u>__________________</u>
-                </td>
+                Pendaftar
 
-            </tr>
-        </table>
+                <div style="height: 90px;"></div>
+
+                <u>{{ $murid->nama }}</u>
+
+            </td>
+
+            {{-- KANAN --}}
+            <td width="50%" style="text-align: center; vertical-align: top;">
+
+                Banyuwangi, {{ date('d M Y') }}
+                <br>
+
+                Panitia
+
+                <div style="height: 72px;"></div>
+
+                <u>{{ Auth::user()->name }}</u>
+
+            </td>
+
+        </tr>
+    </table>
     </table>
 
     <div class="halaman-lanjutan">
@@ -745,7 +767,7 @@
 
                     <br><br><br><br><br>
 
-                    <u><b>__________________</b></u>
+                    <u><b>{{ Auth::user()->name }}</b></u>
 
                 </td>
 

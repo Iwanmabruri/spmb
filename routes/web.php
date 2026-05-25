@@ -102,6 +102,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/upload/{id}', [MuridController::class, 'upload'])->name('murid.berkas');
         Route::post('/upload-berkas', [MuridController::class, 'uploadBerkas'])
             ->name('murid.upload.berkas');
+        Route::get('/export/excel', [AdminController::class, 'exportExcel'])
+            ->name('siswa.export.excel');
+        Route::get('/export/pdf', [AdminController::class, 'exportPdf'])
+            ->name('siswa.export.pdf');
     });
 
     Route::get('/get-kota/{provinsi_id}', [MuridController::class, 'get_kabupaten']);
