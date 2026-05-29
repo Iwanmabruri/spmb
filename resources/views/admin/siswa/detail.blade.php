@@ -412,103 +412,96 @@
                     </div>
 
                     {{-- BERKAS --}}
+                    @php
+                        $berkas = [
+                            [
+                                'judul' => 'Kartu Keluarga',
+                                'file' => $murid->foto_scan_kk,
+                            ],
+                            [
+                                'judul' => 'Akta Kelahiran',
+                                'file' => $murid->foto_scan_akta,
+                            ],
+                            [
+                                'judul' => 'Ijazah / SKL',
+                                'file' => $murid->foto_ijazah,
+                            ],
+                            [
+                                'judul' => 'Surat Keterangan Lulus',
+                                'file' => $murid->foto_skl,
+                            ],
+                            [
+                                'judul' => 'SKCK / SKKB',
+                                'file' => $murid->foto_scan_skck,
+                            ],
+                        ];
+                    @endphp
+
                     <div class="tab-pane fade" id="berkas">
-                        <div class="row g-3">
+                        <div class="row g-4">
 
-                            {{-- KK --}}
-                            <div class="col-md-6 col-lg-4 text-center">
+                            @foreach ($berkas as $item)
+                                @php
+                                    $adaFile = !empty($item['file']);
+                                    $file = $adaFile ? asset($item['file']) : asset('images/notfound.png');
+                                @endphp
 
-                                <div class="border rounded-4 p-3 bg-light">
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="card border-0 shadow-sm h-100 rounded-4">
 
-                                    <div class="fw-semibold mb-2">Kartu Keluarga</div>
+                                        <div class="card-header bg-white border-0 text-center pt-3">
 
-                                    @php
-                                        $kk = $murid->foto_scan_kk ?: 'images/notfound.png';
-                                    @endphp
+                                            <h6 class="fw-bold mb-2">
+                                                {{ $item['judul'] }}
+                                            </h6>
 
-                                    <img src="{{ asset($kk) }}" class="img-fluid rounded-3 shadow-sm"
-                                        style="height:150px; object-fit:cover; cursor:pointer;"
-                                        onclick="openPreview('{{ asset($kk) }}', 'Kartu Keluarga')">
+                                            @if ($adaFile)
+                                                <span class="badge bg-success">
+                                                    <i class="fas fa-check-circle me-1"></i>
+                                                    Sudah Upload
+                                                </span>
+                                            @else
+                                                <span class="badge bg-danger">
+                                                    <i class="fas fa-times-circle me-1"></i>
+                                                    Belum Upload
+                                                </span>
+                                            @endif
 
+                                        </div>
+
+                                        <div class="card-body text-center">
+
+                                            <img src="{{ $file }}" class="img-fluid rounded-3 border"
+                                                style="height:220px;width:100%;object-fit:contain;cursor:pointer;"
+                                                onclick="openPreview('{{ $file }}','{{ $item['judul'] }}')">
+
+                                        </div>
+
+                                        <div class="card-footer bg-white border-0 pb-3 text-center">
+
+                                            @if ($adaFile)
+                                                <button type="button" class="btn btn-primary btn-sm"
+                                                    onclick="openPreview('{{ $file }}','{{ $item['judul'] }}')">
+                                                    <i class="fas fa-eye me-1"></i>
+                                                    Preview
+                                                </button>
+
+                                                <a href="{{ $file }}" download class="btn btn-success btn-sm">
+                                                    <i class="fas fa-download me-1"></i>
+                                                    Download
+                                                </a>
+                                            @else
+                                                <button class="btn btn-secondary btn-sm" disabled>
+                                                    <i class="fas fa-ban me-1"></i>
+                                                    Tidak Tersedia
+                                                </button>
+                                            @endif
+
+                                        </div>
+
+                                    </div>
                                 </div>
-
-                            </div>
-
-                            {{-- AKTA --}}
-                            <div class="col-md-6 col-lg-4 text-center">
-
-                                <div class="border rounded-4 p-3 bg-light">
-
-                                    <div class="fw-semibold mb-2">Akta Kelahiran</div>
-
-                                    @php
-                                        $akta = $murid->foto_scan_akta ?: 'images/notfound.png';
-                                    @endphp
-
-                                    <img src="{{ asset($akta) }}" class="img-fluid rounded-3 shadow-sm"
-                                        style="height:150px; object-fit:cover; cursor:pointer;"
-                                        onclick="openPreview('{{ asset($akta) }}', 'Akta Kelahiran')">
-
-                                </div>
-
-                            </div>
-
-                            {{-- IJAZAH --}}
-                            <div class="col-md-6 col-lg-6 text-center">
-
-                                <div class="border rounded-4 p-3 bg-light">
-
-                                    <div class="fw-semibold mb-2">Ijazah / SKL</div>
-
-                                    @php
-                                        $ijazah = $murid->foto_ijazah ?: 'images/notfound.png';
-                                    @endphp
-
-                                    <img src="{{ asset($ijazah) }}" class="img-fluid rounded-3 shadow-sm"
-                                        style="height:150px; object-fit:cover; cursor:pointer;"
-                                        onclick="openPreview('{{ asset($ijazah) }}', 'Ijazah / SKL')">
-
-                                </div>
-
-                            </div>
-
-                            {{-- SKL --}}
-                            <div class="col-md-6 col-lg-6 text-center">
-
-                                <div class="border rounded-4 p-3 bg-light">
-
-                                    <div class="fw-semibold mb-2">Surat Keterangan Lulus</div>
-
-                                    @php
-                                        $skl = $murid->foto_skl ?: 'images/notfound.png';
-                                    @endphp
-
-                                    <img src="{{ asset($skl) }}" class="img-fluid rounded-3 shadow-sm"
-                                        style="height:150px; object-fit:cover; cursor:pointer;"
-                                        onclick="openPreview('{{ asset($skl) }}', 'Surat Keterangan Lulus')">
-
-                                </div>
-
-                            </div>
-
-                            {{-- SKKB --}}
-                            <div class="col-md-6 col-lg-4 text-center">
-
-                                <div class="border rounded-4 p-3 bg-light">
-
-                                    <div class="fw-semibold mb-2">SKCK / SKKB</div>
-
-                                    @php
-                                        $skck = $murid->foto_scan_skck ?: 'images/notfound.png';
-                                    @endphp
-
-                                    <img src="{{ asset($skck) }}" class="img-fluid rounded-3 shadow-sm"
-                                        style="height:150px; object-fit:cover; cursor:pointer;"
-                                        onclick="openPreview('{{ asset($skck) }}', 'SKCK / SKKB')">
-
-                                </div>
-
-                            </div>
+                            @endforeach
 
                         </div>
                     </div>
